@@ -21,6 +21,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  plugins: [
+    'json-format',
+  ],
   rules: {
   },
 };

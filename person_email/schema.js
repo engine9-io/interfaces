@@ -5,8 +5,12 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        email: 'string',
         type: 'string',
+        preferred: {
+          type: 'int',
+          description: 'Order in the preference stack, 0 is first',
+        },
+        email: 'string',
         opt_in: {
           type: 'boolean',
           nullable: false,
@@ -15,6 +19,9 @@ module.exports = {
         date_created: 'date_created',
         last_modified: 'last_modified',
       },
+      indexes: [
+        { columns: 'person_id', unique: true },
+      ],
     },
   ],
 };

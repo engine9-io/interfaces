@@ -18,7 +18,9 @@ module.exports = {
         },
         deliverability_status: {
           type: 'string',
-          description: 'Current status of email, e.g. Active, Undeliverable, etc.  Different than Opt-In',
+          description: 'Current status of email, e.g. active, undeliverable, etc.  Different than Opt-In',
+          nullable: false,
+          default_value: 'active',
         },
         source: 'string',
         date_created: 'date_created',

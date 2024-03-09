@@ -6,7 +6,7 @@ module.exports = {
         id: 'id',
         person_id: 'person_id',
         type: 'string',
-        preferred: {
+        preference_order: {
           type: 'int',
           description: 'Order in the preference stack, 0 is first',
         },
@@ -20,7 +20,7 @@ module.exports = {
         last_modified: 'last_modified',
       },
       indexes: [
-        { columns: 'person_id', unique: true },
+        { columns: 'person_id' },
       ],
     },
   ],

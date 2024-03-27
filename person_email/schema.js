@@ -23,7 +23,7 @@ module.exports = {
           nullable: false,
           default_value: 'deliverable',
         },
-        source: 'string',
+        source_plugin_id: 'id',
         date_created: 'date_created',
         last_modified: 'last_modified',
       },

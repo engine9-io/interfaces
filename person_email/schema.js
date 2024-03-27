@@ -11,6 +11,7 @@ module.exports = {
           description: 'Order in the preference stack, 0 is first',
         },
         email: 'string',
+        email_hash_v1: 'hash',
         opt_in: {
           type: 'boolean',
           nullable: false,

@@ -1,4 +1,4 @@
-module.exports = async function (batch) {
+module.exports = async function ({ batch }) {
   batch.tables = { person_email: [], ...batch.tables };
   batch.forEach((o) => {
     batch.tables.person_email.push({

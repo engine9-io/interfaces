@@ -1,7 +1,7 @@
-module.exports = async function transform({ batch }) {
-  batch.tables = { person_phone: [], ...batch.tables };
+module.exports = async function ({ batch, tablesToUpsert }) {
+  tablesToUpsert.person_phone = tablesToUpsert.person_phone || [];
   batch.forEach((o) => {
-    batch.tables.person_phone.push({
+    tablesToUpsert.person_phone.push({
       person_id: o.person_id,
       phone: o.phone,
       type: o.type || 'mobile', // set a mobile phone as a default

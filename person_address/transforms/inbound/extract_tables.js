@@ -1,7 +1,7 @@
-module.exports = async function (batch) {
-  batch.tables = { person_address: [], ...batch.tables };
+module.exports = async function ({ batch, tablesToUpsert }) {
+  tablesToUpsert.person_address = tablesToUpsert.person_address || [];
   batch.forEach((o) => {
-    batch.tables.person_address.push({
+    tablesToUpsert.person_address.push({
       person_id: o.person_id,
       email: o.email,
     });

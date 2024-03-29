@@ -17,6 +17,16 @@ module.exports = {
             'Unsubscribed',
           ],
         },
+        confirmation_status: {
+          type: 'string',
+          nullable: false,
+          default_value: 'Not Confirmed',
+          values: [
+            'Not Confirmed',
+            'Confirmation Sent',
+            'Confirmed',
+          ],
+        },
         deliverability_score: {
           type: 'int',
           description: 'Score representating deliverability status of email, e.g. undeliverable(0), deliverable(1), higher values mean different things',

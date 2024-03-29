@@ -1,7 +1,7 @@
 module.exports = {
   tables: [
     {
-      name: 'person',
+      name: 'person_address',
       columns: {
         id: 'id',
         person_id: 'person_id',
@@ -11,9 +11,35 @@ module.exports = {
         city: 'string',
         region: 'string',
         postal_code: 'string',
+        country: 'string',
+        subscription_status: {
+          type: 'string',
+          nullable: false,
+          default_value: 'Not Subscribed',
+          values: [
+            'Not Subscribed',
+            'Subscribed',
+            'Unsubscribed',
+          ],
+        },
+        deliverability_score: {
+          type: 'int',
+          description: 'Score representating deliverability status of address, e.g. undeliverable(0), deliverable(1), higher values mean different things',
+          nullable: false,
+          default_value: 1,
+        },
+        preference_order: {
+          type: 'int',
+          description: 'Order in the preference stack, 0 is first',
+          nullable: false,
+          default_value: 0,
+        },
+        date_created: 'date_created',
+        last_modified: 'last_modified',
+        source_plugin_id: 'foreign_id',
       },
       indexes: [
-        { columns: 'person_id', unique: true },
+        { columns: 'person_id' },
       ],
     },
   ],

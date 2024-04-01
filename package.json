@@ -1,7 +1,7 @@
 {
-  "name": "steamengine-core-objects",
+  "name": "engine9-interfaces",
   "version": "1.0.0",
-  "description": "SteamEngine core schema definitions and interfaces",
+  "description": "Engine9 core interfaces",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

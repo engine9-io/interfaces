@@ -5,7 +5,10 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        type: 'string',
+        type: {
+          type: 'string',
+          values: ['', 'Home', 'School', 'Office'],
+        },
         street_1: 'string',
         street_2: 'string',
         city: 'string',

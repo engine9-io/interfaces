@@ -24,12 +24,6 @@ module.exports = {
           record.subscription_status = 'Unsubscribed';
         }
         record.id = existingEmail.id;
-      } else {
-        tablesToUpsert.person_email.push({
-          id: null,
-          person_id: o.person_id,
-          email: o.email,
-        });
       }
       tablesToUpsert.person_email.push(record);
     });

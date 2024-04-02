@@ -15,11 +15,11 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        type: 'string',
+        type: 'string', // not actively used, but for future use in case we need to do deeper ID logic
         value: 'string',
       },
       indexes: [
-        { columns: ['type', 'value'] },
+        { columns: ['value'] },
       ],
     },
   ],

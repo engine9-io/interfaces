@@ -15,6 +15,7 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
+        source_plugin_id: 'foreign_id',
         type: 'string', // not actively used, but for future use in case we need to do deeper ID logic
         value: 'string',
       },

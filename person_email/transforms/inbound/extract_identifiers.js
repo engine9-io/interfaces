@@ -11,7 +11,7 @@ module.exports = async function ({ batch }) {
         .update(hashable)
         .digest('hex');
       e.identifiers.push({
-        path: 'person_email', type: 'email', value,
+        path: 'person_email', type: 'email_hash_v1', value,
       });
     }
   });

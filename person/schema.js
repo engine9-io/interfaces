@@ -11,7 +11,7 @@ module.exports = {
       },
     },
     {
-      name: 'person_identifiers',
+      name: 'person_identifier',
       columns: {
         id: 'id',
         person_id: 'person_id',

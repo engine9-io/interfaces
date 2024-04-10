@@ -14,7 +14,7 @@ module.exports = {
           limit: 50,
           fields: [
             { label: 'Name' },
-            { label: 'Date Created', sql: 'date_created', format: 'date' },
+            { label: 'Date Created', sql: 'created_at', format: 'date' },
           ],
         },
       },

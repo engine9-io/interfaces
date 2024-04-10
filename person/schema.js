@@ -6,8 +6,8 @@ module.exports = {
         id: 'id',
         given_name: 'string',
         family_name: 'string',
-        date_created: 'date_created',
-        last_modified: 'last_modified',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
     },
     {

@@ -37,8 +37,8 @@ module.exports = {
             'Unsubscribed',
           ],
         },
-        date_created: 'date_created',
-        last_modified: 'last_modified',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
         source_plugin_id: 'foreign_id',
       },
       indexes: [

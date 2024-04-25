@@ -5,7 +5,16 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        type: 'string',
+        email_type: {
+          type: 'string',
+          nullable: false,
+          default_value: 'Personal',
+          values: [
+            'Personal',
+            'Work',
+            'Other',
+          ],
+        },
         email: 'string',
         subscription_status: {
           type: 'string',
@@ -39,10 +48,10 @@ module.exports = {
           nullable: false,
           default_value: 0,
         },
-        created_at: 'created_at',
-        modified_at: 'modified_at',
         email_hash_v1: 'hash',
         source_plugin_id: 'foreign_id',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
       indexes: [
         { columns: 'person_id' },

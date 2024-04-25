@@ -16,11 +16,11 @@ module.exports = {
         id: 'id',
         person_id: 'person_id',
         source_plugin_id: 'foreign_id',
-        type: 'string', // not actively used, but for future use in case we need to do deeper ID logic
-        value: 'string',
+        id_type: 'id_string',
+        id_value: 'id_string',
       },
       indexes: [
-        { columns: ['value'] },
+        { columns: ['id_value'] },
       ],
     },
   ],

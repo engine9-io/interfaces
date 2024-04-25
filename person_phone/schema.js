@@ -5,7 +5,16 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        type: 'string',
+        phone_type: {
+          type: 'string',
+          nullable: false,
+          default_value: 'Personal',
+          values: [
+            'Personal',
+            'Work',
+            'Other',
+          ],
+        },
         preference_order: {
           type: 'int',
           description: 'Order in the preference stack, 0 is first',

@@ -1,0 +1,173 @@
+{
+  menu: {
+    messages:{
+          title: 'Messages',
+          type: 'collapse',
+          children: {
+            messages:{
+              title: 'Messages',
+              icon:'message',
+              url: '/message',
+            },
+            campaigns:{
+              title: 'Campaigns',
+              icon:'campaign',
+              url: '/campaign',
+            },
+          },
+    },
+  },
+  routes: {
+    '/message':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            component: 'DataTable',
+            properties: {
+              table: 'message',
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Publish Date',
+                  dataIndex: 'publish_date',
+                  sorter: true,
+                  width: '40%',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'name',
+                  sorter: true,
+                  render: '{{label}}',
+                  width: '40%',
+                }
+              ],
+              onRow: {
+                onClick: {
+                  action: 'navigate',
+                  url: '/message/{{row.id}}',
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/message/:id/*':{
+      layout: 'sidebar',
+      components: {
+        sidebar: [
+          {
+            component: 'DataDisplay',
+            properties: {
+              table: 'message',
+              id: '{{parameters.id}}',
+              components: [
+                '{{label}}',
+              ],
+            },
+          }
+        ],
+        main: [
+          {
+            // 'path':'overview', //no path is the default
+            component: 'DataDisplay',
+            properties: {
+              table: 'message',
+              id: '{{parameters.id}}',
+              components: [
+                '{{label}}',
+              ],
+            },
+          },
+          {
+            path: 'source_codes',
+            label: 'Source Codes',
+            component: 'DataDisplay',
+            properties: {
+              table: 'message',
+              id: '{{parameters.id}}',
+              extensions: {
+                source_codes:{
+                  table:'source_code'
+                }
+              },
+              components: [
+                '{{label}}',
+              ],
+            },
+          },
+        ],
+      },
+    },
+    '/campaign':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            component: 'DataTable',
+            properties: {
+              table: 'message',
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'name',
+                  sorter: true,
+                  render: '{{label}}',
+                  width: '40%',
+                }
+              ],
+              onRow: {
+                onClick: {
+                  action: 'navigate',
+                  url: '/campaign/{{row.id}}',
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/campaign/:id/*':{
+      layout: 'sidebar',
+      components: {
+        sidebar: [
+          {
+            component: 'DataDisplay',
+            properties: {
+              table: 'campaign',
+              id: '{{parameters.id}}',
+              components: [
+                '{{label}}',
+              ],
+            },
+          }
+        ],
+        main: [
+          {
+            // 'path':'overview', //no path is the default
+            component: 'DataDisplay',
+            properties: {
+              table: 'campaign',
+              id: '{{parameters.id}}',
+              components: [
+                '{{label}}',
+              ],
+            },
+          }
+        ],
+      },
+    },
+  },
+}

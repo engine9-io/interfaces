@@ -4,7 +4,8 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
-  extends: 'airbnb-base',
+  extends: ['airbnb-base',
+    'plugin:jsonc/recommended-with-json5'],
   overrides: [
     {
       env: {
@@ -21,9 +22,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: [
-    'json-format',
-  ],
   rules: {
     'func-names': 'off', // Anonymous functions have their useful cases
     'no-param-reassign': [2, { props: false }], // We often assign props of an object in a function, and that's generally safe.

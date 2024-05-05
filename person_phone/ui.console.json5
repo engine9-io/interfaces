@@ -1,0 +1,32 @@
+{
+  routes: {
+    '/person/:id/*':{
+      components: {
+        sidebar: [
+          {
+            component: 'Link',
+            properties: {
+              label: 'Phones',
+              to: 'phones',
+            },
+          },
+        ],
+        main: [
+          {
+            path: 'phones',
+            label: 'Phones',
+            component: 'DataDisplay',
+            properties: {
+              table: 'person_phone',
+              conditions: [{ eql: 'person_id={{person_id}}' }],
+              rows: [
+                '{{phone}}',
+                '{{phone_type}}',
+              ],
+            },
+          },
+        ],
+      },
+    },
+  },
+}

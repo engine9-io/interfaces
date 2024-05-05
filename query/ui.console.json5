@@ -1,0 +1,68 @@
+{
+  menu: {
+    people:{
+      title: 'People',
+      type: 'collapse',
+      children: {
+        segments:{
+          title: 'Queries',
+          icon: 'query',
+          url: '/queries',
+        },
+      },
+    },
+  },
+  routes: {
+    '/queries':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            component: 'DataTable',
+            properties: {
+              table: 'query',
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'name',
+                  sorter: true,
+                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
+                  width: '40%',
+                },
+              ],
+              onRow: {
+                onClick: {
+                  action: 'navigate',
+                  url: '/queries/{{row.id}}',
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/queries/:id/*':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            // 'path':'overview', //no path is the default
+            component: 'DataDisplay',
+            properties: {
+              table: 'segment',
+              components: [
+                '{{label}}}',
+              ],
+            },
+          }
+        ],
+      },
+    },
+  },
+}

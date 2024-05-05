@@ -1,0 +1,88 @@
+{
+  menu: {
+    people:{
+      title: 'People',
+      type: 'collapse',
+      children: {
+        'person-list':{
+          title: 'All',
+          icon: 'person',
+          url: '/person',
+        }
+      },
+    },
+  },
+  routes: {
+    '/person':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            component: 'DataTable',
+            properties: {
+              table: 'person',
+              extensions: {
+                emails: {
+                  table: 'person_email',
+                },
+              },
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'name',
+                  sorter: true,
+                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
+                  width: '40%',
+                },
+              ],
+              onRow: {
+                onClick: {
+                  action: 'navigate',
+                  url: '/person/{{row.id}}',
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/person/:id/*':{
+      layout: 'sidebar',
+      components: {
+        sidebar: [
+          {
+            component: 'DataDisplay',
+            properties: {
+              table: 'person',
+              id: '{{parameters.id}}',
+              extensions: [
+                { alias: 'emails', table: 'person_email' },
+              ],
+              components: [
+                '{{record.given_name}} {{record.family_name}}',
+              ],
+            },
+          },
+        ],
+        main: [
+          {
+            // 'path':'overview', //no path is the default
+            component: 'DataDisplay',
+            properties: {
+              table: 'person',
+              components: [
+                '{{record.given_name}} {{family_name}}',
+              ],
+            },
+          },
+          ],
+      },
+    },
+  },
+}

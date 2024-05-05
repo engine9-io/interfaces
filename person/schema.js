@@ -15,7 +15,7 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        source_plugin_id: 'foreign_id',
+        source_extension_id: 'foreign_id',
         id_type: 'id_string',
         id_value: 'id_string',
       },

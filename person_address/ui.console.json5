@@ -1,0 +1,31 @@
+{
+  routes: {
+    '/person/:id/*':{
+      components: {
+        sidebar: [
+          {
+            component: 'Link',
+            properties: {
+              label: 'Addresses',
+              to: 'address',
+            },
+          },
+        ],
+        main: [
+          {
+            path: 'address',
+            label: 'Addresses',
+            component: 'DataDisplay',
+            properties: {
+              table: 'person_address',
+              conditions: [{ eql: 'person_id={{person_id}}' }],
+              rows: [
+                '{{street}}',
+              ],
+            },
+          },
+        ],
+      },
+    },
+  },
+}

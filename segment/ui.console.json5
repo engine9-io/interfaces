@@ -1,0 +1,73 @@
+{
+  menu: {
+    people:{
+      title: 'People',
+      type: 'collapse',
+      children: {
+        segments:{
+          title: 'Segments',
+          icon: 'segment',
+          url: '/segments',
+        },
+      },
+    },
+  },
+  routes: {
+    '/segments':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            component: 'DataTable',
+            properties: {
+              table: 'segment',
+              extensions: {
+                emails: {
+                  table: 'segment_email',
+                },
+              },
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'name',
+                  sorter: true,
+                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
+                  width: '40%',
+                },
+              ],
+              onRow: {
+                onClick: {
+                  action: 'navigate',
+                  url: '/segments/{{row.id}}',
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/segments/:id/*':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            // 'path':'overview', //no path is the default
+            component: 'DataDisplay',
+            properties: {
+              table: 'segment',
+              components: [
+                '{{label}}}',
+              ],
+            },
+          }
+        ],
+      },
+    },
+  },
+}

@@ -39,7 +39,7 @@ module.exports = {
         },
         created_at: 'created_at',
         modified_at: 'modified_at',
-        source_plugin_id: 'foreign_id',
+        source_extension_id: 'foreign_id',
       },
       indexes: [
         { columns: 'person_id' },

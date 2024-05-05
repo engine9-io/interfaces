@@ -39,7 +39,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/queries/{{row.id}}',
+                  url: '/queries/{{record.id}}',
                 },
               },
             },

@@ -44,7 +44,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/segments/{{row.id}}',
+                  url: '/segments/{{record.id}}',
                 },
               },
             },
@@ -58,7 +58,7 @@
         main: [
           {
             // 'path':'overview', //no path is the default
-            component: 'DataDisplay',
+            component: 'DataTable',
             properties: {
               table: 'segment',
               components: [
@@ -66,6 +66,37 @@
               ],
             },
           }
+        ],
+      },
+    },
+     '/person/:id/*':{
+      components: {
+        sidebar: {items2:[
+          {
+            component: 'Link',
+            properties: {
+              label: 'Segments',
+              to: 'segments',
+            },
+          },
+        ]
+        },
+        main: [
+          {
+            path: 'segments',
+            label: 'Segments',
+            component: 'DataTable',
+            properties: {
+              table: 'person_segment',
+                extensions: [
+                  { alias: 'segments', table: 'segment' },
+                ],
+              conditions: [{ eql: 'person_id={{parameters.person_id}}' }],
+              rows: [
+                '{{segment}}',
+              ],
+            },
+          },
         ],
       },
     },

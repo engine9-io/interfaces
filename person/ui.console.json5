@@ -44,7 +44,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/person/{{row.id}}',
+                  url: '/person/{{record.id}}',
                 },
               },
             },
@@ -55,30 +55,55 @@
     '/person/:id/*':{
       layout: 'sidebar',
       components: {
-        sidebar: [
-          {
-            component: 'DataDisplay',
-            properties: {
-              table: 'person',
-              id: '{{parameters.id}}',
-              extensions: [
-                { alias: 'emails', table: 'person_email' },
-              ],
-              components: [
-                '{{record.given_name}} {{record.family_name}}',
-              ],
+        sidebar: {
+            title:"Person Details",
+            items:[
+            {
+              component: 'DataDisplay',
+              properties: {
+                table: 'person',
+                id: '{{parameters.id}}',
+                extensions: [
+                  { alias: 'emails', table: 'person_email' },
+                ],
+                components: [
+                  '{{record.given_name}} {{record.family_name}}',
+                ],
+              },
             },
-          },
-        ],
+            {
+              component: 'Link',
+              properties: {
+                label: 'Edit',
+                to: 'edit',
+              },
+            },
+            ],
+        },
         main: [
           {
             // 'path':'overview', //no path is the default
             component: 'DataDisplay',
             properties: {
               table: 'person',
+              id: '{{parameters.id}}',
               components: [
                 '{{record.given_name}} {{family_name}}',
               ],
+            },
+          },
+          {
+            'path':'edit',
+            component: 'DataForm',
+            properties: {
+              table: 'person',
+              id: '{{parameters.id}}',
+              form:{
+                inputs:[
+                  {name:'given_name', label:'First Name', rules:[], type:''},
+                  {name:'family_name', label:'Last Name', rules:[], type:''},
+                ]
+              }
             },
           },
           ],

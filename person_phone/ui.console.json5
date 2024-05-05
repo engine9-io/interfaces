@@ -2,7 +2,8 @@
   routes: {
     '/person/:id/*':{
       components: {
-        sidebar: [
+        sidebar: {
+          items2:[
           {
             component: 'Link',
             properties: {
@@ -10,7 +11,8 @@
               to: 'phones',
             },
           },
-        ],
+        ]
+        },
         main: [
           {
             path: 'phones',

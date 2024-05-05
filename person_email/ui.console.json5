@@ -2,15 +2,18 @@
   routes: {
     '/person/:id/*':{
       components: {
-        sidebar: [
-          {
-            component: 'Link',
-            properties: {
-              label: 'Emails',
-              to: 'email',
+        sidebar: {
+          items:[
+            {
+              component: 'Link',
+              properties: {
+                label: 'Emails',
+                to: 'email',
+              },
             },
-          },
-        ],
+          ]
+        }
+        ,
         main: [
           {
             path: 'emails',

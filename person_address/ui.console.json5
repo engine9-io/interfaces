@@ -2,7 +2,7 @@
   routes: {
     '/person/:id/*':{
       components: {
-        sidebar: [
+        sidebar: {items:[
           {
             component: 'Link',
             properties: {
@@ -10,7 +10,7 @@
               to: 'address',
             },
           },
-        ],
+        ]},
         main: [
           {
             path: 'address',

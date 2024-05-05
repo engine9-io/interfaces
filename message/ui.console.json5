@@ -1,6 +1,6 @@
 {
   menu: {
-    messages:{
+    "message-menu":{
           title: 'Messages',
           type: 'collapse',
           children: {
@@ -50,7 +50,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/message/{{row.id}}',
+                  url: '/message/{{record.id}}',
                 },
               },
             },
@@ -131,7 +131,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/campaign/{{row.id}}',
+                  url: '/campaign/{{record.id}}',
                 },
               },
             },

@@ -4,7 +4,7 @@ module.exports = {
       name: 'segment',
       columns: {
         id: 'id',
-        source_extension_id: 'foreign_id',
+        source_plugin_id: 'foreign_id',
         remote_segment_id: 'string',
         label: 'string',
         created_at: 'created_at',

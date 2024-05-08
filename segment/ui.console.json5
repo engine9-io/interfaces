@@ -21,11 +21,6 @@
             component: 'DataTable',
             properties: {
               table: 'segment',
-              extensions: {
-                emails: {
-                  table: 'segment_email',
-                },
-              },
               columns: [
                 {
                   title: 'Id',
@@ -37,7 +32,7 @@
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
-                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
+                  render: '{{label}}',
                   width: '40%',
                 },
               ],

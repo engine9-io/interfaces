@@ -16,7 +16,17 @@ module.exports = {
         id: 'id',
         person_id: 'person_id',
         source_plugin_id: 'foreign_id',
-        id_type: 'id_string',
+        id_type: {
+          type: 'enum',
+          nullable: false,
+          default_value: '',
+          values: [
+            '',
+            'remote_person_id',
+            'email_hash_v1',
+            'phone_hash_v1',
+          ],
+        },
         id_value: 'id_string',
       },
       indexes: [

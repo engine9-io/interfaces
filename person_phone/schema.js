@@ -46,6 +46,7 @@ module.exports = {
             'Unsubscribed',
           ],
         },
+        phone_hash_v1: 'hash',
         created_at: 'created_at',
         modified_at: 'modified_at',
         source_plugin_id: 'foreign_id',

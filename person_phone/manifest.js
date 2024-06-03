@@ -10,7 +10,7 @@ module.exports = {
   transforms: {
     outbound: {
       tables: {
-        batch_size: 500,
+        batchSize: 500,
         env: {
           PERSON_EMAIL_TABLE: 'SQL.tables.person_email',
         },
@@ -19,11 +19,11 @@ module.exports = {
     inbound: {
       append_identifiers: {
         type: 'identifiers',
-        batch_size: 500,
+        batchSize: 500,
       },
       extract_tables: {
         type: 'tables',
-        batch_size: 500,
+        batchSize: 500,
       },
     },
   },

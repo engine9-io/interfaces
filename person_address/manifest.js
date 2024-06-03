@@ -13,11 +13,11 @@ module.exports = {
     inbound: {
       extract_identifiers: {
         type: 'identifiers',
-        batch_size: 500,
+        batchSize: 500,
       },
       extract_tables: {
         type: 'records',
-        batch_size: 500,
+        batchSize: 500,
       },
     },
   },

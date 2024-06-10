@@ -1,16 +1,17 @@
 module.exports = {
   bindings: {
-    existingPersonEmails: { type: 'sql.query', table: 'person_email', columns: ['person_id'] },
+    // existingPersonEmails: { type: 'sql.query', table: 'person_email', lookup:['person_id'] },
+    existingEmails: { type: 'sql.query', table: 'person_email', lookup: ['email'] },
     tablesToUpsert: { type: 'sql.tables.upsert' },
     auditEntries: { type: 'packet.output.timeline' },
   },
   async transform({
-    batch, existingPersonEmails, tablesToUpsert, auditEntries,
+    batch, existingEmails, tablesToUpsert, auditEntries,
   }) {
     tablesToUpsert.person_email = tablesToUpsert.person_email || [];
     batch.forEach((o) => {
       const lcEmail = o.email.trim().toLowerCase();
-      const existingEmail = existingPersonEmails
+      const existingEmail = existingEmails
         .find((em) => em.person_id === o.person_id
           && em?.email?.trim().toLowerCase() === lcEmail);
 

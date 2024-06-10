@@ -1,6 +1,6 @@
 module.exports = {
   bindings: {
-    existingAddresses: { type: 'sql.query', table: 'person_address', columns: ['person_id'] },
+    existingAddresses: { type: 'sql.query', table: 'person_address', lookup: ['person_id'] },
     tablesToUpsert: { type: 'sql.tables.upsert' },
   },
   async transform({ batch, tablesToUpsert, existingAddresses }) {

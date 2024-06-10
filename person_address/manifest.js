@@ -15,7 +15,7 @@ module.exports = {
         type: 'identifiers',
         batchSize: 500,
       },
-      extract_tables: {
+      upsert_tables: {
         type: 'records',
         batchSize: 500,
       },

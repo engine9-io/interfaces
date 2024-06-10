@@ -55,7 +55,7 @@ module.exports = {
       },
       indexes: [
         { columns: 'person_id' },
-        { columns: ['person_id', 'email'], unique: true },
+        { columns: ['email', 'person_id'], unique: true },
       ],
     },
   ],

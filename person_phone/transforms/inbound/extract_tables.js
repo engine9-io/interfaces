@@ -1,6 +1,6 @@
 module.exports = {
   bindings: {
-    tablesToUpsert: { type: 'sql.tablesToUpsert' },
+    tablesToUpsert: { type: 'sql.tables.upsert' },
   },
 
   async transform({ batch, tablesToUpsert }) {

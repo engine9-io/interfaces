@@ -4,8 +4,9 @@ module.exports = {
       name: 'timeline',
       columns: {
         uuid: 'uuid',
-        person_id: 'person_id',
+        entry_date: 'datetime',
         entry_type: 'int',
+        person_id: 'person_id',
         source_code_id: 'foreign_id',
         data_location_id: 'foreign_id',
         reference_id: 'foreign_id',

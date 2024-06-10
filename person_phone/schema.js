@@ -53,6 +53,7 @@ module.exports = {
       },
       indexes: [
         { columns: 'person_id' },
+        { columns: ['phone', 'person_id'], unique: true },
       ],
     },
   ],

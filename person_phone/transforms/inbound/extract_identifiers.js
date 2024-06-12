@@ -10,7 +10,7 @@ module.exports = async function ({ batch }) {
         .update(hashable)
         .digest('hex');
       e.identifiers.push({
-        path: 'person_phone', type: 'phone', value,
+        path: 'person_phone', type: 'phone_hash_v1', value,
       });
     }
   });

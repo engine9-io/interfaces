@@ -13,6 +13,7 @@ module.exports = async function ({ batch }) {
       e.identifiers.push({
         path: 'person_email', type: 'email_hash_v1', value,
       });
+      e.email_hash_v1 = value;
     }
   });
 

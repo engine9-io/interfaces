@@ -1,4 +1,4 @@
-const { createHmac } = require('node:crypto');
+const { createHash } = require('node:crypto');
 
 module.exports = async function ({ batch }) {
   const ids = [];
@@ -7,7 +7,9 @@ module.exports = async function ({ batch }) {
     if (e.email) {
       e.email = e.email.trim();// no spaces in emails
       const hashable = e.email.toLowerCase();
-      const value = createHmac('sha256', '')// no secret for this use case -- it's basically a shared id hashing setup, so a secret will be exposed anyhow
+      // no secret or createHmac for this use case
+      // it's basically a shared id hashing setup, so a secret will be exposed anyhow
+      const value = createHash('sha256')
         .update(hashable)
         .digest('hex');
       e.identifiers.push({

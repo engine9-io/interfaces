@@ -30,6 +30,7 @@ module.exports = {
         id_value: 'id_string',
       },
       indexes: [
+        { columns: ['person_id'] },
         { columns: ['id_value'] },
       ],
     },

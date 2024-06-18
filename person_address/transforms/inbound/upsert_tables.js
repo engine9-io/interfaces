@@ -18,6 +18,7 @@ module.exports = {
     tablesToUpsert.person_address = tablesToUpsert.person_address || [];
     batch.forEach((o) => {
       const hash = hashAddress(o);
+      if (hash.length === 0) return;
       const matchingAddress = existingAddresses
         .find((a) => a.person_id === o.person_id
           && hashAddress(a) === hash);

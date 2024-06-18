@@ -5,7 +5,8 @@ module.exports = {
   async transform({ batch, tablesToUpsert }) {
     tablesToUpsert.person_segment = tablesToUpsert.person_segment || [];
     batch.forEach((o) => {
-      const segmentIds = String(o.segment_ids || '').split(',').map((d) => d.trim());
+      if (!o.segment_ids) return;
+      const segmentIds = String(o.segment_ids || '').split(',').map((d) => d.trim()).filter(Boolean);
       if (segmentIds.length === 0) return;
 
       segmentIds.forEach((sid) => tablesToUpsert.person_segment.push(

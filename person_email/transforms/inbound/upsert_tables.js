@@ -3,6 +3,8 @@ module.exports = {
     // existingPersonEmails: { type: 'sql.query', table: 'person_email', lookup:['person_id'] },
     databaseEmails: { type: 'sql.query', table: 'person_email', lookup: ['email'] },
     tablesToUpsert: { type: 'sql.tables.upsert' },
+    /*
+    auditing not yet supported
     auditEntries: {
       type: 'packet.output.timeline',
       fields: [
@@ -12,6 +14,7 @@ module.exports = {
         'deliverability_score',
         'preference_order'],
     },
+    */
   },
   async transform({
     batch, databaseEmails, tablesToUpsert,

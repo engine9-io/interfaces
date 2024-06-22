@@ -4,45 +4,44 @@ module.exports = {
       name: 'job',
       columns: {
         id: 'id',
-        employment_type: {
-          type: 'string',
-          values: ['Full-time',
-            'Part-time',
-            'Contractor',
-            'Internship',
-          ],
-          description: 'Employment type, e.g. Full-time, part time, etc',
-        },
-        title: 'string',
-        salary_min: 'decimal',
-        salary_max: 'decimal',
-        salary_interval: 'string',
-
-        is_remote: {
-          type: 'string',
-          description: '// Yes or No or Other of Sometimes, etc',
-        },
-        deadline: 'datetime',
-        employer_name: 'string',
-        employer_domain: 'string',
-
-        small_description: 'string',
-        url: 'url',
-        location_name: 'string',
-        application_instructions: 'text',
-        description: 'text',
-        html_description: 'text',
-        date_posted: 'datetime',
-        job_post_status: {
-          type: 'string',
+        account_id: 'string',
+        plugin_id: 'foreign_id',
+        status: {
+          type: 'enum',
+          nullable: false,
+          default_value: 'pending',
           values: [
-            'Open',
+            'pending',
+            'started',
+            'complete',
+            'error',
+            'paused',
+            'kill_sent',
+            'killing',
+            'sent_to_queue',
           ],
         },
+        worker_path: 'string',
+        worker_method: 'string',
+        start_after: 'datetime',
+        options: 'json',
+        /* updated during processing */
+        started_at: 'datetime',
+        progress: 'json', // User progress messages, and perhaps %complete
+        checkpoints: 'json', // checkpoints let a job pause and resume
+
+        /* Populated on completion */
+        output: 'json',
+        records: 'bigint', // Number of records processed
+        completed_at: 'datetime',
+
+        errors: 'json',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },
       indexes: [
+        { columns: ['account_id'] },
+        { columns: ['status'] },
       ],
     },
   ],

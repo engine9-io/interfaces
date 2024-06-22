@@ -7,7 +7,7 @@ module.exports = {
     auditing not yet supported
     auditEntries: {
       type: 'packet.output.timeline',
-      fields: [
+      columns: [
         'email_type',
         'subscription_status',
         'confirmation_status',

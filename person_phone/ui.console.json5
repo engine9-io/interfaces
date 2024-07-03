@@ -17,7 +17,7 @@
           {
             path: 'phones',
             label: 'Phones',
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'person_phone',
               conditions: [{ eql: 'person_id={{person_id}}' }],

@@ -2,20 +2,22 @@
   routes: {
     '/person/:id/*':{
       components: {
-        sidebar: {items:[
-          {
-            component: 'Link',
-            properties: {
-              label: 'Addresses',
-              to: 'address',
+        sidebar: {
+          items:[
+            {
+              component: 'Link',
+              properties: {
+                label: 'Addresses',
+                to: 'address',
+              },
             },
-          },
-        ]},
+          ]
+        },
         main: [
           {
             path: 'address',
             label: 'Addresses',
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'person_address',
               conditions: [{ eql: 'person_id={{person_id}}' }],

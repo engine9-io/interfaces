@@ -23,7 +23,7 @@
       components: {
         main: [
           {
-            component: 'DataTable',
+            component: 'RecordList',
             properties: {
               table: 'message',
               columns: [
@@ -63,7 +63,7 @@
       components: {
         sidebar: [
           {
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'message',
               id: '{{parameters.id}}',
@@ -76,7 +76,7 @@
         main: [
           {
             // 'path':'overview', //no path is the default
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'message',
               id: '{{parameters.id}}',
@@ -88,7 +88,7 @@
           {
             path: 'source_codes',
             label: 'Source Codes',
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'message',
               id: '{{parameters.id}}',
@@ -110,7 +110,7 @@
       components: {
         main: [
           {
-            component: 'DataTable',
+            component: 'RecordList',
             properties: {
               table: 'message',
               columns: [
@@ -144,7 +144,7 @@
       components: {
         sidebar: [
           {
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'campaign',
               id: '{{parameters.id}}',
@@ -157,7 +157,7 @@
         main: [
           {
             // 'path':'overview', //no path is the default
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'campaign',
               id: '{{parameters.id}}',

@@ -18,7 +18,7 @@
       components: {
         main: [
           {
-            component: 'DataTable',
+            component: 'RecordList',
             properties: {
               table: 'person',
               extensions: {
@@ -59,7 +59,7 @@
             title:"Person Details",
             items:[
             {
-              component: 'DataDisplay',
+              component: 'RecordDisplay',
               properties: {
                 table: 'person',
                 id: '{{parameters.id}}',
@@ -83,7 +83,7 @@
         main: [
           {
             // 'path':'overview', //no path is the default
-            component: 'DataDisplay',
+            component: 'RecordDisplay',
             properties: {
               table: 'person',
               id: '{{parameters.id}}',
@@ -94,7 +94,7 @@
           },
           {
             'path':'edit',
-            component: 'DataForm',
+            component: 'RecordForm',
             properties: {
               table: 'person',
               id: '{{parameters.id}}',

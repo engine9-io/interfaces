@@ -18,7 +18,7 @@
       components: {
         main: [
           {
-            component: 'DataTable',
+            component: 'RecordList',
             properties: {
               table: 'segment',
               columns: [
@@ -53,7 +53,7 @@
         main: [
           {
             // 'path':'overview', //no path is the default
-            component: 'DataTable',
+            component: 'RecordList',
             properties: {
               table: 'segment',
               components: [
@@ -80,7 +80,7 @@
           {
             path: 'segments',
             label: 'Segments',
-            component: 'DataTable',
+            component: 'RecordList',
             properties: {
               table: 'person_segment',
                 extensions: [

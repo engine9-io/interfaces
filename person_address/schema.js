@@ -20,6 +20,8 @@ module.exports = {
           nullable: false,
           default_value: 'Not Subscribed',
           values: [
+            'Blocked',
+            'Bounced',
             'Not Subscribed',
             'Subscribed',
             'Unsubscribed',

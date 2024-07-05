@@ -75,6 +75,9 @@
                   family_name: { type: 'string', title: 'Last Name', default: '' },
                 }
               },
+              uiSchema:{
+                family_name:{"ui:widget":"textarea"}
+              },
               onSave: {
                 action: 'navigate',
                 url: '/person/{{record.id}}',

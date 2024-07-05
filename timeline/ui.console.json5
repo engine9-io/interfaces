@@ -1,112 +1,33 @@
 {
-  menu: {
-    people:{
-      title: 'People',
-      type: 'collapse',
-      children: {
-        'person-list':{
-          title: 'All',
-          icon: 'person',
-          url: '/person',
-        }
-      },
-    },
-  },
   routes: {
-    '/person':{
-      layout: 'full_width',
-      components: {
-        main: [
-          {
-            component: 'RecordList',
-            properties: {
-              table: 'person',
-              extensions: {
-                emails: {
-                  table: 'person_email',
-                },
-              },
-              columns: [
-                {
-                  title: 'Id',
-                  dataIndex: 'id',
-                  sorter: true,
-                  width: '20%',
-                },
-                {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  sorter: true,
-                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
-                  width: '40%',
-                },
-              ],
-              onRow: {
-                onClick: {
-                  action: 'navigate',
-                  url: '/person/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
-    },
     '/person/:id/*':{
-      layout: 'sidebar',
       components: {
         sidebar: {
-            title:"Person Details",
-            items:[
-            {
-              component: 'RecordDisplay',
-              properties: {
-                table: 'person',
-                id: '{{parameters.id}}',
-                extensions: [
-                  { alias: 'emails', table: 'person_email' },
-                ],
-                components: [
-                  '{{record.given_name}} {{record.family_name}}',
-                ],
-              },
-            },
+          items:[
             {
               component: 'Link',
               properties: {
-                label: 'Edit',
-                to: 'edit',
+                label: 'Timeline',
+                to: 'timeline',
               },
             },
-            ],
-        },
+          ]
+        }
+        ,
         main: [
           {
-            // 'path':'overview', //no path is the default
+            path: 'timeline',
+            label: 'Timeline',
             component: 'RecordDisplay',
             properties: {
-              table: 'person',
-              id: '{{parameters.id}}',
-              components: [
-                '{{record.given_name}} {{family_name}}',
+              table: 'timeline',
+              conditions: [{ eql: 'person_id={{person_id}}' }],
+              rows: [
+                '{{email}}',
               ],
             },
           },
-          {
-            'path':'edit',
-            component: 'RecordForm',
-            properties: {
-              table: 'person',
-              id: '{{parameters.id}}',
-              form:{
-                inputs:[
-                  {name:'given_name', label:'First Name', rules:[], type:''},
-                  {name:'family_name', label:'Last Name', rules:[], type:''},
-                ]
-              }
-            },
-          },
-          ],
+        ],
       },
     },
   },

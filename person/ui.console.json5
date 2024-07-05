@@ -40,12 +40,44 @@
                   render: '{{given_name}} {{family_name}} {{emails.0.email}}',
                   width: '40%',
                 },
+                {
+                  title: 'Email',
+                  render: '{{emails.0.email}}',
+                  width: '40%',
+                },
               ],
               onRow: {
                 onClick: {
                   action: 'navigate',
                   url: '/person/{{record.id}}',
                 },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/person/create':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            path:'edit',
+            component: 'RecordForm',
+            properties: {
+              table: 'person',
+              form:{
+                title: 'Todo',
+                type: 'object',
+                required: [],
+                properties: {
+                  given_name: { type: 'string', title: 'First Name', default: '' },
+                  family_name: { type: 'string', title: 'Last Name', default: '' },
+                }
+              },
+              onSave: {
+                action: 'navigate',
+                url: '/person/{{record.id}}',
               },
             },
           },
@@ -66,9 +98,7 @@
                 extensions: [
                   { alias: 'emails', table: 'person_email' },
                 ],
-                components: [
-                  '{{record.given_name}} {{record.family_name}}',
-                ],
+                template:'{{given_name}} {{family_name}}',
               },
             },
             {
@@ -87,23 +117,24 @@
             properties: {
               table: 'person',
               id: '{{parameters.id}}',
-              components: [
-                '{{record.given_name}} {{family_name}}',
-              ],
+              template:'{{given_name}} {{family_name}}',
             },
           },
           {
-            'path':'edit',
+            path:'edit',
             component: 'RecordForm',
             properties: {
               table: 'person',
               id: '{{parameters.id}}',
               form:{
-                inputs:[
-                  {name:'given_name', label:'First Name', rules:[], type:''},
-                  {name:'family_name', label:'Last Name', rules:[], type:''},
-                ]
-              }
+                title: 'Todo',
+                type: 'object',
+                required: [],
+                properties: {
+                  given_name: { type: 'string', title: 'First Name', default: '' },
+                  family_name: { type: 'string', title: 'Last Name', default: '' },
+                }
+              },
             },
           },
           ],

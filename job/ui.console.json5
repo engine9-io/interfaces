@@ -1,31 +1,26 @@
 {
   menu: {
-    "message-menu":{
-          title: 'Messages',
+    "data-menu":{
+          title: 'Data',
           type: 'collapse',
           children: {
-            campaigns:{
-              title: 'Campaigns',
-              icon:'campaign',
-              url: '/campaign',
-            },
-            messages:{
-              title: 'Messages',
+            job:{
+              title: 'Jobs',
               icon:'message',
-              url: '/message',
-            },
+              url: '/job',
+            }
           },
     },
   },
   routes: {
-    '/message':{
+    '/job':{
       layout: 'full_width',
       components: {
         main: [
           {
             component: 'RecordList',
             properties: {
-              table: 'message',
+              table: 'job',
               columns: [
                 {
                   title: 'Id',
@@ -34,8 +29,8 @@
                   width: '20%',
                 },
                 {
-                  title: 'Publish Date',
-                  dataIndex: 'publish_date',
+                  title: 'Created',
+                  dataIndex: 'created_at',
                   sorter: true,
                   width: '40%',
                 },
@@ -50,7 +45,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/message/{{record.id}}',
+                  url: '/job/{{record.id}}',
                 },
               },
             },
@@ -58,7 +53,7 @@
         ],
       },
     },
-    '/message/:id/*':{
+    '/job/:id/*':{
       layout: 'sidebar',
       components: {
         sidebar: [
@@ -102,66 +97,6 @@
               ],
             },
           },
-        ],
-      },
-    },
-    '/campaign':{
-      layout: 'full_width',
-      components: {
-        main: [
-          {
-            component: 'RecordList',
-            properties: {
-              table: 'campaign',
-              columns: [
-                {
-                  title: 'Id',
-                  dataIndex: 'id',
-                  sorter: true,
-                  width: '20%',
-                },
-                {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  sorter: true,
-                  render: '{{label}}',
-                  width: '40%',
-                }
-              ],
-              onRow: {
-                onClick: {
-                  action: 'navigate',
-                  url: '/campaign/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
-    },
-    '/campaign/:id/*':{
-      layout: 'sidebar',
-      components: {
-        sidebar: [
-          {
-            component: 'RecordDisplay',
-            properties: {
-              table: 'campaign',
-              id: '{{parameters.id}}',
-              template:'{{label}}',
-            },
-          }
-        ],
-        main: [
-          {
-            // 'path':'overview', //no path is the default
-            component: 'RecordDisplay',
-            properties: {
-              table: 'campaign',
-              id: '{{parameters.id}}',
-              template:'{{label}}',
-            },
-          }
         ],
       },
     },

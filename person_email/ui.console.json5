@@ -8,7 +8,7 @@
               component: 'Link',
               properties: {
                 label: 'Emails',
-                to: 'email',
+                to: 'emails',
               },
             },
           ]
@@ -18,13 +18,38 @@
           {
             path: 'emails',
             label: 'Emails',
-            component: 'RecordDisplay',
+            component: 'RecordList',
             properties: {
               table: 'person_email',
-              conditions: [{ eql: 'person_id={{person_id}}' }],
-              rows: [
-                '{{email}}',
-              ],
+              conditions: [{ eql: 'person_id={{id}}' }],
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Email',
+                  render: '{{email}}',
+                  width: '40%',
+                },
+                {
+                  title: 'Type',
+                  render: '{{type}}',
+                  width: '10%',
+                },
+                {
+                  title: 'Subscription Status',
+                  render: '{{subscription_status}}',
+                  width: '15%',
+                },
+                {
+                  title: 'Modified',
+                  render: '{{date modified_at}}',
+                  width: '15%',
+                },
+              ]
             },
           },
         ],

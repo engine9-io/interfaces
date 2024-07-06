@@ -1,8 +1,6 @@
 {
   menu: {
     people:{
-      title: 'People',
-      type: 'collapse',
       children: {
         segments:{
           title: 'Segments',

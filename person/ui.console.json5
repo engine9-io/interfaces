@@ -16,6 +16,20 @@
     '/person':{
       layout: 'full_width',
       components: {
+        header:[
+          'People',
+          {
+            component:'Button',
+            properties:{
+              icon:'plus',
+              content:'Add Person',
+              onClick: {
+                action: 'navigate',
+                url: '/person/create',
+              },
+            }
+          }
+        ],
         main: [
           {
             component: 'RecordList',
@@ -98,10 +112,13 @@
               properties: {
                 table: 'person',
                 id: '{{parameters.id}}',
-                extensions: [
-                  { alias: 'emails', table: 'person_email' },
-                ],
-                template:'{{given_name}} {{family_name}}',
+                extensions: {
+                  emails: {
+                    table: 'person_email',
+                    orderBy:'preference_order'
+                  },
+                },
+                template:'{{given_name}} {{family_name}} {{#if emails.0.email}}<{{emails.0.email}}>{{/if}}',
               },
             },
             {

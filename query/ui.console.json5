@@ -1,12 +1,10 @@
 {
   menu: {
     people:{
-      title: 'People',
-      type: 'collapse',
       children: {
-        segments:{
+        queries:{
           title: 'Queries',
-          icon: 'query',
+          icon: 'search',
           url: '/queries',
         },
       },
@@ -16,6 +14,20 @@
     '/queries':{
       layout: 'full_width',
       components: {
+        header:[
+          'Queries',
+          {
+            component:'Button',
+            properties:{
+              icon:'plus',
+              content:'Create Query',
+              onClick: {
+                action: 'navigate',
+                url: '/queries/create',
+              },
+            }
+          }
+        ],
         main: [
           {
             component: 'RecordList',
@@ -32,7 +44,7 @@
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
-                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
+                  render: '{{label}}',
                   width: '40%',
                 },
               ],
@@ -47,18 +59,59 @@
         ],
       },
     },
+    '/queries/create':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            path:'edit',
+            component: 'RecordForm',
+            properties: {
+              table: 'query',
+              form:{
+                title: 'Create Query',
+                type: 'object',
+                required: [],
+                properties: {
+                  label: { type: 'string', title: 'Label', default: '' },
+                  query: { type: 'string', title: 'Query', default: '' },
+                }
+              },
+              uiSchema:{
+                query:{"ui:widget":"textarea"}
+              },
+              onSave: {
+                action: 'navigate',
+                url: '/queries/{{record.id}}',
+              },
+            },
+          },
+        ],
+      },
+    },
     '/queries/:id/*':{
       layout: 'full_width',
       components: {
+         header:[
+          {
+            component:'Button',
+            properties:{
+              icon:'back',
+              content:'All Queries',
+              onClick: {
+                action: 'navigate',
+                url: '/queries',
+              },
+            }
+          }
+        ],
         main: [
           {
             // 'path':'overview', //no path is the default
             component: 'RecordDisplay',
             properties: {
-              table: 'segment',
-              components: [
-                '{{label}}}',
-              ],
+              table: 'query',
+              template: '{{label}}',
             },
           }
         ],

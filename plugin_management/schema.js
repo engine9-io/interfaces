@@ -5,7 +5,7 @@ module.exports = {
       columns: {
         id: 'id',
         path: 'string',
-        label: 'string',
+        name: 'string',
         nickname: 'string',
         table_prefix: 'string',
         deployed_version: 'string',

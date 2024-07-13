@@ -4,7 +4,7 @@
       children: {
         segments:{
           title: 'Segments',
-          icon: 'segment',
+          icon: 'people',
           url: '/segments',
         },
       },
@@ -14,6 +14,20 @@
     '/segments':{
       layout: 'full_width',
       components: {
+        header:[
+          'Segments',
+          {
+            component:'Button',
+            properties:{
+              icon:'plus',
+              content:'Add Segment',
+              onClick: {
+                action: 'navigate',
+                url: '/segments/create',
+              },
+            }
+          }
+        ],
         main: [
           {
             component: 'RecordList',
@@ -27,10 +41,15 @@
                   width: '20%',
                 },
                 {
-                  title: 'Name',
-                  dataIndex: 'name',
+                  title: 'Type',
+                  dataIndex: 'type',
                   sorter: true,
-                  render: '{{label}}',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'label',
+                  sorter: true,
+                  template: '{{label}}',
                   width: '40%',
                 },
               ],
@@ -48,17 +67,48 @@
     '/segments/:id/*':{
       layout: 'full_width',
       components: {
-        main: [
+          main: [
+            {
+            component: 'RecordForm',
+            properties: {
+              table: 'job',
+              title: '{{#if record.id}}Edit Segment{{else}}Create Segment{{/if}}',
+              form:{
+                type: 'object',
+                required: [],
+                properties: {
+                  type: { type: 'string', title: 'Type'},
+                  name: { type: 'string', title: 'Name'},
+                  source_plugin_id: { type: 'string', title: 'Source Plugin ID'},
+                  remote_segment_id: { type: 'string', title: 'Remote Segment ID'},
+                  build_mechanism: { type: 'string', title: 'Mechanism', default:'static'},
+                  build_schedule: { type: 'string', title: 'Build Schedule'},
+                  build_query_id: { type: 'string', title: 'Build Query ID'},
+                }
+              },
+              uiSchema:{
+              },
+              onSave: {
+                action: 'navigate',
+                url: '/segments/{{record.id}}',
+              },
+            },
+          },
           {
-            // 'path':'overview', //no path is the default
             component: 'RecordList',
             properties: {
-              table: 'segment',
-              components: [
-                '{{label}}}',
+              table: 'person_segment',
+                extensions: [
+                  { alias: 'people', table: 'person' },
+                ],
+              conditions: [{ eql: 'segment_id={{parameters.segment_id}}' }],
+              columns: [
+                {
+                  template:'{{person_id}}',
+                }
               ],
             },
-          }
+          },
         ],
       },
     },

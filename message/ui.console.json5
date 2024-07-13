@@ -2,6 +2,7 @@
   menu: {
     "message-menu":{
           title: 'Messages',
+          icon:'messages',
           type: 'collapse',
           children: {
             campaigns:{
@@ -9,15 +10,118 @@
               icon:'campaign',
               url: '/campaign',
             },
-            messages:{
+            /* messages:{
               title: 'Messages',
               icon:'message',
               url: '/message',
             },
+            */
           },
     },
   },
   routes: {
+    '/campaign':{
+      layout: 'full_width',
+      components: {
+        header:[
+          'Campaigns',
+          {
+            component:'Button',
+            properties:{
+              icon:'plus',
+              content:'Add Campaign',
+              onClick: {
+                action: 'navigate',
+                url: '/campaign/create',
+              },
+            }
+          }
+        ],
+        main: [
+          {
+            component: 'RecordList',
+            properties: {
+              table: 'campaign',
+              columns: [
+                {
+                  title: 'Id',
+                  dataIndex: 'id',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Name',
+                  dataIndex: 'name',
+                  sorter: true,
+                  template: '{{name}}',
+                  width: '40%',
+                }
+              ],
+              onRow: {
+                onClick: {
+                  action: 'navigate',
+                  url: '/campaign/{{record.id}}',
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/campaign/create':{
+      layout: 'full_width',
+      components: {
+        main: [
+          {
+            path:'edit',
+            component: 'RecordForm',
+            properties: {
+              table: 'campaign',
+              form:{
+                title: 'Create Campaign',
+                type: 'object',
+                required: [],
+                properties: {
+                  name: { type: 'string', title: 'Name', default: '' },
+                }
+              },
+              uiSchema:{
+              },
+              onSave: {
+                action: 'navigate',
+                url: '/campaign/{{record.id}}',
+              },
+            },
+          },
+        ],
+      },
+    },
+    '/campaign/:id/*':{
+      layout: 'sidebar',
+      components: {
+        sidebar: [
+          {
+            component: 'RecordDisplay',
+            properties: {
+              table: 'campaign',
+              id: '{{parameters.id}}',
+              template:'{{name}}',
+            },
+          }
+        ],
+        main: [
+          {
+            // 'path':'overview', //no path is the default
+            component: 'RecordDisplay',
+            properties: {
+              table: 'campaign',
+              id: '{{parameters.id}}',
+              template:'{{name}}',
+            },
+          }
+        ],
+      },
+    },
     '/message':{
       layout: 'full_width',
       components: {
@@ -43,7 +147,7 @@
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
-                  render: '{{label}}',
+                  template: '{{label}}',
                   width: '40%',
                 }
               ],
@@ -102,66 +206,6 @@
               ],
             },
           },
-        ],
-      },
-    },
-    '/campaign':{
-      layout: 'full_width',
-      components: {
-        main: [
-          {
-            component: 'RecordList',
-            properties: {
-              table: 'campaign',
-              columns: [
-                {
-                  title: 'Id',
-                  dataIndex: 'id',
-                  sorter: true,
-                  width: '20%',
-                },
-                {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  sorter: true,
-                  render: '{{label}}',
-                  width: '40%',
-                }
-              ],
-              onRow: {
-                onClick: {
-                  action: 'navigate',
-                  url: '/campaign/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
-    },
-    '/campaign/:id/*':{
-      layout: 'sidebar',
-      components: {
-        sidebar: [
-          {
-            component: 'RecordDisplay',
-            properties: {
-              table: 'campaign',
-              id: '{{parameters.id}}',
-              template:'{{label}}',
-            },
-          }
-        ],
-        main: [
-          {
-            // 'path':'overview', //no path is the default
-            component: 'RecordDisplay',
-            properties: {
-              table: 'campaign',
-              id: '{{parameters.id}}',
-              template:'{{label}}',
-            },
-          }
         ],
       },
     },

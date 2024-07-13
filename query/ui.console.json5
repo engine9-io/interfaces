@@ -44,7 +44,7 @@
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
-                  render: '{{label}}',
+                  template: '{{label}}',
                   width: '40%',
                 },
               ],
@@ -92,26 +92,71 @@
     '/queries/:id/*':{
       layout: 'full_width',
       components: {
-         header:[
-          {
-            component:'Button',
-            properties:{
-              icon:'back',
-              content:'All Queries',
-              onClick: {
-                action: 'navigate',
-                url: '/queries',
-              },
-            }
-          }
-        ],
         main: [
           {
-            // 'path':'overview', //no path is the default
-            component: 'RecordDisplay',
+            component:'RecordQueryBuilder',
             properties: {
               table: 'query',
-              template: '{{label}}',
+              title: '{{record.label}}',
+              fields:[{
+                name: 'given_name',
+                label: 'First Name',
+                placeholder: 'Enter first name',
+              },
+              {
+                name: 'family_name',
+                label: 'Last Name',
+                placeholder: 'Enter last name',
+                defaultOperator: 'beginsWith',
+
+              },
+              {
+                name: 'age', label: 'Age', inputType: 'number',
+              },
+              {
+                name: 'segment',
+                label: 'Segment',
+                valueEditorType: 'select',
+                values: [
+                  {
+                    label: 'Static',
+                    options: [
+                      { name: 1, label: 'Segment 1' },
+                      { name: 2, label: 'Segment 2' },
+                    ],
+                  },
+                  {
+                    label: 'Dynamic',
+                    options: [
+                      { name: 3, label: 'Segment 3' },
+                      { name: 4, label: 'Segment 4' },
+                    ],
+                  },
+                ],
+                operators: [
+                  { name: 'in', value: 'in', label: 'Is a member of' },
+                  { name: 'notIn', value: 'notIn', label: 'Is NOT a member of' },
+                ],
+                defaultValue: false,
+              },
+
+              {
+                name: 'gender',
+                label: 'Gender',
+                operators: ['='],
+                valueEditorType: 'radio',
+                values: [
+                  { name: 'M', label: 'Male' },
+                  { name: 'F', label: 'Female' },
+                  { name: 'O', label: 'Other' },
+                ],
+              },
+              { name: 'height', label: 'Height',},
+              { name: 'job', label: 'Job', },
+              { name: 'description', label: 'Description', valueEditorType: 'textarea' },
+              { name: 'birthdate', label: 'Birth Date', inputType: 'date' },
+              { name: 'datetime', label: 'Show Time', inputType: 'datetime-local' },
+              { name: 'alarm', label: 'Daily Alarm', inputType: 'time' }]
             },
           }
         ],

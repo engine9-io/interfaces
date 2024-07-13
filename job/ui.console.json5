@@ -2,11 +2,12 @@
   menu: {
     "data-menu":{
           title: 'Data',
+          icon:'data',
           type: 'collapse',
           children: {
             job:{
               title: 'Jobs',
-              icon:'message',
+              icon:'forklift',
               url: '/job',
             }
           },
@@ -16,6 +17,20 @@
     '/job':{
       layout: 'full_width',
       components: {
+        header:[
+          'Jobs',
+          {
+            component:'Button',
+            properties:{
+              icon:'plus',
+              content:'Add Job',
+              onClick: {
+                action: 'navigate',
+                url: '/job/create',
+              },
+            }
+          }
+        ],
         main: [
           {
             component: 'RecordList',
@@ -32,14 +47,25 @@
                   title: 'Created',
                   dataIndex: 'created_at',
                   sorter: true,
-                  width: '40%',
+                  width: '20%',
                 },
                 {
-                  title: 'Name',
-                  dataIndex: 'name',
+                  title: 'Status',
+                  dataIndex: 'status',
                   sorter: true,
-                  render: '{{label}}',
-                  width: '40%',
+                  width: '20%',
+                },
+                {
+                  title: 'Worker',
+                  dataIndex: 'worker_path',
+                  sorter: true,
+                  width: '20%',
+                },
+                {
+                  title: 'Method',
+                  dataIndex: 'worker_method',
+                  sorter: true,
+                  width: '20%',
                 }
               ],
               onRow: {
@@ -54,47 +80,32 @@
       },
     },
     '/job/:id/*':{
-      layout: 'sidebar',
+      layout: 'full_width',
       components: {
-        sidebar: [
-          {
-            component: 'RecordDisplay',
-            properties: {
-              table: 'message',
-              id: '{{parameters.id}}',
-              components: [
-                '{{label}}',
-              ],
-            },
-          }
-        ],
         main: [
           {
-            // 'path':'overview', //no path is the default
-            component: 'RecordDisplay',
+            component: 'RecordForm',
             properties: {
-              table: 'message',
-              id: '{{parameters.id}}',
-              components: [
-                '{{label}}',
-              ],
-            },
-          },
-          {
-            path: 'source_codes',
-            label: 'Source Codes',
-            component: 'RecordDisplay',
-            properties: {
-              table: 'message',
-              id: '{{parameters.id}}',
-              extensions: {
-                source_codes:{
-                  table:'source_code'
+              table: 'job',
+              title: '{{#if record.id}}Edit Job{{else}}Create Job{{/if}}',
+              form:{
+                type: 'object',
+                required: [],
+                properties: {
+                    account_id: { type: 'string', title: 'Account ID', default: 'engine9' },
+                    status:{ type: 'string', title: 'Status', default: 'pending' },
+                    worker_path: { type: 'string', title: 'Worker Path', default: 'EchoWorker' },
+                    worker_method: { type: 'string', title: 'Worker Method', default: 'echo' },
+                    options: { type: 'string', title: 'Options', default: '{}' },
                 }
               },
-              components: [
-                '{{label}}',
-              ],
+              uiSchema:{
+                options:{"ui:widget":"textarea"}
+              },
+              onSave: {
+                action: 'navigate',
+                url: '/job/{{record.id}}',
+              },
             },
           },
         ],

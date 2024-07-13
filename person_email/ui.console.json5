@@ -31,22 +31,22 @@
                 },
                 {
                   title: 'Email',
-                  render: '{{email}}',
+                  template: '{{email}}',
                   width: '40%',
                 },
                 {
                   title: 'Type',
-                  render: '{{type}}',
+                  template: '{{type}}',
                   width: '10%',
                 },
                 {
                   title: 'Subscription Status',
-                  render: '{{subscription_status}}',
+                  template: '{{subscription_status}}',
                   width: '15%',
                 },
                 {
                   title: 'Modified',
-                  render: '{{date modified_at}}',
+                  template: '{{date modified_at}}',
                   width: '15%',
                 },
               ]

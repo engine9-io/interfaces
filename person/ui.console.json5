@@ -2,10 +2,11 @@
   menu: {
     people:{
       title: 'People',
+      icon:'people',
       type: 'collapse',
       children: {
         'person-list':{
-          title: 'All',
+          title: 'Everybody',
           icon: 'person',
           url: '/person',
         }
@@ -17,7 +18,7 @@
       layout: 'full_width',
       components: {
         header:[
-          'People',
+          'Everybody',
           {
             component:'Button',
             properties:{
@@ -51,12 +52,12 @@
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
-                  render: '{{given_name}} {{family_name}} {{emails.0.email}}',
+                  template: '{{given_name}} {{family_name}} {{emails.0.email}}',
                   width: '40%',
                 },
                 {
                   title: 'Email',
-                  render: '{{emails.0.email}}',
+                  template: '{{emails.0.email}}',
                   width: '40%',
                 },
               ],

@@ -5,7 +5,7 @@
             report:{
               title: 'Reports',
               icon:'report',
-              url: '/report',
+              url: 'report',
             }
           },
     },

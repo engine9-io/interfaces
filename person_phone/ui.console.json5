@@ -1,6 +1,6 @@
 {
   routes: {
-    '/person/:id/*':{
+    'person/:id/*':{
       components: {
         sidebar: {
           items2:[

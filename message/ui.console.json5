@@ -8,19 +8,19 @@
             campaigns:{
               title: 'Campaigns',
               icon:'campaign',
-              url: '/campaign',
+              url: 'campaign',
             },
             /* messages:{
               title: 'Messages',
               icon:'message',
-              url: '/message',
+              url: 'message',
             },
             */
           },
     },
   },
   routes: {
-    '/campaign':{
+    'campaign':{
       layout: 'full_width',
       components: {
         header:[
@@ -32,7 +32,7 @@
               content:'Add Campaign',
               onClick: {
                 action: 'navigate',
-                url: '/campaign/create',
+                url: 'campaign/create',
               },
             }
           }
@@ -60,7 +60,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/campaign/{{record.id}}',
+                  url: 'campaign/{{record.id}}',
                 },
               },
             },
@@ -68,7 +68,7 @@
         ],
       },
     },
-    '/campaign/create':{
+    'campaign/create':{
       layout: 'full_width',
       components: {
         main: [
@@ -89,14 +89,14 @@
               },
               onSave: {
                 action: 'navigate',
-                url: '/campaign/{{record.id}}',
+                url: 'campaign/{{record.id}}',
               },
             },
           },
         ],
       },
     },
-    '/campaign/:id/*':{
+    'campaign/:id/*':{
       layout: 'sidebar',
       components: {
         sidebar: [
@@ -122,7 +122,7 @@
         ],
       },
     },
-    '/message':{
+    'message':{
       layout: 'full_width',
       components: {
         main: [
@@ -154,7 +154,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/message/{{record.id}}',
+                  url: 'message/{{record.id}}',
                 },
               },
             },
@@ -162,7 +162,7 @@
         ],
       },
     },
-    '/message/:id/*':{
+    'message/:id/*':{
       layout: 'sidebar',
       components: {
         sidebar: [

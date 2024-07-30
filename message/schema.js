@@ -24,6 +24,7 @@ module.exports = {
       columns: {
         id: 'id',
         name: 'string',
+        channel: 'string',
         source_plugin_id: 'foreign_id',
         remote_campaign_id: 'string',
         remote_campaign_name: 'string',

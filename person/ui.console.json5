@@ -8,13 +8,13 @@
         'person-list':{
           title: 'Everybody',
           icon: 'person',
-          url: '/person',
+          url: 'person',
         }
       },
     },
   },
   routes: {
-    '/person':{
+    'person':{
       layout: 'full_width',
       components: {
         header:[
@@ -26,7 +26,7 @@
               content:'Add Person',
               onClick: {
                 action: 'navigate',
-                url: '/person/create',
+                url: 'person/create',
               },
             }
           }
@@ -64,7 +64,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/person/{{record.id}}',
+                  url: 'person/{{record.id}}',
                 },
               },
             },
@@ -72,7 +72,7 @@
         ],
       },
     },
-    '/person/create':{
+    'person/create':{
       layout: 'full_width',
       components: {
         main: [
@@ -95,14 +95,14 @@
               },
               onSave: {
                 action: 'navigate',
-                url: '/person/{{record.id}}',
+                url: 'person/{{record.id}}',
               },
             },
           },
         ],
       },
     },
-    '/person/:id/*':{
+    'person/:id/*':{
       layout: 'sidebar',
       components: {
         sidebar: {

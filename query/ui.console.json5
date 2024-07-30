@@ -5,7 +5,7 @@
         queries:{
           title: 'Queries',
           icon: 'search',
-          url: 'queries',
+          url: '/queries',
         },
       },
     },
@@ -23,7 +23,7 @@
               content:'Create Query',
               onClick: {
                 action: 'navigate',
-                url: 'queries/create',
+                url: '/queries/create',
               },
             }
           }
@@ -51,7 +51,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: 'queries/{{record.id}}',
+                  url: '/queries/{{record.id}}',
                 },
               },
             },
@@ -82,7 +82,7 @@
               },
               onSave: {
                 action: 'navigate',
-                url: 'queries/{{record.id}}',
+                url: '/queries/{{record.id}}',
               },
             },
           },

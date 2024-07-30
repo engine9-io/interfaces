@@ -8,7 +8,7 @@
         'person-list':{
           title: 'Everybody',
           icon: 'person',
-          url: 'person',
+          url: '/person',
         }
       },
     },
@@ -26,7 +26,7 @@
               content:'Add Person',
               onClick: {
                 action: 'navigate',
-                url: 'person/create',
+                url: '/person/create',
               },
             }
           }
@@ -64,7 +64,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: 'person/{{record.id}}',
+                  url: '/person/{{record.id}}',
                 },
               },
             },
@@ -95,7 +95,7 @@
               },
               onSave: {
                 action: 'navigate',
-                url: 'person/{{record.id}}',
+                url: '/person/{{record.id}}',
               },
             },
           },

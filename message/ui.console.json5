@@ -8,12 +8,12 @@
             campaigns:{
               title: 'Campaigns',
               icon:'campaign',
-              url: 'campaign',
+              url: '/campaign',
             },
             /* messages:{
               title: 'Messages',
               icon:'message',
-              url: 'message',
+              url: '/message',
             },
             */
           },
@@ -32,7 +32,7 @@
               content:'Add Campaign',
               onClick: {
                 action: 'navigate',
-                url: 'campaign/create',
+                url: '/campaign/create',
               },
             }
           }
@@ -60,7 +60,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: 'campaign/{{record.id}}',
+                  url: '/campaign/{{record.id}}',
                 },
               },
             },
@@ -89,7 +89,7 @@
               },
               onSave: {
                 action: 'navigate',
-                url: 'campaign/{{record.id}}',
+                url: '/campaign/{{record.id}}',
               },
             },
           },
@@ -154,7 +154,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: 'message/{{record.id}}',
+                  url: '/message/{{record.id}}',
                 },
               },
             },

@@ -5,7 +5,7 @@
         queries:{
           title: 'Plugins',
           icon: 'plugins',
-          url: 'plugins',
+          url: '/plugins',
         },
       },
     },
@@ -40,7 +40,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: 'plugins/{{record.id}}',
+                  url: '/plugins/{{record.id}}',
                 },
               },
             },
@@ -70,7 +70,7 @@
               },
               onSave: {
                 action: 'navigate',
-                url: 'plugins/{{record.id}}',
+                url: '/plugins/{{record.id}}',
               },
             },
           },

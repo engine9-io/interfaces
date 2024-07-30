@@ -8,7 +8,7 @@
             job:{
               title: 'Jobs',
               icon:'forklift',
-              url: 'job',
+              url: '/job',
             }
           },
     },
@@ -26,7 +26,7 @@
               content:'Add Job',
               onClick: {
                 action: 'navigate',
-                url: 'job/create',
+                url: '/job/create',
               },
             }
           }
@@ -71,7 +71,7 @@
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: 'job/{{record.id}}',
+                  url: '/job/{{record.id}}',
                 },
               },
             },
@@ -104,7 +104,7 @@
               },
               onSave: {
                 action: 'navigate',
-                url: 'job/{{record.id}}',
+                url: '/job/{{record.id}}',
               },
             },
           },

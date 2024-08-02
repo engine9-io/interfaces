@@ -4,6 +4,7 @@ module.exports = {
       name: 'message',
       columns: {
         id: 'id',
+        message_set_id: 'foreign_id',
         name: 'string',
         publish_date: 'datetime',
         source_plugin_id: 'foreign_id',
@@ -18,6 +19,9 @@ module.exports = {
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
       },
+      indexes: [
+        { columns: ['source_plugin_id', 'remote_message_set_id'], unique: true },
+      ],
     },
     {
       name: 'campaign',
@@ -29,6 +33,9 @@ module.exports = {
         remote_campaign_id: 'string',
         remote_campaign_name: 'string',
       },
+      indexes: [
+        { columns: ['source_plugin_id', 'remote_campaign_id'], unique: true },
+      ],
     },
   ],
 };

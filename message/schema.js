@@ -16,12 +16,14 @@ module.exports = {
       name: 'message_set',
       columns: {
         id: 'id',
+        campaign_id: 'foreign_id',
         name: 'string',
         source_plugin_id: 'foreign_id',
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
       },
       indexes: [
+        { columns: ['campaign_id'] },
         { columns: ['source_plugin_id', 'remote_message_set_id'], unique: true },
       ],
     },

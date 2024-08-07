@@ -5,10 +5,19 @@ module.exports = {
       columns: {
         id: 'id',
         message_set_id: 'foreign_id',
-        name: 'string',
+        channel: 'string',
+        label: 'string',
+        status: 'string',
         publish_date: 'datetime',
+        primary_source_code: 'string',
+        primary_source_code_override: 'string',
+        final_primary_source_code: 'string',
         source_plugin_id: 'foreign_id',
+        source_remote_id: 'string',
       },
+      indexes: [
+        { columns: ['publish_date'] },
+      ],
     },
     {
       name: 'message_content',

@@ -18,7 +18,7 @@
           {
             path: 'emails',
             label: 'Emails',
-            component: 'RecordList',
+            component: 'RecordTable',
             properties: {
               table: 'person_email',
               conditions: [{ eql: 'person_id={{id}}' }],

@@ -39,7 +39,7 @@
         ],
         main: [
           {
-            component: 'RecordList',
+            component: 'RecordTable',
             properties: {
               table: 'campaign',
               columns: [
@@ -57,7 +57,7 @@
                   width: '40%',
                 }
               ],
-              onRow: {
+              onRecord: {
                 onClick: {
                   action: 'navigate',
                   url: '/campaign/{{record.id}}',
@@ -99,17 +99,25 @@
     'campaign/:id/*':{
       layout: 'sidebar',
       components: {
-        sidebar: [
-          {
-            component: 'RecordDisplay',
-            properties: {
-              table: 'campaign',
-              id: '{{parameters.id}}',
-              template:'{{name}}',
+        sidebar: {
+          items:[
+            {component:"Title", properties:{content:"Message Sets"}},
+            {
+              component: 'RecordList',
+              properties: {
+                table: 'message_set',
+                onRecord: {
+                  onClick: {
+                    action: 'navigate',
+                    url: '/campaign/{{parameters.id}}/message_set/{{record.id}}/',
+                  },
+                },
+              },
             },
-          }
-        ],
+          ]
+        },
         main: [
+          {component:'Title', properties:{content:'Campaign Summary'}},
           {
             // 'path':'overview', //no path is the default
             component: 'RecordDisplay',
@@ -127,7 +135,7 @@
       components: {
         main: [
           {
-            component: 'RecordList',
+            component: 'RecordTable',
             properties: {
               table: 'message',
               columns: [
@@ -151,7 +159,7 @@
                   width: '40%',
                 }
               ],
-              onRow: {
+              onRecord: {
                 onClick: {
                   action: 'navigate',
                   url: '/message/{{record.id}}',

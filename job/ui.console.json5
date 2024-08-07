@@ -33,7 +33,7 @@
         ],
         main: [
           {
-            component: 'RecordList',
+            component: 'RecordTable',
             properties: {
               table: 'job',
               columns: [
@@ -68,7 +68,7 @@
                   width: '20%',
                 }
               ],
-              onRow: {
+              onRecord: {
                 onClick: {
                   action: 'navigate',
                   url: '/job/{{record.id}}',

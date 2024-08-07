@@ -30,7 +30,7 @@
         ],
         main: [
           {
-            component: 'RecordList',
+            component: 'RecordTable',
             properties: {
               table: 'query',
               columns: [
@@ -48,7 +48,7 @@
                   width: '40%',
                 },
               ],
-              onRow: {
+              onRecord: {
                 onClick: {
                   action: 'navigate',
                   url: '/queries/{{record.id}}',

@@ -11,6 +11,18 @@ module.exports = {
       },
     },
     {
+      name: 'message_content',
+      columns: {
+        id: 'id',
+        message_id: 'foreign_id',
+        content: 'json',
+        remote_data: 'json',
+      },
+      indexes: [
+        { columns: ['message_id'], unique: true },
+      ],
+    },
+    {
       name: 'message_set',
       columns: {
         id: 'id',

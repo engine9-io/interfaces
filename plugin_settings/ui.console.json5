@@ -19,7 +19,7 @@
         ],
         main: [
           {
-            component: 'RecordList',
+            component: 'RecordTable',
             properties: {
               table: 'plugin',
               columns: [
@@ -37,7 +37,7 @@
                   width: '40%',
                 },
               ],
-              onRow: {
+              onRecord: {
                 onClick: {
                   action: 'navigate',
                   url: '/plugins/{{record.id}}',

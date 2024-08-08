@@ -36,7 +36,7 @@
             component: 'RecordList',
             properties: {
               table: 'person',
-              extensions: {
+              includes: {
                 emails: {
                   table: 'person_email',
                 },
@@ -113,7 +113,7 @@
               properties: {
                 table: 'person',
                 id: '{{parameters.id}}',
-                extensions: {
+                includes: {
                   emails: {
                     table: 'person_email',
                     orderBy:'preference_order'

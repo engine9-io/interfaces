@@ -103,9 +103,28 @@
           items:[
             {component:"Title", properties:{content:"Message Sets"}},
             {
+              component:'Button',
+              properties:{
+                icon:'plus',
+                content:'Add Message Set',
+                onClick: {
+                  action: 'object.create',
+                  data:{
+                    type:'message_set',
+                    attributes:{
+                      label:'Messages - {{date "MMMM, yyyy"}}',
+                      campaign_id:'{{parameters.id}}'
+                    }
+                  },
+                  redirect: '/campaign/{{parameters.id}}/message_set/{{record.id}}',
+                },
+              }
+            },
+            {
               component: 'RecordList',
               properties: {
                 table: 'message_set',
+                conditions: [{ eql: 'campaign_id={{id}}' }],
                 onRecord: {
                   onClick: {
                     action: 'navigate',
@@ -204,7 +223,7 @@
             properties: {
               table: 'message',
               id: '{{parameters.id}}',
-              extensions: {
+              includes: {
                 source_codes:{
                   table:'source_code'
                 }

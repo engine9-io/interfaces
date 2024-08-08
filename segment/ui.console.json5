@@ -98,7 +98,7 @@
             component: 'RecordTable',
             properties: {
               table: 'person_segment',
-                extensions: [
+                includes: [
                   { alias: 'people', table: 'person' },
                 ],
               conditions: [{ eql: 'segment_id={{parameters.segment_id}}' }],
@@ -131,7 +131,7 @@
             component: 'RecordTable',
             properties: {
               table: 'person_segment',
-                extensions: [
+                includes: [
                   { alias: 'segments', table: 'segment' },
                 ],
               conditions: [{ eql: 'person_id={{parameters.person_id}}' }],

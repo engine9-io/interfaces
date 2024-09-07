@@ -1,11 +1,12 @@
 module.exports = {
   tables: [
+
     {
       name: 'message_set',
       columns: {
         id: 'id',
         campaign_id: 'foreign_id',
-        label: 'string',
+        name: 'string',
         source_plugin_id: 'foreign_id',
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
@@ -19,7 +20,7 @@ module.exports = {
       name: 'campaign',
       columns: {
         id: 'id',
-        label: 'string',
+        name: 'string',
         channel: 'string',
         source_plugin_id: 'foreign_id',
         remote_campaign_id: 'string',
@@ -29,11 +30,12 @@ module.exports = {
         { columns: ['source_plugin_id', 'remote_campaign_id'], unique: true },
       ],
     },
+
     {
       name: 'message_content',
       columns: {
         id: 'id',
-        message_id: 'foreign_id',
+        message_id: 'foreign_uuid',
         content: 'json',
         remote_data: 'json',
       },
@@ -41,13 +43,14 @@ module.exports = {
         { columns: ['message_id'], unique: true },
       ],
     },
+
     {
       name: 'message',
       columns: {
-        id: 'id',
+        id: 'id_uuid',
         message_set_id: 'foreign_id',
         channel: 'string',
-        label: 'string',
+        name: 'string',
         status: 'string',
         publish_date: 'datetime',
         primary_source_code: { type: 'string', length: 180 },

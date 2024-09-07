@@ -44,7 +44,7 @@
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
-                  template: '{{label}}',
+                  template: '{{name}}',
                   width: '40%',
                 },
               ],

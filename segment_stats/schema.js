@@ -1,7 +1,3 @@
-const statsColumns = {
-  transactions: 'int',
-  evenue: 'currency',
-};
 module.exports = {
 
   tables: [
@@ -10,7 +6,8 @@ module.exports = {
       columns: {
         id: 'id',
         segment_id: 'foreign_id',
-        ...statsColumns,
+        transactions: 'int',
+        revenue: 'currency',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },
@@ -24,7 +21,8 @@ module.exports = {
         id: 'id',
         segment_id: 'foreign_id',
         date: 'date',
-        ...statsColumns,
+        transactions: 'int',
+        revenue: 'currency',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

@@ -19,8 +19,8 @@ module.exports = {
             'query',
           ],
         },
+        query: 'json',
         build_schedule: 'string',
-        build_query_id: 'foreign_id',
         last_built: 'datetime',
         people: 'int', // engine9 count
         reported_people: 'int', // reported by outside parties

@@ -6,24 +6,29 @@ module.exports = {
         id: 'id',
         source_plugin_id: 'foreign_id',
         remote_segment_id: 'string',
-        type: 'string', // A arbitrary type, not to be used for logic
+        type: 'string', // A arbitrary type, user facing, not to be used for logic
         name: 'string',
-        created_at: 'created_at',
-        modified_at: 'modified_at',
+        query: 'json',
         build_mechanism: {
           type: 'enum',
           nullable: false,
-          default_value: 'static',
+          default_value: 'query',
           values: [
-            'static',
-            'query',
+            'query', // built by the query
+            'scheduled_query', // built on a schedule by the query
+            'remote_count', // no person records, just counts, pulled from remote site
+            'remote', // pulled from remote site
+            'manual', // created outside normal processing
           ],
         },
-        query: 'json',
         build_schedule: 'string',
+        build_status: 'string',
+        build_status_modified_at: 'modified_at',
         last_built: 'datetime',
         people: 'int', // engine9 count
         reported_people: 'int', // reported by outside parties
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
       indexes: [],
     },

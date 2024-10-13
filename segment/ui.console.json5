@@ -83,7 +83,8 @@
                   remote_segment_id: { type: 'string', title: 'Remote Segment ID'},
                   build_mechanism: { type: 'string', title: 'Mechanism', default:'static'},
                   build_schedule: { type: 'string', title: 'Build Schedule'},
-                  build_query_id: { type: 'string', title: 'Build Query ID'},
+                  build_status: { type: 'string', title: 'Build Status'},
+                  build_status_modified_at: { type: 'modified_at', title: 'Build Status Modified At'}
                 }
               },
               uiSchema:{

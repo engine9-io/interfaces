@@ -6,10 +6,10 @@ module.exports = {
         id: 'id',
         source_plugin_id: 'foreign_id',
         remote_segment_id: 'string',
-        type: 'string', // A arbitrary type, user facing, not to be used for logic
+        category: 'string', // A arbitrary type, user facing, not to be used for logic
         name: 'string',
         query: 'json',
-        build_mechanism: {
+        build_type: {
           type: 'enum',
           nullable: false,
           default_value: 'query',

@@ -1,6 +1,28 @@
 module.exports = {
   tables: [
-
+    {
+      name: 'message',
+      columns: {
+        id: 'id_uuid',
+        message_set_id: 'foreign_id',
+        channel: 'string',
+        name: 'string',
+        status: 'string',
+        publish_date: 'datetime',
+        primary_source_code: { type: 'string', length: 180 },
+        primary_source_code_override: { type: 'string', length: 180 },
+        final_primary_source_code: { type: 'string', length: 180 },
+        source_plugin_id: 'foreign_id',
+        source_remote_id: 'string',
+        source_submodule: 'string',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
+      },
+      indexes: [
+        { columns: ['publish_date'] },
+        { columns: ['message_set_id'] },
+      ],
+    },
     {
       name: 'message_set',
       columns: {
@@ -10,6 +32,8 @@ module.exports = {
         source_plugin_id: 'foreign_id',
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
       indexes: [
         { columns: ['campaign_id'] },
@@ -25,12 +49,13 @@ module.exports = {
         source_plugin_id: 'foreign_id',
         remote_campaign_id: 'string',
         remote_campaign_name: 'string',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
       indexes: [
         { columns: ['source_plugin_id', 'remote_campaign_id'], unique: true },
       ],
     },
-
     {
       name: 'message_content',
       columns: {
@@ -38,30 +63,56 @@ module.exports = {
         message_id: 'foreign_uuid',
         content: 'json',
         remote_data: 'json',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
       indexes: [
         { columns: ['message_id'], unique: true },
       ],
     },
-
     {
-      name: 'message',
+      name: 'message_statistics',
       columns: {
-        id: 'id_uuid',
-        message_set_id: 'foreign_id',
-        channel: 'string',
-        name: 'string',
-        status: 'string',
-        publish_date: 'datetime',
-        primary_source_code: { type: 'string', length: 180 },
-        primary_source_code_override: { type: 'string', length: 180 },
-        final_primary_source_code: { type: 'string', length: 180 },
-        source_plugin_id: 'foreign_id',
-        source_remote_id: 'string',
+        id: 'id',
+        message_id: 'foreign_uuid',
+        statistics: 'json',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
       },
       indexes: [
-        { columns: ['publish_date'] },
+        { columns: ['message_id'], unique: true },
       ],
+    },
+    {
+      name: 'message_summary',
+      type: 'view',
+      table: 'message',
+      joins: [{
+        table: 'message_statistics',
+        join_eql: 'message.id = message_statistics.message_id',
+      },
+      {
+        table: 'message_content',
+        join_eql: 'message.id = message_content.message_id',
+      },
+      ],
+      columns: {
+        id: { eql: 'message.id' },
+        message_set_id: { eql: 'message.id' },
+        channel: { eql: 'message.channel' },
+        name: { eql: 'message.name' },
+        status: { eql: 'message.status' },
+        publish_date: { eql: 'message.publish_date' },
+        source_plugin_id: { eql: 'message.source_plugin_id' },
+        source_remote_id: { eql: 'message.source_remote_id' },
+        source_submodule: { eql: 'message.source_submodule' },
+        final_primary_source_code: { eql: 'message.final_primary_source_code' },
+        content: { eql: 'message_content.content' },
+        remote_data: { eql: 'message_content.remote_data' },
+        statistics: { eql: 'message_statistics.statistics' },
+        created_at: { eql: 'message.created_at' },
+        modified_at: { eql: 'GREATEST(message.modified_at,message_content.modified_at,message_statistics.modified_at)' },
+      },
     },
   ],
 };

@@ -3,27 +3,28 @@ module.exports = {
     {
       name: 'timeline',
       columns: {
-        uuid: 'uuid',
-        entry_date: 'datetime',
-        entry_type: 'int',
+        id: 'uuid',
+        ts: 'datetime',
+        input_id: 'uuid', // keep as uuid because it's required
+        entry_type_id: 'int',
         person_id: 'person_id',
         source_code_id: 'foreign_id',
-        data_location_id: 'foreign_id',
-        reference_id: 'foreign_id',
+        created_at: 'created_at',
       },
       indexes: [
+        { columns: 'id', primary: true },
+        { columns: 'ts,input_id,entry_type_id,person_id,source_code_id' },
         { columns: 'person_id' },
       ],
     },
     {
-      name: 'data_location',
+      name: 'input',
       columns: {
-        id: 'id',
+        id: 'uuid',
         source_plugin_id: 'foreign_id',
-        current_location_type: 'string',
-        current_location: 'string',
-        original_location_type: 'string',
-        original_location: 'string',
+        remote_id: 'string', // The remote id from the plugin, used for looking up the id
+        input_type: 'string', // Type of input, e.g. message, petition, signup_form, advocacy_action, etc
+        location: 'string', // Location of the data
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

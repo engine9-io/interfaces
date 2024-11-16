@@ -11,15 +11,17 @@ module.exports = {
           default_value: 'Personal',
           values: [
             'Personal',
+            'Cell',
+            'Home',
             'Work',
             'Other',
           ],
         },
+        phone: 'string',
         preference_order: {
           type: 'int',
           description: 'Order in the preference stack, 0 is first',
         },
-        phone: 'string',
         sms_status: {
           type: 'string',
           nullable: false,

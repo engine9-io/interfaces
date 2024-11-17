@@ -1,0 +1,34 @@
+{
+  routes: {
+    '/person/:id/*':{
+      components: {
+        sidebar: {
+          items:[
+            {
+              component: 'Link',
+              properties: {
+                label: 'Timeline',
+                to: 'timeline',
+              },
+            },
+          ]
+        }
+        ,
+        main: [
+          {
+            path: 'timeline',
+            label: 'Timeline',
+            component: 'RecordDisplay',
+            properties: {
+              table: 'timeline',
+              conditions: [{ eql: 'person_id={{person_id}}' }],
+              rows: [
+                '{{email}}',
+              ],
+            },
+          },
+        ],
+      },
+    },
+  },
+}

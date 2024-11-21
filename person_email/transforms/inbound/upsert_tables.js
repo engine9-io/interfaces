@@ -23,6 +23,7 @@ module.exports = {
     if (batch.length === 0) return;
 
     batch.forEach((o) => {
+      if (!o.email) return;
       // People like to believe email is case sensitive
       // emails are always trimmed, but that's it for inbound modifications.
       const email = o.email.trim();

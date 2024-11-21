@@ -14,6 +14,8 @@ module.exports = async function ({ batch }) {
       e.identifiers.push({
         path: 'person_phone', type: 'phone_hash_v1', value,
       });
+      e.phone_hash_v1 = value;
+      e.foo = 'bar';
     }
   });
 

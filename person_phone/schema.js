@@ -51,7 +51,7 @@ module.exports = {
         phone_hash_v1: 'hash',
         created_at: 'created_at',
         modified_at: 'modified_at',
-        source_plugin_id: 'foreign_id',
+        source_input_id: 'foreign_uuid',
       },
       indexes: [
         { columns: 'person_id' },

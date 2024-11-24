@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'plugin',
       columns: {
-        id: 'id',
+        id: 'id_string',
         path: 'string',
         name: 'string',
         nickname: 'string',

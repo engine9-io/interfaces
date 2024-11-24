@@ -49,7 +49,7 @@ module.exports = {
           default_value: 0,
         },
         email_hash_v1: 'hash',
-        source_plugin_id: 'foreign_id',
+        source_input_id: 'foreign_uuid',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

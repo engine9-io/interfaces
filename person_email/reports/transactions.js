@@ -39,7 +39,7 @@
       bTitle: 'Amount over time',
       b1: {
         component: 'ComposedChart',
-        is_date: true,
+        isDate: true,
         dimension: { eql: 'week(publish_date)' },
         metrics: [
           {
@@ -56,7 +56,7 @@
       cTitle: 'Email Rates',
       c1: {
         component: 'ComposedChart',
-        is_date: true,
+        isDate: true,
         dimension: { eql: 'publish_date' },
         metrics: [
           { name: 'Open Rate', eql: 'sum(impressions)/sum(sent)', format: 'percent' },
@@ -69,7 +69,7 @@
       dTitle: 'Revenue Performance Over Time',
       d1: {
         component: 'ComposedChart',
-        is_date: true,
+        isDate: true,
         dimension: { eql: 'publish_date' },
         metrics: [
           { name: '$ Revenue/Click', eql: 'sum(attributed_revenue)/sum(clicks)', format: 'currency' },

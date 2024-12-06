@@ -28,6 +28,9 @@ module.exports = {
         created_at: 'created_at',
         modified_at: 'modified_at',
       },
+      indexes: [
+        { columns: 'id', primary: true },
+      ],
     },
   ],
 };

@@ -3,12 +3,13 @@ module.exports = {
     {
       name: 'plugin',
       columns: {
-        id: 'id_string',
+        id: 'id',
         path: 'string',
         name: 'string',
         nickname: 'string',
         table_prefix: 'string',
         deployed_version: 'string',
+        remote_plugin_id: 'string',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

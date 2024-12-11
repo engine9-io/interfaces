@@ -12,7 +12,7 @@ module.exports = {
         primary_source_code: { type: 'string', length: 180 },
         primary_source_code_override: { type: 'string', length: 180 },
         final_primary_source_code: { type: 'string', length: 180 },
-        source_plugin_id: 'string',
+        source_plugin_id: 'id_string', // can't be null, must have a value
         source_remote_id: 'string',
         source_submodule: 'string',
         created_at: 'created_at',
@@ -29,7 +29,7 @@ module.exports = {
         id: 'id',
         campaign_id: 'foreign_id',
         name: 'string',
-        source_plugin_id: 'string',
+        source_plugin_id: 'id_string', // can't be null, must have a value
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
         created_at: 'created_at',
@@ -46,7 +46,7 @@ module.exports = {
         id: 'id',
         name: 'string',
         channel: 'string',
-        source_plugin_id: 'string',
+        source_plugin_id: 'id_string', // can't be null, must have a value
         remote_campaign_id: 'string',
         remote_campaign_name: 'string',
         created_at: 'created_at',

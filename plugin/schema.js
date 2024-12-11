@@ -21,7 +21,7 @@ module.exports = {
       name: 'plugin_history',
       columns: {
         id: 'id',
-        plugin_id: 'string',
+        plugin_id: 'id_string', // can't be null, must have a value
         path: 'string',
         deployed_version: 'string',
         created_at: 'created_at',

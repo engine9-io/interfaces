@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'timeline',
       columns: {
-        id: 'uuid',
+        id: 'id_uuid',
         ts: 'datetime',
         input_id: 'uuid', // keep as uuid because it's required
         entry_type_id: 'int',

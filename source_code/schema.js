@@ -12,6 +12,7 @@ module.exports = {
         format_regex: 'string',
         source_code_channel: 'string',
         source_code_last_used: 'timestamp',
+        parsing: 'json',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

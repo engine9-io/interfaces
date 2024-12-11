@@ -4,7 +4,7 @@ module.exports = {
       name: 'segment',
       columns: {
         id: 'id',
-        source_plugin_id: 'foreign_id',
+        source_plugin_id: 'string',
         remote_segment_id: 'string',
         category: 'string', // A arbitrary type, user facing, not to be used for logic
         name: 'string',

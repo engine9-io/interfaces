@@ -5,7 +5,7 @@ module.exports = {
       columns: {
         id: 'id',
         account_id: 'string',
-        plugin_id: 'foreign_id',
+        plugin_id: 'string',
         status: {
           type: 'enum',
           nullable: false,

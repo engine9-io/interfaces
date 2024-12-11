@@ -30,6 +30,7 @@ module.exports = {
       },
       indexes: [
         { columns: 'id', primary: true },
+        { columns: 'plugin_id,remote_input_id', unique: true },
       ],
     },
   ],

@@ -15,7 +15,7 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        source_plugin_id: 'foreign_id',
+        source_input_id: 'uuid',
         id_type: {
           type: 'enum',
           nullable: false,

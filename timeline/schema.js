@@ -21,7 +21,7 @@ module.exports = {
       name: 'input',
       columns: {
         id: 'id_uuid',
-        plugin_id: 'id_string', // can't be null, must have a value
+        plugin_id: 'id_uuid', // can't be null, must have a value
         remote_input_id: 'string', // The remote id from the plugin, used for looking up the id
         input_type: 'string', // Type of input, e.g. message, petition, signup_form, advocacy_action, etc
         location: 'string', // Location of the data

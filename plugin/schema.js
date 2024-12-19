@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'plugin',
       columns: {
-        id: 'id_string',
+        id: 'id_uuid',
         path: 'string',
         name: 'string',
         nickname: 'string',
@@ -21,7 +21,7 @@ module.exports = {
       name: 'plugin_history',
       columns: {
         id: 'id',
-        plugin_id: 'id_string', // can't be null, must have a value
+        plugin_id: 'id_uuid', // can't be null, must have a value
         path: 'string',
         deployed_version: 'string',
         created_at: 'created_at',

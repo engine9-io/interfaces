@@ -10,6 +10,8 @@ module.exports = {
         table_prefix: 'string',
         deployed_version: 'string',
         remote_plugin_id: 'string',
+        schema: 'json', // Not all plugins need to support file based schemas, like per-account custom fields
+        transforms: 'json', // Not all plugins need to support file based transforms, like per-account custom fields
         created_at: 'created_at',
         modified_at: 'modified_at',
       },
@@ -29,6 +31,19 @@ module.exports = {
       },
       indexes: [
         { columns: 'id', primary: true },
+      ],
+    },
+    {
+      name: 'setting',
+      columns: {
+        id: 'id',
+        plugin_id: 'foreign_uuid',
+        name: 'string',
+        value: 'string',
+      },
+      indexes: [
+        { columns: 'id', primary: true },
+        { columns: 'plugin_id,name', unique: true },
       ],
     },
   ],

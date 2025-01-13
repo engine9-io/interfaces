@@ -9,14 +9,20 @@ module.exports = {
       // schema,
       columns,
     } = options;
-    tablesToUpsert[table] = tablesToUpsert[table] || [];
+
     batch.forEach((o) => {
       const vals = {};
+      let hasData = false;
       columns.forEach((f) => {
-        const v = o[`${table}.${f}`];
-        if (v !== undefined) vals[f] = v;
+        const v = o[`${table}.${f.name}`];
+        if (v !== undefined) {
+          hasData = true;
+          vals[f.name] = v;
+        }
       });
-      tablesToUpsert[table].push(vals);
+      if (hasData) {
+        tablesToUpsert[table] = (tablesToUpsert[table] || []).concat(vals);
+      }
     });
 
     return batch;

@@ -7,6 +7,7 @@ const fields = [
   'do_not_call',
   'phone',
   'phone_hash_v1',
+  'source_input_id',
   'primary',
   'phone_type',
   'preference_order',
@@ -20,9 +21,9 @@ module.exports = {
   },
 
   async transform({ batch, tablesToUpsert }) {
-    tablesToUpsert.person_phone = tablesToUpsert.person_phone || [];
     batch.forEach((o) => {
       if (!o.phone) return;
+      tablesToUpsert.person_phone = tablesToUpsert.person_phone || [];
       const vals = {};
       fields.forEach((f) => {
         if (o[f] !== undefined) vals[f] = o[f];

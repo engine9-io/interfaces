@@ -19,11 +19,11 @@ module.exports = {
   async transform({
     batch, databaseEmails, tablesToUpsert,
   }) {
-    tablesToUpsert.person_email = (tablesToUpsert.person_email || []);
     if (batch.length === 0) return;
 
     batch.forEach((o) => {
       if (!o.email) return;
+      tablesToUpsert.person_email = (tablesToUpsert.person_email || []);
       // People like to believe email is case sensitive
       // emails are always trimmed, but that's it for inbound modifications.
       const email = o.email.trim();

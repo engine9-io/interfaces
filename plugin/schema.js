@@ -54,6 +54,7 @@ module.exports = {
         plugin_id: 'id_uuid', // can't be null, must have a value
         remote_input_id: 'string', // The remote id from the plugin, used for looking up the id
         input_type: 'string', // Type of input, e.g. message, petition, signup_form, advocacy_action, etc
+        metadata: 'json', // other metadata about the input, path data, etc,
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

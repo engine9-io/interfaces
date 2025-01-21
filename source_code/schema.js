@@ -7,6 +7,8 @@ module.exports = {
         source_code: {
           type: 'string',
           length: 180,
+          nullable: false,
+          default_value: '',
         },
         format: 'string',
         format_regex: 'string',

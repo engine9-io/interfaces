@@ -5,6 +5,7 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
+        name: 'string',
         type: {
           type: 'string',
           values: ['', 'Home', 'School', 'Office'],
@@ -37,10 +38,11 @@ module.exports = {
         },
         preference_order: {
           type: 'int',
-          description: 'Order in the preference stack, 0 is first',
+          description: 'Order in the preference stack, lower is better, -1 means set by user',
           nullable: false,
           default_value: 0,
         },
+        is_best_address: 'boolean',
         created_at: 'created_at',
         modified_at: 'modified_at',
         source_input_id: 'foreign_uuid',

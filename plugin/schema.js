@@ -52,7 +52,8 @@ module.exports = {
       columns: {
         id: 'id_uuid',
         plugin_id: 'id_uuid', // can't be null, must have a value
-        remote_input_id: 'string', // The remote id from the plugin, used for looking up the id
+        remote_input_id: 'string', // The remote id for this input, unique across the plugin
+        remote_input_name: 'string', // The remote name -- a human name for this input -- e.g. Form Name, message name
         input_type: 'string', // Type of input, e.g. message, petition, signup_form, advocacy_action, etc
         min_timeline_ts: 'datetime', // Type of input, e.g. message, petition, signup_form, advocacy_action, etc
         max_timeline_ts: 'datetime', // Type of input, e.g. message, petition, signup_form, advocacy_action, etc

@@ -19,13 +19,11 @@ module.exports = async function ({ batch }) {
       const value = createHash('sha256')
         .update(phone)
         .digest('hex');
-      if (e.remote_person_id) {
-        // by default do nothing here -- remote_person_id is a heavy-weight identifier
-      } else {
-        e.identifiers.push({
-          path: 'person_phone', type: 'phone_hash_v1', value,
-        });
-      }
+      // Push all identifiers, later in the pipeline the priority will be determined
+      e.identifiers.push({
+        path: 'person_phone', type: 'phone_hash_v1', value,
+      });
+
       e.phone = phone;
       e.phone_hash_v1 = value;
     }

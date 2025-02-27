@@ -12,13 +12,11 @@ module.exports = async function ({ batch }) {
       const value = createHash('sha256')
         .update(hashable)
         .digest('hex');
-      if (e.remote_person_id) {
-        // by default do nothing here -- remote_person_id is a heavy-weight identifier
-      } else {
-        e.identifiers.push({
-          path: 'person_email', type: 'email_hash_v1', value,
-        });
-      }
+      // Push all identifiers, later in the pipeline the priority will be determined
+      e.identifiers.push({
+        path: 'person_email', type: 'email_hash_v1', value,
+      });
+
       e.email_hash_v1 = value;
     }
   });

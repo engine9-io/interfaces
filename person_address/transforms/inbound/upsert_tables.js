@@ -42,6 +42,8 @@ module.exports = {
           record.subscription_status = 'Unsubscribed';
         }
         record.id = matchingAddress.id;
+      } else {
+        record.source_input_id = record.input_id;
       }
       tablesToUpsert.person_address.push(record);
     });

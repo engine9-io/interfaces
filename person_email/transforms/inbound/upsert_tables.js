@@ -48,6 +48,7 @@ module.exports = {
           email,
           subscription_status: o.subscription_status || 'Subscribed',
           ...o,
+          source_input_id: o.input_id,
         });
       }
       // IF an unsubscribe, we need to update the subscription status for ALL related emails,

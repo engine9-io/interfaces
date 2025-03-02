@@ -3,15 +3,17 @@ module.exports = {
     {
       name: 'transaction',
       columns: {
-        id: 'id',
+        id: 'id_uuid',
+        ts: 'datetime',
+        input_id: 'uuid', // keep as uuid because it's required
+        entry_type_id: 'int',
         person_id: 'person_id',
-        remote_plugin_id: 'string',
+        source_code_id: 'foreign_id',
         remote_transaction_id: 'string',
         amount: 'currency',
         refund_amount: 'currency',
         recurs_id: 'int',
         recurring_number: 'int',
-        source_code_id: 'foreign_id',
       },
     },
   ],

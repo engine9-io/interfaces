@@ -13,8 +13,9 @@ module.exports = {
       },
       indexes: [
         { columns: 'id', primary: true },
-        { columns: 'ts,input_id,entry_type_id,person_id,source_code_id' },
+        { columns: 'ts' },
         { columns: 'person_id' },
+        { columns: 'input_id' },
       ],
     },
   ],

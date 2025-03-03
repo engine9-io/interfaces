@@ -1,4 +1,4 @@
-const { getEntryTypeId, getTimelineEntryUUID } = require('../../../../packet-tools');
+const { getEntryTypeId, getTimelineEntryUUID } = require('@engine9/packet-tools');
 
 module.exports = {
   bindings: {

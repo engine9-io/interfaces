@@ -39,7 +39,9 @@ module.exports = {
     /*
     //sometimes useful, debating whether useful enough to be global
     create view person_identifier_summary
-as select p.*,input.remote_input_id,input.remote_input_name,input_type,
+as select p.*,
+input.remote_input_id,
+input.remote_input_name,input_type,
 plugin_id,plugin.path,plugin.name,plugin.remote_plugin_id
 from person_identifier p
 join input on (p.source_input_id=input.id)

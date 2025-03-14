@@ -3,9 +3,10 @@ module.exports = {
     {
       name: 'segment',
       columns: {
-        id: 'id',
+        id: 'id_uuid',
         source_plugin_id: 'id_uuid', // can't be null, must have a value
         remote_segment_id: 'string',
+        legacy_id: 'int',
         category: 'string', // A arbitrary type, user facing, not to be used for logic
         name: 'string',
         query: 'json',

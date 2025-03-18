@@ -12,7 +12,11 @@ module.exports = {
         remote_transaction_id: 'string',
         amount: 'currency',
         refund_amount: 'currency',
-        recurs_id: 'int',
+        recurs_id: {
+          type: 'int',
+          nullable: false,
+          default_value: 0,
+        },
         recurring_number: 'int',
       },
     },

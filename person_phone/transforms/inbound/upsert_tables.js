@@ -1,4 +1,5 @@
 module.exports = {
+  type: 'upsert',
   bindings: {
     tablesToUpsert: { type: 'sql.tables.upsert' },
     databasePhones: { type: 'sql.query', table: 'person_phone', lookup: ['phone'] },

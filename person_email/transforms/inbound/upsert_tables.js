@@ -16,6 +16,7 @@ module.exports = {
     },
     */
   },
+  type: 'upsert',
   async transform({
     batch, databaseEmails, tablesToUpsert,
   }) {

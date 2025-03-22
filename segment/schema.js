@@ -33,13 +33,15 @@ module.exports = {
       },
       indexes: [],
     },
+    /* //tbd whether we use this or not, or rely on the
+    // file input structure
     {
       name: 'person_segment',
       columns: {
         id: 'id',
         person_id: 'person_id',
-        segment_id: 'foreign_id',
+        segment_id: 'foreign_uuid',
       },
-    },
+    }, */
   ],
 };

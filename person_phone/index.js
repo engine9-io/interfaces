@@ -9,14 +9,12 @@ const metadata = {
 const schema = require('./schema');
 const search = require('./search');
 const segments = require('./segments');
-const extract = require('./transforms/inbound/extract_identifiers');
-const upsert = require('./transforms/inbound/upsert_tables');
+const id = require('./pipeline/inbound/extract_identifiers');
+const upsert = require('./pipeline/inbound/upsert_tables');
 
 const pipeline = {
-  inbound: [
-    extract,
-    upsert,
-  ],
+  id,
+  upsert,
 };
 
 module.exports = {

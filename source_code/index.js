@@ -1,5 +1,5 @@
 const metadata = {
-  name: '@engine9-io/engine9-interfaces/person_remote',
+  name: '@engine9-io/engine9-interfaces/source_code',
   version: '1.0.0',
   dependencies: {
     '@engine9-io/engine9-interfaces/person': '>1.0.0',
@@ -7,16 +7,8 @@ const metadata = {
 };
 
 const schema = require('./schema');
-const ids = require('./pipeline/inbound/extract_identifiers');
-
-const pipeline = {
-  inbound: [
-    ids,
-  ],
-};
 
 module.exports = {
   metadata,
   schema,
-  pipeline,
 };

@@ -3,18 +3,6 @@ module.exports = {
     // existingPersonEmails: { type: 'sql.query', table: 'person_email', lookup:['person_id'] },
     databaseEmails: { type: 'sql.query', table: 'person_email', lookup: ['email'] },
     tablesToUpsert: { type: 'sql.tables.upsert' },
-    /*
-    auditing not yet supported
-    auditEntries: {
-      type: 'packet.output.timeline',
-      columns: [
-        'email_type',
-        'subscription_status',
-        'confirmation_status',
-        'deliverability_score',
-        'preference_order'],
-    },
-    */
   },
   type: 'upsert',
   async transform({

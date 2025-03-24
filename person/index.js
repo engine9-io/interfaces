@@ -10,9 +10,7 @@ const schema = require('./schema');
 const upsert = require('./transforms/inbound/upsert_tables');
 
 const pipeline = {
-  inbound: [
-    upsert,
-  ],
+  upsert,
 };
 
 module.exports = {

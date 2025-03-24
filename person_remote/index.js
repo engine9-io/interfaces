@@ -7,12 +7,10 @@ const metadata = {
 };
 
 const schema = require('./schema');
-const ids = require('./pipeline/inbound/extract_identifiers');
+const id = require('./pipeline/inbound/extract_identifiers');
 
 const pipeline = {
-  inbound: [
-    ids,
-  ],
+  id,
 };
 
 module.exports = {

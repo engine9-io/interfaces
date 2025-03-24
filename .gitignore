@@ -1,4 +1,5 @@
 .DS_Store
+.e9_*
 # Logs
 logs
 *.log

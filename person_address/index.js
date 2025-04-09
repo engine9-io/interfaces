@@ -6,13 +6,11 @@ const metadata = {
   },
 };
 
-const upsert = require('./pipeline/inbound/upsert_tables');
-
-const pipeline = {
-  upsert,
-};
+const upsert = require('./transforms/inbound/upsert_tables');
 
 module.exports = {
   metadata,
-  pipeline,
+  transforms: {
+    upsert,
+  },
 };

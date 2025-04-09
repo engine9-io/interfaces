@@ -2,6 +2,7 @@ const { uuidIsValid } = require('@engine9/packet-tools');
 
 module.exports = {
   type: 'id',
+  description: 'Extract the remote_person_id for use in lookups',
   async transform({ batch, pluginId }) {
     const ids = [];
     batch.forEach((e) => {
@@ -14,7 +15,6 @@ module.exports = {
         });
       }
     });
-
     return ids;
   },
 };

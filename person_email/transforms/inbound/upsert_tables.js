@@ -1,8 +1,8 @@
 module.exports = {
   bindings: {
-    // existingPersonEmails: { type: 'sql.query', table: 'person_email', lookup:['person_id'] },
-    databaseEmails: { type: 'sql.query', table: 'person_email', lookup: ['email'] },
-    tablesToUpsert: { type: 'sql.tables.upsert' },
+    // existingPersonEmails: { path: 'sql.query', table: 'person_email', lookup:['person_id'] },
+    databaseEmails: { path: 'sql.query', options: { table: 'person_email', lookup: ['email'] } },
+    tablesToUpsert: { path: 'sql.tables.upsert' },
   },
   type: 'upsert',
   async transform({

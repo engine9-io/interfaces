@@ -47,11 +47,13 @@ module.exports = {
           },
         },
       },
-      transform: ({ batch }) => {
+      transform: ({ batch, remoteIds }) => {
+        const idMap = remoteIds.reduce((a, b) => {
+          // quick lookup map
+          a[b.person_id] = (a[b.person_id] || []).concat(b); return a;
+        }, {});
         batch.forEach((data) => {
-          const { remoteIds } = data;
-          data.remote_person_id = remoteIds?.[0].id_value;
-          delete data.remoteIds;
+          data.remote_person_id = idMap[data.person_id]?.[0]?.id_value || null;
         });
       },
     },

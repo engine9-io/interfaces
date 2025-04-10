@@ -1,6 +1,6 @@
 module.exports = {
   bindings: {
-    tablesToUpsert: { type: 'sql.tables.upsert' },
+    tablesToUpsert: { path: 'sql.tables.upsert' },
   },
   async transform({ batch, tablesToUpsert }) {
     tablesToUpsert.person_segment = tablesToUpsert.person_segment || [];

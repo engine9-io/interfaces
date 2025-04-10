@@ -1,8 +1,8 @@
 module.exports = {
   type: 'upsert',
   bindings: {
-    tablesToUpsert: { type: 'sql.tables.upsert' },
-    databasePhones: { type: 'sql.query', table: 'person_phone', lookup: ['phone'] },
+    tablesToUpsert: { path: 'sql.tables.upsert' },
+    databasePhones: { path: 'sql.query', options: { table: 'person_phone', lookup: ['phone'] } },
   },
 
   async transform({ batch, tablesToUpsert, databasePhones }) {

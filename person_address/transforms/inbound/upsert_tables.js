@@ -1,7 +1,7 @@
 module.exports = {
   bindings: {
-    existingAddresses: { type: 'sql.query', table: 'person_address', lookup: ['person_id'] },
-    tablesToUpsert: { type: 'sql.tables.upsert' },
+    existingAddresses: { path: 'sql.query', options: { table: 'person_address', lookup: ['person_id'] } },
+    tablesToUpsert: { path: 'sql.tables.upsert' },
   },
   async transform({ batch, tablesToUpsert, existingAddresses }) {
     // our address hashing function tried to find identical addresses

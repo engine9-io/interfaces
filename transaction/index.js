@@ -10,12 +10,14 @@ const schema = require('./schema');
 const search = require('./search');
 const segments = require('./segments');
 const upsert = require('./transforms/inbound/upsert_tables');
+const appendTransactionSummary = require('./transforms/appendTransactionSummary');
 
 module.exports = {
   metadata,
   schema,
   transforms: {
     upsert,
+    appendTransactionSummary,
   },
   search,
   segments,

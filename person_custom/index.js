@@ -7,10 +7,12 @@ const metadata = {
 };
 
 const upsert = require('./transforms/inbound/upsert_tables');
+const appendRemoteId = require('./transforms/appendRemoteId');
 
 module.exports = {
   metadata,
   transforms: {
     upsert,
+    appendRemoteId,
   },
 };

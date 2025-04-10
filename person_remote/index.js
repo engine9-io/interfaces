@@ -49,11 +49,9 @@ module.exports = {
       },
       transform: ({ batch }) => {
         batch.forEach((data) => {
-          const { remoteIds, ...rest } = data;
-          return {
-            remote_person_id: remoteIds?.[0].id_value,
-            ...rest,
-          };
+          const { remoteIds } = data;
+          data.remote_person_id = remoteIds?.[0].id_value;
+          delete data.remoteIds;
         });
       },
     },

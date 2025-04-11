@@ -3,7 +3,6 @@ const { createHash } = require('node:crypto');
 module.exports = {
   type: 'id',
   async transform({ batch }) {
-    const ids = [];
     batch.forEach((e) => {
       e.identifiers = e.identifiers || [];
       if (e.email) {
@@ -22,7 +21,5 @@ module.exports = {
         e.email_hash_v1 = value;
       }
     });
-
-    return ids;
   },
 };

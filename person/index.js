@@ -8,9 +8,11 @@ const metadata = {
 
 const schema = require('./schema');
 const upsert = require('./transforms/inbound/upsert_tables');
+const simpleMap = require('./transforms/simpleMap');
 
 const transforms = {
   upsert,
+  simpleMap,
 };
 
 module.exports = {

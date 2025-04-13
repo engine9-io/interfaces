@@ -13,16 +13,16 @@ module.exports = {
   metadata,
   schema,
   search: {
-    allUsers: {
+    all: {
       form: {},
       name: 'All remote people',
-      valuesToEQL: (values) => ({
+      optionsToEQL: (options) => ({
         table: 'person_identifier',
         columns: ['person_id'],
         joins: [
           {
             table: 'input',
-            join_eql: `source_input_id=input.id AND input.plugin_id='${values.pluginId}'`,
+            join_eql: `source_input_id=input.id AND input.plugin_id='${options.pluginId}'`,
           },
         ],
         conditions: [

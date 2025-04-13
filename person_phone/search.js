@@ -18,8 +18,8 @@ module.exports = {
       },
     },
     /* map from provided user data into an EQL structure */
-    valuesToEQL(values) {
-      const { phoneMatch } = values;
+    optionsToEQL(options) {
+      const { phoneMatch } = options;
       return {
         table: 'person_phone',
         conditions: [{

@@ -1,6 +1,14 @@
 module.exports = {
-  searchForm: {
-    phones: {
+  all: {
+    form: {
+    },
+    optionsToEQL: () => ({
+      table: 'transaction',
+      columns: ['person_id'],
+    }),
+  },
+  minimum: {
+    form: {
       title: 'Transactions',
       type: 'object',
       properties: {
@@ -15,22 +23,12 @@ module.exports = {
 
       ],
     },
-  },
-  /* map from data coming from a filter to an include/exclude stye filter */
-  searchFormToEQL(data) {
-    const { phones } = data;
-    const { phoneMatch } = phones;
-    return {
-      table: 'person_phone',
-      conditions: [{
-        type: 'LIKE',
-        values: [{
-          ref: { column: 'phone' },
-        }, {
-          value: { value: phoneMatch },
-        }],
-      }],
-
-    };
+    optionsToEQL: (options) => ({
+      table: 'transaction',
+      columns: ['person_id'],
+      conditions: [
+        `amount>=${parseFloat(options.amount)}`,
+      ],
+    }),
   },
 };

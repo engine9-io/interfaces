@@ -68,7 +68,7 @@ module.exports = {
           return a;
         }, {});
         batch.forEach((data) => {
-          data.remote_person_id = idMap[data.person_id]?.[0]?.id_value || null;
+          data.remote_person_id = idMap[data.person_id] || null;
         });
       },
     },

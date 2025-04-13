@@ -64,7 +64,7 @@ module.exports = {
         const idMap = remoteIds.reduce((a, b) => {
           if (pluginId !== b.plugin_id) return a;
           // quick lookup map
-          a[b.person_id] = (a[b.person_id] || []).concat(b.split('.').pop());
+          a[b.person_id] = (a[b.person_id] || []).concat(b.id_value.split('.').pop());
           return a;
         }, {});
         batch.forEach((data) => {

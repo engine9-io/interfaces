@@ -43,7 +43,7 @@ module.exports = {
         }
         record.id = matchingAddress.id;
       } else {
-        record.source_input_id = record.input_id;
+        record.source_input_id = o.input_id;
       }
       tablesToUpsert.person_address.push(record);
     });

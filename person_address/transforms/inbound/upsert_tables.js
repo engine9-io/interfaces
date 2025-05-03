@@ -34,6 +34,7 @@ module.exports = {
         postal_code: o.postal_code,
         country: o.country || 'US',
         subscription_status: 'Not Subscribed',
+        source_input_id: o.input_id,
       };
 
       if (matchingAddress) {
@@ -42,8 +43,7 @@ module.exports = {
           record.subscription_status = 'Unsubscribed';
         }
         record.id = matchingAddress.id;
-      } else {
-        record.source_input_id = o.input_id;
+        record.source_input_id = matchingAddress.source_input_id;// keep this the same
       }
       tablesToUpsert.person_address.push(record);
     });

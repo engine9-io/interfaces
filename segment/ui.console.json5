@@ -79,7 +79,7 @@
                 properties: {
                   type: { type: 'string', title: 'Type'},
                   name: { type: 'string', title: 'Name'},
-                  source_plugin_id: { type: 'string', title: 'Source Plugin ID'},
+                  plugin_id: { type: 'string', title: 'Source Plugin ID'},
                   remote_segment_id: { type: 'string', title: 'Remote Segment ID'},
                   build_mechanism: { type: 'string', title: 'Mechanism', default:'static'},
                   build_schedule: { type: 'string', title: 'Build Schedule'},

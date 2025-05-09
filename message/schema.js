@@ -12,7 +12,7 @@ module.exports = {
         primary_source_code: { type: 'string', length: 180 },
         primary_source_code_override: { type: 'string', length: 180 },
         final_primary_source_code: { type: 'string', length: 180 },
-        source_plugin_id: 'id_uuid', // can't be null, must have a value
+        plugin_id: 'id_uuid', // can't be null, must have a value
         source_remote_id: 'string',
         source_submodule: 'string',
         created_at: 'created_at',
@@ -29,7 +29,7 @@ module.exports = {
         id: 'id',
         campaign_id: 'foreign_id',
         name: 'string',
-        source_plugin_id: 'id_uuid', // can't be null, must have a value
+        plugin_id: 'id_uuid', // can't be null, must have a value
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
         created_at: 'created_at',
@@ -37,7 +37,7 @@ module.exports = {
       },
       indexes: [
         { columns: ['campaign_id'] },
-        { columns: ['source_plugin_id', 'remote_message_set_id'], unique: true },
+        { columns: ['plugin_id', 'remote_message_set_id'], unique: true },
       ],
     },
     {
@@ -46,14 +46,14 @@ module.exports = {
         id: 'id',
         name: 'string',
         channel: 'string',
-        source_plugin_id: 'id_uuid', // can't be null, must have a value
+        plugin_id: 'id_uuid', // can't be null, must have a value
         remote_campaign_id: 'string',
         remote_campaign_name: 'string',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },
       indexes: [
-        { columns: ['source_plugin_id', 'remote_campaign_id'], unique: true },
+        { columns: ['plugin_id', 'remote_campaign_id'], unique: true },
       ],
     },
     {
@@ -103,7 +103,7 @@ module.exports = {
         name: { eql: 'message.name' },
         status: { eql: 'message.status' },
         publish_date: { eql: 'message.publish_date' },
-        source_plugin_id: { eql: 'message.source_plugin_id' },
+        plugin_id: { eql: 'message.plugin_id' },
         source_remote_id: { eql: 'message.source_remote_id' },
         source_submodule: { eql: 'message.source_submodule' },
         final_primary_source_code: { eql: 'message.final_primary_source_code' },

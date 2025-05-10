@@ -12,7 +12,6 @@ module.exports = {
         primary_source_code: { type: 'string', length: 180 },
         primary_source_code_override: { type: 'string', length: 180 },
         final_primary_source_code: { type: 'string', length: 180 },
-        plugin_id: 'id_uuid', // can't be null, must have a value
         source_remote_id: 'string',
         source_submodule: 'string',
         created_at: 'created_at',

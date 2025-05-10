@@ -29,7 +29,6 @@ module.exports = {
         id: 'id',
         campaign_id: 'foreign_id',
         name: 'string',
-        plugin_id: 'id_uuid', // can't be null, must have a value
         remote_message_set_id: 'string',
         remote_message_set_name: 'string',
         created_at: 'created_at',

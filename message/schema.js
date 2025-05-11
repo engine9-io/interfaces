@@ -34,8 +34,7 @@ module.exports = {
         modified_at: 'modified_at',
       },
       indexes: [
-        { columns: ['campaign_id'] },
-        { columns: ['plugin_id', 'remote_message_set_id'], unique: true },
+        { columns: ['campaign_id', 'remote_message_set_id'], unique: true },
       ],
     },
     {
@@ -88,20 +87,32 @@ module.exports = {
       joins: [{
         table: 'message_statistics',
         join_eql: 'message.id = message_statistics.message_id',
+        type: 'left',
       },
       {
         table: 'message_content',
         join_eql: 'message.id = message_content.message_id',
+        type: 'left',
+      },
+      {
+        table: 'message_set',
+        join_eql: 'message.message_set_id = message_set.id',
+        type: 'left',
+      },
+      {
+        table: 'campaign',
+        join_eql: 'message_set.campaign_id = campaign.id',
+        type: 'left',
       },
       ],
       columns: {
         id: { eql: 'message.id' },
-        message_set_id: { eql: 'message.id' },
+        message_set_id: { eql: 'message_set.id' },
         channel: { eql: 'message.channel' },
         name: { eql: 'message.name' },
         status: { eql: 'message.status' },
         publish_date: { eql: 'message.publish_date' },
-        plugin_id: { eql: 'message.plugin_id' },
+        plugin_id: { eql: 'campaign.plugin_id' },
         source_remote_id: { eql: 'message.source_remote_id' },
         source_submodule: { eql: 'message.source_submodule' },
         final_primary_source_code: { eql: 'message.final_primary_source_code' },

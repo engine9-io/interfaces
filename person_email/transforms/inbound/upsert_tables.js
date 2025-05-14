@@ -5,9 +5,10 @@ module.exports = {
     tablesToUpsert: { path: 'sql.tables.upsert' },
   },
   type: 'upsert',
-  async transform({
-    batch, databaseEmails, tablesToUpsert,
-  }) {
+  async transform(props) {
+    const {
+      batch, databaseEmails, tablesToUpsert,
+    } = props;
     if (batch.length === 0) return;
 
     batch.forEach((o) => {

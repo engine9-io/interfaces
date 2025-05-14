@@ -7,8 +7,12 @@ const metadata = {
 };
 
 const schema = require('./schema');
+const upsert = require('./transforms/inbound/upsert_tables');
 
 module.exports = {
   metadata,
   schema,
+  transforms: {
+    upsert,
+  },
 };

@@ -1,4 +1,4 @@
-const { uuidIsValid } = require('@engine9/packet-tools');
+const { uuidIsValid } = require('@engine9-io/input-tools');
 
 module.exports = {
   type: 'id',

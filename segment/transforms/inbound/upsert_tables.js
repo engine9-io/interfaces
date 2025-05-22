@@ -1,15 +1,22 @@
 module.exports = {
   bindings: {
     tablesToUpsert: { path: 'sql.tables.upsert' },
+    uuidIsValid: { path: '@engine9-io/input-tools:uuidIsValid' },
   },
-  async transform({ batch, tablesToUpsert }) {
+  async transform({
+    batch, tablesToUpsert, uuidIsValid, options,
+  }) {
+    const { segmentIds } = options;
+    const globalSegments = String(segmentIds || '').split(',').map((d) => d.trim()).filter(Boolean);
     tablesToUpsert.person_segment = tablesToUpsert.person_segment || [];
     batch.forEach((o) => {
-      if (!o.segment_ids) return;
-      const segmentIds = String(o.segment_ids || '').split(',').map((d) => d.trim()).filter(Boolean);
-      if (segmentIds.length === 0) return;
+      const localSegmentIds = String(o.segment_ids || '').split(',').map((d) => d.trim()).filter(Boolean);
+      const allSegmentIds = [].concat(globalSegments).concat(localSegmentIds);
+      if (allSegmentIds.length === 0) return;
+      const invalid = allSegmentIds.filter((uuid) => !uuidIsValid(uuid));
+      if (invalid.length > 0) throw new Error(`There are some invalid segment_ids:${invalid.join(',')}`);
 
-      segmentIds.forEach((sid) => tablesToUpsert.person_segment.push(
+      allSegmentIds.forEach((sid) => tablesToUpsert.person_segment.push(
         {
           id: null,
           person_id: o.person_id,

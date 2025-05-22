@@ -33,8 +33,7 @@ module.exports = {
       },
       indexes: [],
     },
-    /* //tbd whether we use this or not, or rely on the
-    // file input structure
+    // Used for some smaller segments, and a cache of segments
     {
       name: 'person_segment',
       columns: {
@@ -42,6 +41,10 @@ module.exports = {
         person_id: 'person_id',
         segment_id: 'foreign_uuid',
       },
-    }, */
+      indexes: [
+        { columns: 'segment_id,person_id', unique: true },
+        { columns: 'person_id' },
+      ],
+    },
   ],
 };

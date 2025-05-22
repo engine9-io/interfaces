@@ -1,4 +1,4 @@
-const { getEntryTypeId, getTimelineEntryUUID } = require('@engine9/packet-tools');
+const { getEntryTypeId, getTimelineEntryUUID } = require('@engine9-io/input-tools');
 
 /* appends a recurring int if recurs is specified */
 function appendRecursId(d) {

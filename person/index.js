@@ -1,5 +1,5 @@
 const metadata = {
-  name: '@engine9-io/engine9-interfaces/person',
+  name: '@engine9-io/interfaces/person',
   version: '1.0.0',
   schemas: [
     'schema.js',

@@ -1,5 +1,5 @@
 const metadata = {
-  name: '@engine9-io/engine9-interfaces/import',
+  name: '@engine9-io/interfaces/import',
   version: '1.0.0',
 };
 

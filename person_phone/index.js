@@ -1,8 +1,8 @@
 const metadata = {
-  name: '@engine9-io/engine9-interfaces/person_email',
+  name: '@engine9-io/interfaces/person_email',
   version: '1.0.0',
   dependencies: {
-    '@engine9-io/engine9-interfaces/person': '>1.0.0',
+    '@engine9-io/interfaces/person': '>1.0.0',
   },
 };
 

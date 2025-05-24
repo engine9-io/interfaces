@@ -1,5 +1,5 @@
 const metadata = {
-  name: '@engine9-io/engine9-interfaces/plugin',
+  name: '@engine9-io/interfaces/plugin',
   version: '1.0.0',
 };
 

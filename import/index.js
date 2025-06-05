@@ -3,6 +3,11 @@ const metadata = {
   version: '1.0.0',
 };
 
+const append = require('./transforms/append');
+
 module.exports = {
   metadata,
+  transforms: {
+    append,
+  },
 };

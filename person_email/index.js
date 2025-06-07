@@ -10,6 +10,7 @@ const schema = require('./schema');
 const id = require('./transforms/inbound/extract_identifiers');
 const upsert = require('./transforms/inbound/upsert_tables');
 const search = require('./search');
+const appendEmail = require('./transforms/outbound/appendEmail');
 
 module.exports = {
   metadata,
@@ -17,6 +18,7 @@ module.exports = {
   transforms: {
     id,
     upsert,
+    appendEmail,
   },
   search,
 };

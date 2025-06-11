@@ -9,10 +9,12 @@ const metadata = {
 const schema = require('./schema');
 const upsert = require('./transforms/inbound/upsert_tables');
 const simpleMap = require('./transforms/simpleMap');
+const appendName = require('./transforms/outbound/appendName');
 
 const transforms = {
   upsert,
   simpleMap,
+  appendName,
 };
 
 module.exports = {

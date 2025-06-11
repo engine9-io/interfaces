@@ -8,6 +8,7 @@ module.exports = {
         columns: [
           'person_id',
           'email',
+          'subscription_status',
         ],
         lookup: ['person_id'],
         conditions: [
@@ -16,8 +17,11 @@ module.exports = {
       },
     },
   },
-  transform: ({ batch, emails }) => {
-    const emailMap = emails.reduce((a, b) => {
+  transform: ({ batch, emails, options = {} }) => {
+    const { subscriptionStatus } = options;
+    let filter = () => {};
+    if (subscriptionStatus) filter = (d) => d.subscription_status === subscriptionStatus;
+    const emailMap = emails.filter(filter).reduce((a, b) => {
       a[b.person_id] = a[b.person_id] || b.email;
       return a;
     }, {});

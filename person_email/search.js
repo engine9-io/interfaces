@@ -8,8 +8,13 @@ module.exports = {
           emailMatch: {
             type: 'string',
           },
-          subscription_status: {
+          subscriptionStatus: {
             type: 'string',
+            enum: [
+              'Not Subscribed',
+              'Subscribed',
+              'Unsubscribed',
+            ],
           },
         },
         required: [
@@ -19,7 +24,7 @@ module.exports = {
     },
     /* map from provided user data into an EQL structure */
     optionsToEQL(options) {
-      const { emailMatch, subscription_status: status } = options;
+      const { emailMatch, subscriptionStatus } = options;
       const conditions = [];
       if (emailMatch) {
         conditions.push({
@@ -31,13 +36,13 @@ module.exports = {
           }],
         });
       }
-      if (status) {
+      if (subscriptionStatus) {
         conditions.push({
           type: 'EQUALS',
           values: [{
             ref: { column: 'subscription_status' },
           }, {
-            value: { value: status },
+            value: { value: subscriptionStatus },
           }],
         });
       }

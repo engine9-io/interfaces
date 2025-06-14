@@ -87,7 +87,7 @@ module.exports = {
         largest_date: largest.ts || null,
         largest_amount: largest.amount || null,
         smallest_id: smallest.id || null,
-        smallets_date: smallest.ts || null,
+        smallest_date: smallest.ts || null,
         smallest_amount: smallest.amount || null,
         first_recurring_id: (recurring[0] || {}).id || null,
         first_recurring_date: (recurring[0] || {}).ts || null,

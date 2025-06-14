@@ -21,4 +21,33 @@ module.exports = {
   metadata,
   schema,
   transforms,
+  search: {
+    ids: {
+      form: {
+        emails: {
+          title: 'Ids',
+          type: 'object',
+          properties: {
+            ids: {
+              type: 'string',
+            },
+          },
+        },
+      },
+      optionsToEQL: (options) => {
+        const { ids } = options;
+        let arr = ids;
+        if (typeof ids === 'string')arr = ids.split(',');
+        if (arr.length === 0) arr = [0];
+        return {
+          table: 'person',
+          columns: ['id'],
+          conditions: [
+            { eql: `id in (${arr.map((p) => parseInt(p, 10)).join(',')})` },
+          ],
+        };
+      },
+    },
+  },
+
 };

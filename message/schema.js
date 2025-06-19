@@ -36,6 +36,7 @@ module.exports = {
         default_content: 'json',
         default_variables: 'json',
         default_targeting: 'json',
+        sequencing: 'json', // sequence of messages
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

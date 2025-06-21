@@ -34,9 +34,9 @@ module.exports = {
         message_template_id: 'foreign_uuid',
         type: 'string',
         source_code_format: 'string',
-        default_content: 'json',
+        // default_content: 'json', //unused?
         default_variables: 'json',
-        default_targeting: 'json',
+        targeting: 'json',
         sequencing: 'json', // sequence of messages
         created_at: 'created_at',
         modified_at: 'modified_at',

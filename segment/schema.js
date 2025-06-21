@@ -31,7 +31,11 @@ module.exports = {
         created_at: 'created_at',
         modified_at: 'modified_at',
       },
-      indexes: [],
+      indexes: [
+        { columns: 'id', primary: true },
+        // if there is a remote_segment_id, it should be unique for the plugin
+        { columns: ['plugin_id', 'remote_segment_id'], unique: true },
+      ],
     },
     // Used for some smaller segments, and a cache of segments
     {

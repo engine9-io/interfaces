@@ -21,4 +21,21 @@ module.exports = {
     appendEmail,
   },
   search,
+  segments: {
+    subscribed: {
+      name: 'People with Subscribed Email',
+      search: {
+        include: [
+          {
+            path: 'local$@engine9-io/interfaces/person_email:search:emails',
+            options: {
+              subscriptionStatus: 'Subscribed',
+            },
+          },
+        ],
+        exclude: [
+        ],
+      },
+    },
+  },
 };

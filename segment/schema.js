@@ -9,16 +9,16 @@ module.exports = {
         legacy_id: 'int',
         category: 'string', // A arbitrary type, user facing, not to be used for logic
         name: 'string',
-        query: 'json',
+        search: 'json',
         build_type: {
           type: 'enum',
           nullable: false,
           default_value: 'query',
           values: [
-            'query', // built by the query
-            'scheduled_query', // built on a schedule by the query
+            'search', // built by the defined search
+            'scheduled_search', // built on a schedule by the search
             'remote_count', // no person records, just counts, pulled from remote site
-            'remote', // pulled from remote site
+            'remote', // pulled from remote plugin site
             'manual', // created outside normal processing
           ],
         },

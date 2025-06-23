@@ -13,7 +13,7 @@ module.exports = {
         build_type: {
           type: 'enum',
           nullable: false,
-          default_value: 'query',
+          default_value: 'search',
           values: [
             'search', // built by the defined search
             'scheduled_search', // built on a schedule by the search

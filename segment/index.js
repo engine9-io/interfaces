@@ -7,11 +7,13 @@ const metadata = {
 };
 
 const schema = require('./schema');
+const search = require('./search');
 const upsert = require('./transforms/inbound/upsert_tables');
 
 module.exports = {
   metadata,
   schema,
+  search,
   transforms: {
     upsert,
   },

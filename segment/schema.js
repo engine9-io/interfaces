@@ -25,6 +25,7 @@ module.exports = {
         build_schedule: 'string',
         build_status: 'string',
         build_status_modified_at: 'modified_at',
+        build_table: 'string',
         last_built: 'datetime',
         people: 'int', // engine9 count
         reported_people: 'int', // reported by outside parties

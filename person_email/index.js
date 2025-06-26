@@ -25,15 +25,13 @@ module.exports = {
     subscribed: {
       name: 'People with Subscribed Email',
       search: {
-        include: [
+        allOf: [
           {
             path: 'local$@engine9-io/interfaces/person_email:search:emails',
             options: {
               subscriptionStatus: 'Subscribed',
             },
           },
-        ],
-        exclude: [
         ],
       },
     },

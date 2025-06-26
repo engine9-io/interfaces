@@ -60,7 +60,9 @@ module.exports = {
           },
         },
       },
-      transform: ({ batch, remoteIds, pluginId }) => {
+      transform: (opts) => {
+        const { batch, remoteIds, options } = opts;
+        const { pluginId } = options;
         const idMap = remoteIds.reduce((a, b) => {
           if (pluginId !== b.plugin_id) return a;
           // quick lookup map

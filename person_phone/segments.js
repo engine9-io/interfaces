@@ -2,7 +2,7 @@ module.exports = [
   {
     name: 'Textable People',
     search: {
-      allOf: [
+      and: [
         {
           table: 'person_phone',
           conditions: [{

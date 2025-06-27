@@ -2,7 +2,7 @@ module.exports = [
   {
     name: 'Customers',
     search: {
-      allOf: [
+      and: [
         {
           table: 'transaction',
         },

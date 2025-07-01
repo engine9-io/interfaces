@@ -29,9 +29,7 @@ module.exports = {
         throw new Error(`Cannot update emails, there are 2 database entries for person_id ${o.person_id} with email ${email}`);
       }
       let status = o.email_subscription_status || o.subscription_status;
-      if (lcEmail.startsWith('caesar')) {
-        console.log('testing');
-      }
+
       if (personEmails[0]) {
         // if it's explicitly set, then update it, otherwise set it to what it was before
         status = status || personEmails[0].subscription_status;
@@ -42,6 +40,7 @@ module.exports = {
           original: personEmails[0],
         });
       } else {
+        status = status || 'Subscribed'; // Default subscribed
         tablesToUpsert.person_email.push({
           id: null,
           person_id: o.person_id,

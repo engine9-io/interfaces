@@ -22,29 +22,40 @@ module.exports = {
   schema,
   transforms,
   search: {
-    ids: {
+    person: {
       form: {
-        emails: {
-          title: 'Ids',
-          type: 'object',
-          properties: {
-            ids: {
-              type: 'string',
-            },
-          },
+        ids: {
+          title: 'Person Ids (comma delimited)',
+          type: 'string',
+        },
+        givenName: {
+          title: 'First Name',
+          type: 'string',
+        },
+        familyName: {
+          title: 'Last Name',
+          type: 'string',
         },
       },
       optionsToEQL: (options) => {
-        const { ids } = options;
-        let arr = ids;
-        if (typeof ids === 'string')arr = ids.split(',');
-        if (arr.length === 0) arr = [0];
+        const { ids, givenName = '', familyName = '' } = options;
+        const conditions = [];
+        if (ids) {
+          let arr = ids || '';
+          if (typeof ids === 'string')arr = ids.split(',');
+          if (arr.length === 0) arr = [0];
+          conditions.push([
+            { eql: `id in (${arr.map((p) => parseInt(p, 10)).join(',')})` },
+          ]);
+        }
+
+        if (givenName.length > 0) conditions.push({ eql: `given_name like '${givenName}'` });
+        if (familyName.length > 0) conditions.push({ eql: `family_name like '${familyName}'` });
+
         return {
           table: 'person',
           columns: ['id'],
-          conditions: [
-            { eql: `id in (${arr.map((p) => parseInt(p, 10)).join(',')})` },
-          ],
+          conditions,
         };
       },
     },

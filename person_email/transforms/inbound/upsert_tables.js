@@ -28,29 +28,41 @@ module.exports = {
       if (personEmails.length > 1) {
         throw new Error(`Cannot update emails, there are 2 database entries for person_id ${o.person_id} with email ${email}`);
       }
-
+      let status = o.email_subscription_status || o.subscription_status;
+      if (lcEmail.startsWith('caesar')) {
+        console.log('testing');
+      }
       if (personEmails[0]) {
-        tablesToUpsert.person_email.push({ ...personEmails[0], ...o, original: personEmails[0] });
+        // if it's explicitly set, then update it, otherwise set it to what it was before
+        status = status || personEmails[0].subscription_status;
+        tablesToUpsert.person_email.push({
+          ...personEmails[0],
+          ...o,
+          subscription_status: status,
+          original: personEmails[0],
+        });
       } else {
         tablesToUpsert.person_email.push({
           id: null,
           person_id: o.person_id,
           email,
-          subscription_status: o.subscription_status || 'Subscribed',
+          subscription_status: status,
           ...o,
           source_input_id: o.input_id,
         });
       }
       // IF an unsubscribe, we need to update the subscription status for ALL related emails,
       // including new ones
-      if (o.subscription_status === 'Unsubscribed') {
+      if (status === 'Unsubscribed') {
         matchingEmails.forEach((original) => {
           if (original.subscription_status !== 'Unsubscribed)') {
             tablesToUpsert.person_email.push({ ...original, subscription_status: 'Unsubscribed', original });
           }
         });
         tablesToUpsert.person_email.filter((d) => d.id === null && d.email === email)
-          .forEach((d) => { d.subscription_status = 'Unsubscribed'; });
+          .forEach((d) => {
+            d.subscription_status = 'Unsubscribed';
+          });
       }
     });
   },

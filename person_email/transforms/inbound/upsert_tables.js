@@ -31,7 +31,7 @@ module.exports = {
       let status = o.email_subscription_status || o.subscription_status;
 
       if (personEmails[0]) {
-        // if it's explicitly set, then update it, otherwise set it to what it was before
+        // if it's explicitly specified, then update it, otherwise set it to what it was before
         status = status || personEmails[0].subscription_status;
         tablesToUpsert.person_email.push({
           ...personEmails[0],

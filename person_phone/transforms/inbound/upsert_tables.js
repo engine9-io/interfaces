@@ -28,7 +28,7 @@ module.exports = {
           id: null,
           person_id: o.person_id,
           phone: o.phone,
-          subscription_status: o.phone_subscription_status || 'Subscribed',
+          sms_status: o.sms_status || 'Subscribed',
           ...o,
           source_input_id: o.input_id,
         });

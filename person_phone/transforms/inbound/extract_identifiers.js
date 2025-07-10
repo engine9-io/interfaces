@@ -28,6 +28,10 @@ module.exports = {
 
         e.phone = phone;
         e.phone_hash_v1 = value;
+      } else if (e.phone_hash_v1) {
+        e.identifiers.push({
+          path: 'person_phone', type: 'phone_hash_v1', value: e.phone_hash_v1,
+        });
       }
     });
 

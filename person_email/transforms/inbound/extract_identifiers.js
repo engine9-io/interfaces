@@ -19,6 +19,10 @@ module.exports = {
         });
 
         e.email_hash_v1 = value;
+      } else if (e.email_hash_v1) {
+        e.identifiers.push({
+          path: 'person_email', type: 'email_hash_v1', value: e.email_hash_v1,
+        });
       }
     });
   },

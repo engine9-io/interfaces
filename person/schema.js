@@ -32,7 +32,9 @@ module.exports = {
       indexes: [
         { columns: ['person_id'] },
         { columns: ['id_value'] },
-        { columns: ['source_input_id'] }, // useful for finding anyone related to an input
+        // useful for finding anyone related to an input
+        // same input can't have the same id value twice
+        { columns: ['source_input_id', 'id_value', 'person_id'], unique: true },
 
       ],
     },

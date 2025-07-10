@@ -69,6 +69,7 @@ module.exports = {
         remote_data: 'json',
         variables: 'json',
         targeting: 'json',
+        estimated_targets: 'int',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

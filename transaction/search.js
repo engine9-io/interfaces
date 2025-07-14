@@ -13,7 +13,7 @@ module.exports = {
       const { pluginId } = options;
       const conditions = [];
       if (pluginId) {
-        conditions.push(`plugin_id='${pluginId}'`);
+        conditions.push(`input.plugin_id='${pluginId}'`);
       }
 
       return {

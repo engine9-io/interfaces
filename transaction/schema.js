@@ -19,6 +19,11 @@ module.exports = {
         },
         recurring_number: 'int',
       },
+      indexes: [
+        { columns: 'id', primary: true },
+        { columns: 'ts' },
+        { columns: 'person_id' },
+      ],
     },
   ],
 };

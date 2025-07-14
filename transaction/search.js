@@ -1,11 +1,31 @@
 module.exports = {
   all: {
-    form: {
+    title: 'Transactions',
+    type: 'object',
+    properties: {
+      pluginId: {
+        type: 'string',
+      },
     },
-    optionsToEQL: () => ({
+  },
+  optionsToEQL: (options) => {
+    const { pluginId } = options;
+    const conditions = [];
+    if (pluginId) {
+      conditions.push(`plugin_id='${pluginId}'`);
+    }
+
+    return {
       table: 'transaction',
+      joins: [
+        {
+          table: 'input',
+          join_eql: 'transaction.input_id=input.id',
+        },
+      ],
       columns: ['person_id'],
-    }),
+      conditions,
+    };
   },
   minimum: {
     form: {

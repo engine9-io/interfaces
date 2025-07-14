@@ -1,31 +1,33 @@
 module.exports = {
   all: {
-    title: 'Transactions',
-    type: 'object',
-    properties: {
-      pluginId: {
-        type: 'string',
+    form: {
+      title: 'Transactions',
+      type: 'object',
+      properties: {
+        pluginId: {
+          type: 'string',
+        },
       },
     },
-  },
-  optionsToEQL: (options) => {
-    const { pluginId } = options;
-    const conditions = [];
-    if (pluginId) {
-      conditions.push(`plugin_id='${pluginId}'`);
-    }
+    optionsToEQL: (options) => {
+      const { pluginId } = options;
+      const conditions = [];
+      if (pluginId) {
+        conditions.push(`plugin_id='${pluginId}'`);
+      }
 
-    return {
-      table: 'transaction',
-      joins: [
-        {
-          table: 'input',
-          join_eql: 'transaction.input_id=input.id',
-        },
-      ],
-      columns: ['person_id'],
-      conditions,
-    };
+      return {
+        table: 'transaction',
+        joins: [
+          {
+            table: 'input',
+            join_eql: 'transaction.input_id=input.id',
+          },
+        ],
+        columns: ['person_id'],
+        conditions,
+      };
+    },
   },
   minimum: {
     form: {

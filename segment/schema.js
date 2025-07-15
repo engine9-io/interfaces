@@ -8,6 +8,7 @@ module.exports = {
         remote_segment_id: 'string',
         legacy_id: 'int',
         category: 'string', // A arbitrary type, user facing, not to be used for logic
+        definition_path: 'string', // a definition file path, will be used for configuring
         name: 'string',
         search: 'json',
         build_type: {

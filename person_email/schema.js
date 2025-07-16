@@ -28,7 +28,7 @@ module.exports = {
         },
         confirmation_status: {
           type: 'string',
-          nullable: false,
+          nullable: true,
           default_value: 'Not Confirmed',
           values: [
             'Not Confirmed',

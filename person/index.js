@@ -44,9 +44,7 @@ module.exports = {
           let arr = ids || '';
           if (typeof ids === 'string')arr = ids.split(',');
           if (arr.length === 0) arr = [0];
-          conditions.push([
-            { eql: `id in (${arr.map((p) => parseInt(p, 10)).join(',')})` },
-          ]);
+          conditions.push({ eql: `id in (${arr.map((p) => parseInt(p, 10)).join(',')})` });
         }
 
         if (givenName.length > 0) conditions.push({ eql: `given_name like '${givenName}'` });

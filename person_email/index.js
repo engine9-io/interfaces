@@ -11,6 +11,7 @@ const id = require('./transforms/inbound/extract_identifiers');
 const upsert = require('./transforms/inbound/upsert_tables');
 const search = require('./search');
 const appendEmail = require('./transforms/outbound/appendEmail');
+const segments = require('./segments');
 
 module.exports = {
   metadata,
@@ -21,19 +22,5 @@ module.exports = {
     appendEmail,
   },
   search,
-  segments: {
-    subscribed: {
-      name: 'People with Subscribed Email',
-      search: {
-        and: [
-          {
-            path: 'local$@engine9-io/interfaces/person_email:search:emails',
-            options: {
-              subscriptionStatus: 'Subscribed',
-            },
-          },
-        ],
-      },
-    },
-  },
+  segments,
 };

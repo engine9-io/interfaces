@@ -25,18 +25,10 @@ module.exports = {
     /* map from provided user data into an EQL structure */
     optionsToEQL(options) {
       const { emailMatch, subscriptionStatus } = options;
+      let text = 'Has an email';
       const conditions = [];
-      if (emailMatch) {
-        conditions.push({
-          type: 'LIKE',
-          values: [{
-            ref: { column: 'email' },
-          }, {
-            value: { value: emailMatch },
-          }],
-        });
-      }
       if (subscriptionStatus) {
+        text = `Has a ${subscriptionStatus.toLowerCase()} email`;
         conditions.push({
           type: 'EQUALS',
           values: [{
@@ -46,9 +38,24 @@ module.exports = {
           }],
         });
       }
+      if (emailMatch) {
+        text += ` that matches ${emailMatch}`;
+        conditions.push({
+          type: 'LIKE',
+          values: [{
+            ref: { column: 'email' },
+          }, {
+            value: { value: emailMatch },
+          }],
+        });
+      }
+
       return {
-        table: 'person_email',
-        conditions,
+        text,
+        eql: {
+          table: 'person_email',
+          conditions,
+        },
       };
     },
   },

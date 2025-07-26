@@ -12,20 +12,25 @@ module.exports = {
     optionsToEQL: (options) => {
       const { pluginId } = options;
       const conditions = [];
+      let text = 'Has any transactions';
       if (pluginId) {
         conditions.push(`input.plugin_id='${pluginId}'`);
+        text += ` from plugin ${pluginId}`;
       }
 
       return {
-        table: 'transaction',
-        joins: [
-          {
-            table: 'input',
-            join_eql: 'transaction.input_id=input.id',
-          },
-        ],
-        columns: ['person_id'],
-        conditions,
+        text,
+        eql: {
+          table: 'transaction',
+          joins: [
+            {
+              table: 'input',
+              join_eql: 'transaction.input_id=input.id',
+            },
+          ],
+          columns: ['person_id'],
+          conditions,
+        },
       };
     },
   },

@@ -35,6 +35,7 @@ module.exports = {
         source_code_format: 'string',
         // default_content: 'json', //unused?
         default_variables: 'json',
+        required_targeting: 'json', // This is set initially, and can't be changed by users
         targeting: 'json',
         sequencing: 'json', // sequence of messages
         created_at: 'created_at',

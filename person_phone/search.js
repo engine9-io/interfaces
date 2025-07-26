@@ -21,15 +21,18 @@ module.exports = {
     optionsToEQL(options) {
       const { phoneMatch } = options;
       return {
-        table: 'person_phone',
-        conditions: [{
-          type: 'LIKE',
-          values: [{
-            ref: { column: 'phone' },
-          }, {
-            value: { value: phoneMatch },
+        text: `Has a phone number that matches ${phoneMatch}`,
+        eql: {
+          table: 'person_phone',
+          conditions: [{
+            type: 'LIKE',
+            values: [{
+              ref: { column: 'phone' },
+            }, {
+              value: { value: phoneMatch },
+            }],
           }],
-        }],
+        },
       };
     },
   },

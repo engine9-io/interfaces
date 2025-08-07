@@ -92,6 +92,19 @@ module.exports = {
       ],
     },
     {
+      name: 'message_queue',
+      columns: {
+        id: 'id',
+        message_id: 'foreign_uuid',
+        publish_info: 'json',
+        created_at: 'created_at',
+        modified_at: 'modified_at',
+      },
+      indexes: [
+        { columns: ['message_id'], unique: true },
+      ],
+    },
+    {
       name: 'message_summary',
       type: 'view',
       table: 'message',

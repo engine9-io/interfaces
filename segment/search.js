@@ -2,7 +2,7 @@ module.exports = {
   segment: {
     form: {
       segments: {
-        title: 'Segments',
+        title: 'Segment',
         type: 'object',
         properties: {
           segmentId: {

@@ -96,7 +96,7 @@ module.exports = {
       columns: {
         id: 'id',
         message_id: 'foreign_uuid',
-        publish_info: 'json',
+        publish_metadata: 'json',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

@@ -97,6 +97,7 @@ module.exports = {
         id: 'id',
         message_id: 'foreign_uuid',
         publish_metadata: 'json',
+        error: 'json',
         created_at: 'created_at',
         modified_at: 'modified_at',
       },

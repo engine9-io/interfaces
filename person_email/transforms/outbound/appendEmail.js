@@ -26,7 +26,8 @@ module.exports = {
       return a;
     }, {});
     batch.forEach((data) => {
-      data.email = emailMap[data.person_id] || null;
+      // keep existing email if there is one
+      data.email = data.email || emailMap[data.person_id] || null;
     });
   },
 };

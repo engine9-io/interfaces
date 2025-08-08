@@ -23,7 +23,8 @@ module.exports = {
       Object.entries(scope.map).forEach(([k, func]) => {
         if (k === '*') {
           Object.assign(out, o);
-        } else {
+        } else if (out[k] === undefined) {
+          // first one wins, specify it first if you want ahead of the '*'
           out[k] = func(o);
         }
       });

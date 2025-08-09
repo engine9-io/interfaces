@@ -11,6 +11,7 @@ const id = require('./transforms/inbound/extract_identifiers');
 const upsert = require('./transforms/inbound/upsert_tables');
 const search = require('./search');
 const appendEmail = require('./transforms/outbound/appendEmail');
+const appendEmailHash = require('./transforms/outbound/appendEmailHash');
 const segments = require('./segments');
 
 module.exports = {
@@ -20,6 +21,7 @@ module.exports = {
     id,
     upsert,
     appendEmail,
+    appendEmailHash,
   },
   search,
   segments,

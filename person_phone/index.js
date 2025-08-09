@@ -11,6 +11,7 @@ const search = require('./search');
 const segments = require('./segments');
 const id = require('./transforms/inbound/extract_identifiers');
 const upsert = require('./transforms/inbound/upsert_tables');
+const appendPhoneHash = require('./transforms/outbound/appendPhoneHash');
 
 module.exports = {
   metadata,
@@ -18,6 +19,7 @@ module.exports = {
   transforms: {
     id,
     upsert,
+    appendPhoneHash,
   },
   search,
   segments,

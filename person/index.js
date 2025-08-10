@@ -24,18 +24,6 @@ module.exports = {
   search: {
     person: {
       form: {
-        ids: {
-          title: 'Person Ids (comma delimited)',
-          type: 'string',
-        },
-        id_gte: {
-          title: 'ID Greater than or equal to',
-          type: 'string',
-        },
-        id_lt: {
-          title: 'ID less than',
-          type: 'string',
-        },
         givenName: {
           title: 'First Name',
           type: 'string',
@@ -43,6 +31,18 @@ module.exports = {
         familyName: {
           title: 'Last Name',
           type: 'string',
+        },
+        ids: {
+          title: 'Person Ids (comma delimited)',
+          type: 'string',
+        },
+        idGreaterThanEqual: {
+          title: 'ID Greater than or equal to',
+          type: 'number',
+        },
+        idLessThan: {
+          title: 'ID less than',
+          type: 'number',
         },
       },
       optionsToEQL: (options) => {

@@ -28,6 +28,14 @@ module.exports = {
           title: 'Person Ids (comma delimited)',
           type: 'string',
         },
+        id_gte: {
+          title: 'ID Greater than or equal to',
+          type: 'string',
+        },
+        id_lt: {
+          title: 'ID less than',
+          type: 'string',
+        },
         givenName: {
           title: 'First Name',
           type: 'string',
@@ -38,22 +46,46 @@ module.exports = {
         },
       },
       optionsToEQL: (options) => {
-        const { ids, givenName = '', familyName = '' } = options;
+        const text = [];
+        const {
+          ids,
+          idGreaterThanEqual,
+          idLessThan,
+          givenName = '', familyName = '',
+        } = options;
         const conditions = [];
         if (ids) {
           let arr = ids || '';
           if (typeof ids === 'string')arr = ids.split(',');
           if (arr.length === 0) arr = [0];
           conditions.push({ eql: `id in (${arr.map((p) => parseInt(p, 10)).join(',')})` });
+          text.push(`Person ID in ${arr.map((p) => parseInt(p, 10)).join(',')}`);
+        }
+        if (idGreaterThanEqual) {
+          conditions.push({ eql: `id>=${idGreaterThanEqual}` });
+          text.push(`Person ID greater or equal to ${idGreaterThanEqual}`);
+        }
+        if (idLessThan) {
+          conditions.push({ eql: `id<${idLessThan}` });
+          text.push(`Person ID less than ${idLessThan}`);
         }
 
-        if (givenName.length > 0) conditions.push({ eql: `given_name like '${givenName}'` });
-        if (familyName.length > 0) conditions.push({ eql: `family_name like '${familyName}'` });
+        if (givenName.length > 0) {
+          text.push(`First name like '${givenName}'`);
+          conditions.push({ eql: `given_name like '${givenName}'` });
+        }
+        if (familyName.length > 0) {
+          text.push(`Last name like '${givenName}'`);
+          conditions.push({ eql: `family_name like '${familyName}'` });
+        }
 
         return {
-          table: 'person',
-          columns: ['id'],
-          conditions,
+          text,
+          eql: {
+            table: 'person',
+            columns: ['id'],
+            conditions,
+          },
         };
       },
     },

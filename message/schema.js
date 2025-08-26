@@ -15,12 +15,9 @@ module.exports = {
         source_remote_id: 'string',
         source_submodule: 'string',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: ['publish_date'] },
-        { columns: ['message_set_id'] },
-      ],
+      indexes: [{ columns: 'id', primary: true }, { columns: ['publish_date'] }, { columns: ['message_set_id'] }]
     },
     {
       name: 'message_set',
@@ -39,11 +36,9 @@ module.exports = {
         targeting: 'json',
         sequencing: 'json', // sequence of messages
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: ['campaign_id', 'remote_message_set_id'], unique: true },
-      ],
+      indexes: [{ columns: ['campaign_id', 'remote_message_set_id'], unique: true }]
     },
     {
       name: 'campaign',
@@ -55,11 +50,9 @@ module.exports = {
         remote_campaign_id: 'string',
         remote_campaign_name: 'string',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: ['plugin_id', 'remote_campaign_id'], unique: true },
-      ],
+      indexes: [{ columns: ['plugin_id', 'remote_campaign_id'], unique: true }]
     },
     {
       name: 'message_content',
@@ -72,11 +65,9 @@ module.exports = {
         targeting: 'json',
         estimated_targets: 'int',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: ['message_id'], unique: true },
-      ],
+      indexes: [{ columns: ['message_id'], unique: true }]
     },
     {
       name: 'message_statistics',
@@ -85,11 +76,9 @@ module.exports = {
         message_id: 'foreign_uuid',
         statistics: 'json',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: ['message_id'], unique: true },
-      ],
+      indexes: [{ columns: ['message_id'], unique: true }]
     },
     {
       name: 'message_queue',
@@ -99,36 +88,35 @@ module.exports = {
         publish_metadata: 'json',
         error: 'json',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: ['message_id'], unique: true },
-      ],
+      indexes: [{ columns: ['message_id'], unique: true }]
     },
     {
       name: 'message_summary',
       type: 'view',
       table: 'message',
-      joins: [{
-        table: 'message_statistics',
-        join_eql: 'message.id = message_statistics.message_id',
-        type: 'left',
-      },
-      {
-        table: 'message_content',
-        join_eql: 'message.id = message_content.message_id',
-        type: 'left',
-      },
-      {
-        table: 'message_set',
-        join_eql: 'message.message_set_id = message_set.id',
-        type: 'left',
-      },
-      {
-        table: 'campaign',
-        join_eql: 'message_set.campaign_id = campaign.id',
-        type: 'left',
-      },
+      joins: [
+        {
+          table: 'message_statistics',
+          join_eql: 'message.id = message_statistics.message_id',
+          type: 'left'
+        },
+        {
+          table: 'message_content',
+          join_eql: 'message.id = message_content.message_id',
+          type: 'left'
+        },
+        {
+          table: 'message_set',
+          join_eql: 'message.message_set_id = message_set.id',
+          type: 'left'
+        },
+        {
+          table: 'campaign',
+          join_eql: 'message_set.campaign_id = campaign.id',
+          type: 'left'
+        }
       ],
       columns: {
         id: { eql: 'message.id' },
@@ -145,8 +133,8 @@ module.exports = {
         remote_data: { eql: 'message_content.remote_data' },
         statistics: { eql: 'message_statistics.statistics' },
         created_at: { eql: 'message.created_at' },
-        modified_at: { eql: 'GREATEST(message.modified_at,message_content.modified_at,message_statistics.modified_at)' },
-      },
+        modified_at: { eql: 'GREATEST(message.modified_at,message_content.modified_at,message_statistics.modified_at)' }
+      }
     },
     {
       name: 'message_template',
@@ -155,9 +143,9 @@ module.exports = {
         name: 'string',
         content: 'json',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [],
-    },
-  ],
+      indexes: [{ columns: 'id', primary: true }]
+    }
+  ]
 };

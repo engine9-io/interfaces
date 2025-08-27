@@ -93,51 +93,6 @@ module.exports = {
       indexes: [{ columns: ['message_id'], unique: true }]
     },
     {
-      name: 'message_summary',
-      type: 'view',
-      table: 'message',
-      joins: [
-        {
-          table: 'message_statistics',
-          join_eql: 'message.id = message_statistics.message_id',
-          type: 'left'
-        },
-        {
-          table: 'message_content',
-          join_eql: 'message.id = message_content.message_id',
-          type: 'left'
-        },
-        {
-          table: 'message_set',
-          join_eql: 'message.message_set_id = message_set.id',
-          type: 'left'
-        },
-        {
-          table: 'campaign',
-          join_eql: 'message_set.campaign_id = campaign.id',
-          type: 'left'
-        }
-      ],
-      columns: {
-        id: { eql: 'message.id' },
-        message_set_id: { eql: 'message_set.id' },
-        channel: { eql: 'message.channel' },
-        name: { eql: 'message.name' },
-        status: { eql: 'message.status' },
-        publish_date: { eql: 'message.publish_date' },
-        plugin_id: { eql: 'campaign.plugin_id' },
-        source_remote_id: { eql: 'message.source_remote_id' },
-        source_submodule: { eql: 'message.source_submodule' },
-        final_primary_source_code: { eql: 'message.final_primary_source_code' },
-        content: { eql: 'message_content.content' },
-        variables: { eql: 'message_content.variables' },
-        remote_data: { eql: 'message_content.remote_data' },
-        statistics: { eql: 'message_statistics.statistics' },
-        created_at: { eql: 'message.created_at' },
-        modified_at: { eql: 'GREATEST(message.modified_at,message_content.modified_at,message_statistics.modified_at)' }
-      }
-    },
-    {
       name: 'message_template',
       columns: {
         id: 'id_uuid',

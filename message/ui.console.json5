@@ -1,39 +1,39 @@
 {
   menu: {
-    "message-menu":{
-          title: 'Messages',
-          icon:'messages',
-          type: 'collapse',
-          children: {
-            campaigns:{
-              title: 'Campaigns',
-              icon:'campaign',
-              url: '/campaign',
-            },
-            /* messages:{
+    'message-menu': {
+      title: 'Messages',
+      icon: 'messages',
+      type: 'collapse',
+      children: {
+        campaigns: {
+          title: 'Campaigns',
+          icon: 'campaign',
+          url: '/campaign'
+        }
+        /* messages:{
               title: 'Messages',
               icon:'message',
               url: '/message',
             },
             */
-          },
-    },
+      }
+    }
   },
   routes: {
-    'campaign':{
+    campaign: {
       layout: 'full_width',
       components: {
-        header:[
+        header: [
           'Campaigns',
           {
-            component:'Button',
-            properties:{
-              icon:'plus',
-              content:'Add Campaign',
+            component: 'Button',
+            properties: {
+              icon: 'plus',
+              content: 'Add Campaign',
               onClick: {
                 action: 'navigate',
-                url: '/campaign/create',
-              },
+                url: '/campaign/create'
+              }
             }
           }
         ],
@@ -47,77 +47,76 @@
                   title: 'Id',
                   dataIndex: 'id',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
                   template: '{{name}}',
-                  width: '40%',
+                  width: '40%'
                 }
               ],
               onRecord: {
                 onClick: {
                   action: 'navigate',
-                  url: '/campaign/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
+                  url: '/campaign/{{record.id}}'
+                }
+              }
+            }
+          }
+        ]
+      }
     },
-    'campaign/create':{
+    'campaign/create': {
       layout: 'full_width',
       components: {
         main: [
           {
-            path:'edit',
+            path: 'edit',
             component: 'RecordForm',
             properties: {
               table: 'campaign',
-              form:{
+              form: {
                 title: 'Create Campaign',
                 type: 'object',
                 required: [],
                 properties: {
-                  name: { type: 'string', title: 'Name', default: '' },
+                  name: { type: 'string', title: 'Name', default: '' }
                 }
               },
-              uiSchema:{
-              },
+              uiSchema: {},
               onSave: {
                 action: 'navigate',
-                url: '/campaign/{{record.id}}',
-              },
-            },
-          },
-        ],
-      },
+                url: '/campaign/{{record.id}}'
+              }
+            }
+          }
+        ]
+      }
     },
-    'campaign/:id/*':{
+    'campaign/:id/*': {
       layout: 'sidebar',
       components: {
         sidebar: {
-          items:[
-            {component:"Title", properties:{content:"Message Sets"}},
+          items: [
+            { component: 'Title', properties: { content: 'Emails' } },
             {
-              component:'Button',
-              properties:{
-                icon:'plus',
-                content:'Add Message Set',
+              component: 'Button',
+              properties: {
+                icon: 'plus',
+                content: 'Add Message Set',
                 onClick: {
                   action: 'object.create',
-                  data:{
-                    type:'message_set',
-                    attributes:{
-                      label:'Messages - {{date "MMMM, yyyy"}}',
-                      campaign_id:'{{parameters.id}}'
+                  data: {
+                    type: 'message_set',
+                    attributes: {
+                      label: 'Messages - {{date "MMMM, yyyy"}}',
+                      campaign_id: '{{parameters.id}}'
                     }
                   },
-                  redirect: '/campaign/{{parameters.id}}/message_set/{{record.id}}',
-                },
+                  redirect: '/campaign/{{parameters.id}}/message_set/{{record.id}}'
+                }
               }
             },
             {
@@ -128,28 +127,28 @@
                 onRecord: {
                   onClick: {
                     action: 'navigate',
-                    url: '/campaign/{{parameters.id}}/message_set/{{record.id}}/',
-                  },
-                },
-              },
-            },
+                    url: '/campaign/{{parameters.id}}/message_set/{{record.id}}/'
+                  }
+                }
+              }
+            }
           ]
         },
         main: [
-          {component:'Title', properties:{content:'Campaign Summary'}},
+          { component: 'Title', properties: { content: 'Campaign Summary' } },
           {
             // 'path':'overview', //no path is the default
             component: 'RecordDisplay',
             properties: {
               table: 'campaign',
               id: '{{parameters.id}}',
-              template:'{{name}}',
-            },
+              template: '{{name}}'
+            }
           }
-        ],
-      },
+        ]
+      }
     },
-    'message':{
+    message: {
       layout: 'full_width',
       components: {
         main: [
@@ -162,34 +161,34 @@
                   title: 'Id',
                   dataIndex: 'id',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Publish Date',
                   dataIndex: 'publish_date',
                   sorter: true,
-                  width: '40%',
+                  width: '40%'
                 },
                 {
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
                   template: '{{name}}',
-                  width: '40%',
+                  width: '40%'
                 }
               ],
               onRecord: {
                 onClick: {
                   action: 'navigate',
-                  url: '/message/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
+                  url: '/message/{{record.id}}'
+                }
+              }
+            }
+          }
+        ]
+      }
     },
-    'message/:id/*':{
+    'message/:id/*': {
       layout: 'sidebar',
       components: {
         sidebar: [
@@ -198,10 +197,8 @@
             properties: {
               table: 'message',
               id: '{{parameters.id}}',
-              components: [
-                '{{name}}',
-              ],
-            },
+              components: ['{{name}}']
+            }
           }
         ],
         main: [
@@ -211,10 +208,8 @@
             properties: {
               table: 'message',
               id: '{{parameters.id}}',
-              components: [
-                '{{name}}',
-              ],
-            },
+              components: ['{{name}}']
+            }
           },
           {
             path: 'source_codes',
@@ -224,17 +219,15 @@
               table: 'message',
               id: '{{parameters.id}}',
               includes: {
-                source_codes:{
-                  table:'source_code'
+                source_codes: {
+                  table: 'source_code'
                 }
               },
-              components: [
-                '{{source_code}}',
-              ],
-            },
-          },
-        ],
-      },
-    },
-  },
+              components: ['{{source_code}}']
+            }
+          }
+        ]
+      }
+    }
+  }
 }

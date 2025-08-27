@@ -130,6 +130,7 @@ module.exports = {
         source_submodule: { eql: 'message.source_submodule' },
         final_primary_source_code: { eql: 'message.final_primary_source_code' },
         content: { eql: 'message_content.content' },
+        variables: { eql: 'message_content.variables' },
         remote_data: { eql: 'message_content.remote_data' },
         statistics: { eql: 'message_statistics.statistics' },
         created_at: { eql: 'message.created_at' },

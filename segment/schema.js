@@ -20,8 +20,10 @@ module.exports = {
             'scheduled_search', // built on a schedule by the search
             'remote_count', // no person records, just counts, pulled from remote site
             'remote', // pulled from remote plugin site
-            'manual', // created outside normal processing
-          ],
+            'list', //static list of people
+            'tag', //static tag -- similar to list, different use cases
+            'manual' // created outside normal processing
+          ]
         },
         build_schedule: 'string',
         build_status: 'string',
@@ -31,13 +33,13 @@ module.exports = {
         people: 'int', // engine9 count
         reported_people: 'int', // reported by outside parties
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
       indexes: [
         { columns: 'id', primary: true },
         // if there is a remote_segment_id, it should be unique for the plugin
-        { columns: ['plugin_id', 'remote_segment_id'], unique: true },
-      ],
+        { columns: ['plugin_id', 'remote_segment_id'], unique: true }
+      ]
     },
     // Used for some smaller segments, and a cache of segments
     {
@@ -45,12 +47,9 @@ module.exports = {
       columns: {
         id: 'id',
         person_id: 'person_id',
-        segment_id: 'foreign_uuid',
+        segment_id: 'foreign_uuid'
       },
-      indexes: [
-        { columns: 'segment_id,person_id', unique: true },
-        { columns: 'person_id' },
-      ],
-    },
-  ],
+      indexes: [{ columns: 'segment_id,person_id', unique: true }, { columns: 'person_id' }]
+    }
+  ]
 };

@@ -45,7 +45,7 @@ module.exports = {
       };
       if (exclude === 'Is not in segment') {
         text = 'Is not in ';
-        o.exclude = true;
+        eql.exclude = true;
       } else {
         text = 'Is in ';
       }

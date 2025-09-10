@@ -20,7 +20,7 @@ module.exports = {
           `Cannot update phone, there are 2 database entries for person_id ${o.person_id} with phone ${o.phone}`
         );
       }
-      const sms_status=o.sms_status || personPhones[0]?.sms_status || 'Subscribed';
+      const sms_status = o.sms_status || personPhones[0]?.sms_status || 'Subscribed';
 
       if (personPhones[0]) {
         tablesToUpsert.person_phone.push({
@@ -34,7 +34,7 @@ module.exports = {
           person_id: o.person_id,
           phone: o.phone,
           ...o,
-          source_input_id: o.input_id
+          source_input_id: o.input_id,
           sms_status
         });
       }

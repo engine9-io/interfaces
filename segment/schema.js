@@ -25,13 +25,13 @@ module.exports = {
         build_type: {
           type: 'enum',
           nullable: false,
-          default_value: 'search',
+          default_value: 'list',
           values: [
+            'list', //static list of people
             'search', // built by the defined search
             'scheduled_search', // built on a schedule by the search
             'remote_count', // no person records, just counts, pulled from remote site
             'remote', // pulled from remote plugin site
-            'list', //static list of people
             'manual' // created outside normal processing
           ]
         },

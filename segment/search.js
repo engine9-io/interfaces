@@ -5,12 +5,6 @@ module.exports = {
         title: 'Segment',
         type: 'object',
         properties: {
-          exclude: {
-            title: 'In/Not In',
-            description: '',
-            type: 'string',
-            enum: ['Is in segment', 'Is not in segment']
-          },
           segmentId: {
             title: 'Segment',
             description: '',
@@ -22,12 +16,11 @@ module.exports = {
     },
     /* map from provided user data into an EQL structure */
     optionsToEQL(options) {
-      const { exclude, segmentId } = options;
-      const conditions = [];
-      let text = '';
-      if (segmentId) {
-        text = ' segment ' + segmentId;
-        conditions.push({
+      const { segmentId } = options;
+
+      let text = ' segment ' + segmentId;
+      const conditions = [
+        {
           type: 'EQUALS',
           values: [
             {
@@ -37,18 +30,14 @@ module.exports = {
               value: { value: segmentId }
             }
           ]
-        });
-      }
+        }
+      ];
+
       const eql = {
         table: 'person_segment',
         conditions
       };
-      if (exclude === 'Is not in segment') {
-        text = 'Is not in ';
-        eql.exclude = true;
-      } else {
-        text = 'Is in ';
-      }
+
       return { text, eql };
     }
   }

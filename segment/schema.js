@@ -1,10 +1,21 @@
 module.exports = {
   tables: [
     {
+      name: 'segment_folder',
+      columns: {
+        id: 'id_uuid',
+        name: 'string',
+        description: 'text',
+        created_at: 'created_at',
+        modified_at: 'modified_at'
+      }
+    },
+    {
       name: 'segment',
       columns: {
         id: 'id_uuid',
         plugin_id: 'id_uuid', // can't be null, must have a value
+        segment_folder_id: 'foreign_uuid',
         remote_segment_id: 'string',
         legacy_id: 'int',
         category: 'string', // A arbitrary type, user facing, not to be used for logic
@@ -21,7 +32,6 @@ module.exports = {
             'remote_count', // no person records, just counts, pulled from remote site
             'remote', // pulled from remote plugin site
             'list', //static list of people
-            'tag', //static tag -- similar to list, different use cases
             'manual' // created outside normal processing
           ]
         },

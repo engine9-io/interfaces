@@ -21,11 +21,15 @@ module.exports = {
         );
       }
       const sms_status = o.sms_status || personPhones[0]?.sms_status || 'Subscribed';
+      const { id, ...rest } = o;
+      if (id) {
+        //this is undoubtedly NOT the ID of the record
+      }
 
       if (personPhones[0]) {
         tablesToUpsert.person_phone.push({
           ...personPhones[0],
-          ...o,
+          ...rest,
           sms_status
         });
       } else {
@@ -33,7 +37,7 @@ module.exports = {
           id: null,
           person_id: o.person_id,
           phone: o.phone,
-          ...o,
+          ...rest,
           source_input_id: o.input_id,
           sms_status
         });

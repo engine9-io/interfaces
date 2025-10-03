@@ -20,6 +20,15 @@ module.exports = {
           `Cannot update phone, there are 2 database entries for person_id ${o.person_id} with phone ${o.phone}`
         );
       }
+      if (
+        o.entry_type === 'SMS_UNSUBSCRIBE' ||
+        o.entry_type === 'SMS_SPAM' ||
+        o.entry_type_id === 34 ||
+        o.entry_type_id === 38
+      ) {
+        if (!o.sms_status) o.sms_status = 'Unsubscribed';
+      }
+
       const sms_status = o.sms_status || personPhones[0]?.sms_status || 'Subscribed';
       const { id, ...rest } = o;
       if (id) {

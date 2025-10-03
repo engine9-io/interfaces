@@ -25,10 +25,20 @@ module.exports = {
           `Cannot update emails, there are 2 database entries for person_id ${o.person_id} with email ${email}`
         );
       }
+
+      if (
+        o.entry_type === 'EMAIL_UNSUBSCRIBE' ||
+        o.entry_type === 'EMAIL_SPAM' ||
+        o.entry_type_id === 44 ||
+        o.entry_type_id === 48
+      ) {
+        if (!o.subscription_status) o.subscription_status = 'Unsubscribed';
+      }
+
       let status = o.email_subscription_status || o.subscription_status;
       const { id, ...rest } = o;
       if (id) {
-        //this is undoubtedly NOT the ID of the record
+        //this is undoubtedly NOT the ID of the person_email record
       }
 
       if (personEmails[0]) {

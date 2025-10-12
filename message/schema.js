@@ -29,6 +29,8 @@ module.exports = {
         remote_message_set_name: 'string',
         message_template_id: 'foreign_uuid',
         type: 'string',
+        status: 'string',
+        schedule: 'string',
         source_code_format: 'string',
         // default_content: 'json', //unused?
         default_variables: 'json',

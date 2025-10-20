@@ -13,12 +13,12 @@ module.exports = {
         schema: 'json', // Not all plugins need to support file based schemas, like per-account custom fields
         transforms: 'json', // Not all plugins need to support file based transforms, like per-account custom fields
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
       indexes: [
         { columns: 'id', primary: true },
-        { columns: 'remote_plugin_id', unique: true },
-      ],
+        { columns: 'remote_plugin_id', unique: true }
+      ]
     },
     {
       name: 'plugin_history',
@@ -28,11 +28,9 @@ module.exports = {
         path: 'string',
         deployed_version: 'string',
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
-      indexes: [
-        { columns: 'id', primary: true },
-      ],
+      indexes: [{ columns: 'id', primary: true }]
     },
     {
       name: 'setting',
@@ -40,12 +38,12 @@ module.exports = {
         id: 'id',
         plugin_id: 'foreign_uuid',
         name: 'string',
-        value: 'string',
+        value: 'string'
       },
       indexes: [
         { columns: 'id', primary: true },
-        { columns: 'plugin_id,name', unique: true },
-      ],
+        { columns: 'plugin_id,name', unique: true }
+      ]
     },
     {
       name: 'input',
@@ -60,12 +58,12 @@ module.exports = {
         metadata: 'json', // other metadata about the input, etc,
         data_path: 'string', // where the source data lives for this input, a directory or a packet
         created_at: 'created_at',
-        modified_at: 'modified_at',
+        modified_at: 'modified_at'
       },
       indexes: [
         { columns: 'id', primary: true },
-        { columns: 'plugin_id,remote_input_id', unique: true },
-      ],
-    },
-  ],
+        { columns: 'plugin_id,remote_input_id', unique: true }
+      ]
+    }
+  ]
 };

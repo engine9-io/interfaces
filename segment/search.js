@@ -14,11 +14,32 @@ module.exports = {
         required: []
       }
     },
+    optionsToEQLContext: function ({ segmentId }) {
+      return {
+        segments: {
+          table: 'segment',
+          columns: ['id', 'name'],
+          conditions: [
+            {
+              type: 'EQUALS',
+              values: [
+                {
+                  ref: { column: 'id' }
+                },
+                {
+                  value: { value: segmentId }
+                }
+              ]
+            }
+          ]
+        }
+      };
+    },
     /* map from provided user data into an EQL structure */
-    optionsToEQL(options) {
+    optionsToEQL(options, { segments } = {}) {
       const { segmentId } = options;
 
-      let text = ' segment ' + segmentId;
+      let text = 'In ' + segments.find(({ id }) => id == segmentId)?.name || segmentId;
       const conditions = [
         {
           type: 'EQUALS',

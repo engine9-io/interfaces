@@ -132,12 +132,15 @@ m.do_not_attribute,
 m.message_id as message_id_int,
 mc.variables,
 mc.targeting,
+msg.created_at,
+msg.modified_at,
 stats.*,
 plugin.id as plugin_id,
 plugin.path as plugin_name,
 plugin.remote_plugin_id as remote_plugin_id
 from 
 global_message m
+left join msg on (m.id=msg.id)
 left join plugin on (m.bot_id=plugin.remote_plugin_id)
 left join message_content mc on (m.id=mc.message_id)
 left join global_message_stats stats on (m.message_id=stats.message_id)`

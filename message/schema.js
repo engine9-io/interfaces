@@ -34,9 +34,10 @@ module.exports = {
         source_code_format: 'string',
         // default_content: 'json', //unused?
         default_variables: 'json',
-        required_targeting: 'json', // This is set initially, and can't be changed by users
+        required_targeting: 'json', // This is set initially, and can't be changed by users, for things such as Emailable people, etc
         targeting: 'json',
         sequencing: 'json', // sequence of messages
+        send_strategy: 'string', // Sending strategy, such as Best open rate, best giving rate, etc
         created_at: 'created_at',
         modified_at: 'modified_at'
       },

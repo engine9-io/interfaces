@@ -2,8 +2,8 @@ const metadata = {
   name: '@engine9-io/interfaces/person_email',
   version: '1.0.0',
   dependencies: {
-    '@engine9-io/interfaces/person': '>1.0.0',
-  },
+    '@engine9-io/interfaces/person': '>1.0.0'
+  }
 };
 
 const schema = require('./schema');
@@ -13,16 +13,20 @@ const search = require('./search');
 const appendEmail = require('./transforms/outbound/appendEmail');
 const appendEmailHash = require('./transforms/outbound/appendEmailHash');
 const segments = require('./segments');
+const subscription_status = require('./reports/subscription_status');
 
 module.exports = {
   metadata,
+  reports: {
+    subscription_status
+  },
   schema,
+  search,
+  segments,
   transforms: {
     id,
     upsert,
     appendEmail,
-    appendEmailHash,
-  },
-  search,
-  segments,
+    appendEmailHash
+  }
 };

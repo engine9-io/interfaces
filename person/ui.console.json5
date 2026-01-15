@@ -1,33 +1,33 @@
 {
   menu: {
-    people:{
+    people: {
       title: 'People',
-      icon:'people',
+      icon: 'people',
       type: 'collapse',
       children: {
-        'person-list':{
+        'person-list': {
           title: 'Everybody',
           icon: 'person',
-          url: '/person',
+          url: '/person'
         }
-      },
-    },
+      }
+    }
   },
   routes: {
-    'person':{
+    person: {
       layout: 'full_width',
       components: {
-        header:[
+        header: [
           'Everybody',
           {
-            component:'Button',
-            properties:{
-              icon:'plus',
-              content:'Add Person',
+            component: 'Button',
+            properties: {
+              icon: 'plus',
+              content: 'Add Person',
               onClick: {
                 action: 'navigate',
-                url: '/person/create',
-              },
+                url: '/person/create'
+              }
             }
           }
         ],
@@ -38,76 +38,76 @@
               table: 'person',
               includes: {
                 emails: {
-                  table: 'person_email',
-                },
+                  table: 'person_email'
+                }
               },
               columns: [
                 {
                   title: 'Id',
                   dataIndex: 'id',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Name',
                   dataIndex: 'name',
                   sorter: true,
                   template: '{{given_name}} {{family_name}} {{emails.0.email}}',
-                  width: '40%',
+                  width: '40%'
                 },
                 {
                   title: 'Email',
                   template: '{{emails.0.email}}',
-                  width: '40%',
-                },
+                  width: '40%'
+                }
               ],
               onRow: {
                 onClick: {
                   action: 'navigate',
-                  url: '/person/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
+                  url: '/person/{{record.id}}'
+                }
+              }
+            }
+          }
+        ]
+      }
     },
-    'person/create':{
+    'person/create': {
       layout: 'full_width',
       components: {
         main: [
           {
-            path:'edit',
+            path: 'edit',
             component: 'RecordForm',
             properties: {
               table: 'person',
-              form:{
+              form: {
                 title: 'Todo',
                 type: 'object',
                 required: [],
                 properties: {
                   given_name: { type: 'string', title: 'First Name', default: '' },
-                  family_name: { type: 'string', title: 'Last Name', default: '' },
+                  family_name: { type: 'string', title: 'Last Name', default: '' }
                 }
               },
-              uiSchema:{
-                family_name:{"ui:widget":"textarea"}
+              uiSchema: {
+                family_name: { 'ui:widget': 'textarea' }
               },
               onSave: {
                 action: 'navigate',
-                url: '/person/{{record.id}}',
-              },
-            },
-          },
-        ],
-      },
+                url: '/person/{{record.id}}'
+              }
+            }
+          }
+        ]
+      }
     },
-    'person/:id/*':{
+    'person/:id/*': {
       layout: 'sidebar',
       components: {
         sidebar: {
-            title:"Person Details",
-            items:[
+          title: 'Person Details',
+          items: [
             {
               component: 'RecordDisplay',
               properties: {
@@ -116,20 +116,20 @@
                 includes: {
                   emails: {
                     table: 'person_email',
-                    orderBy:'preference_order'
-                  },
+                    orderBy: 'preference_order'
+                  }
                 },
-                template:'{{given_name}} {{family_name}} {{#if emails.0.email}}<{{emails.0.email}}>{{/if}}',
-              },
+                template: '{{given_name}} {{family_name}} {{#if emails.0.email}}<{{emails.0.email}}>{{/if}}'
+              }
             },
             {
               component: 'Link',
               properties: {
                 label: 'Edit',
-                to: 'edit',
-              },
-            },
-            ],
+                to: 'edit'
+              }
+            }
+          ]
         },
         main: [
           {
@@ -138,28 +138,28 @@
             properties: {
               table: 'person',
               id: '{{parameters.id}}',
-              template:'{{given_name}} {{family_name}}',
-            },
+              template: '{{given_name}} {{family_name}}'
+            }
           },
           {
-            path:'edit',
+            path: 'edit',
             component: 'RecordForm',
             properties: {
               table: 'person',
               id: '{{parameters.id}}',
-              form:{
+              form: {
                 title: 'Todo',
                 type: 'object',
                 required: [],
                 properties: {
                   given_name: { type: 'string', title: 'First Name', default: '' },
-                  family_name: { type: 'string', title: 'Last Name', default: '' },
+                  family_name: { type: 'string', title: 'Last Name', default: '' }
                 }
-              },
-            },
-          },
-          ],
-      },
-    },
-  },
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
 }

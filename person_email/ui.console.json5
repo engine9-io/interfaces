@@ -1,19 +1,18 @@
 {
   routes: {
-    'person/:id/*':{
+    'person/:id/*': {
       components: {
         sidebar: {
-          items:[
+          items: [
             {
               component: 'Link',
               properties: {
                 label: 'Emails',
-                to: 'emails',
-              },
-            },
+                to: 'emails'
+              }
+            }
           ]
-        }
-        ,
+        },
         main: [
           {
             path: 'emails',
@@ -27,33 +26,33 @@
                   title: 'Id',
                   dataIndex: 'id',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Email',
                   template: '{{email}}',
-                  width: '40%',
+                  width: '40%'
                 },
                 {
                   title: 'Type',
                   template: '{{type}}',
-                  width: '10%',
+                  width: '10%'
                 },
                 {
                   title: 'Subscription Status',
                   template: '{{subscription_status}}',
-                  width: '15%',
+                  width: '15%'
                 },
                 {
                   title: 'Modified',
                   template: '{{date modified_at}}',
-                  width: '15%',
-                },
+                  width: '15%'
+                }
               ]
-            },
-          },
-        ],
-      },
-    },
-  },
+            }
+          }
+        ]
+      }
+    }
+  }
 }

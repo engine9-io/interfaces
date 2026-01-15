@@ -1,3 +1,9 @@
+import schema from './schema.js';
+import search from './search.js';
+import metrics from './metrics.js';
+import segments from './segments.js';
+import upsert from './transforms/inbound/upsert_tables.js';
+import appendTransactionSummary from './transforms/appendTransactionSummary.js';
 const metadata = {
   name: '@engine9-io/interfaces/transaction',
   version: '1.0.0',
@@ -5,22 +11,20 @@ const metadata = {
     '@engine9-io/interfaces/person': '>1.0.0'
   }
 };
-
-const schema = require('./schema');
-const search = require('./search');
-const metrics = require('./metrics');
-const segments = require('./segments');
-const upsert = require('./transforms/inbound/upsert_tables');
-const appendTransactionSummary = require('./transforms/appendTransactionSummary');
-
-module.exports = {
+export const transforms = {
+  upsert,
+  appendTransactionSummary
+};
+export { metadata };
+export { schema };
+export { metrics };
+export { search };
+export { segments };
+export default {
   metadata,
   schema,
   metrics,
-  transforms: {
-    upsert,
-    appendTransactionSummary
-  },
+  transforms,
   search,
   segments
 };

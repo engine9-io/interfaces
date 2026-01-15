@@ -1,3 +1,11 @@
+import schema from './schema.js';
+import id from './transforms/inbound/extract_identifiers.js';
+import upsert from './transforms/inbound/upsert_tables.js';
+import search from './search.js';
+import appendEmail from './transforms/outbound/appendEmail.js';
+import appendEmailHash from './transforms/outbound/appendEmailHash.js';
+import segments from './segments.js';
+import subscription_status from './reports/subscription_status.js';
 const metadata = {
   name: '@engine9-io/interfaces/person_email',
   version: '1.0.0',
@@ -5,28 +13,24 @@ const metadata = {
     '@engine9-io/interfaces/person': '>1.0.0'
   }
 };
-
-const schema = require('./schema');
-const id = require('./transforms/inbound/extract_identifiers');
-const upsert = require('./transforms/inbound/upsert_tables');
-const search = require('./search');
-const appendEmail = require('./transforms/outbound/appendEmail');
-const appendEmailHash = require('./transforms/outbound/appendEmailHash');
-const segments = require('./segments');
-const subscription_status = require('./reports/subscription_status');
-
-module.exports = {
+export const reports = {
+  subscription_status
+};
+export const transforms = {
+  id,
+  upsert,
+  appendEmail,
+  appendEmailHash
+};
+export { metadata };
+export { schema };
+export { search };
+export { segments };
+export default {
   metadata,
-  reports: {
-    subscription_status
-  },
+  reports,
   schema,
   search,
   segments,
-  transforms: {
-    id,
-    upsert,
-    appendEmail,
-    appendEmailHash
-  }
+  transforms
 };

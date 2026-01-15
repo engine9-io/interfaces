@@ -1,16 +1,16 @@
 {
   routes: {
-    'person/:id/*':{
+    'person/:id/*': {
       components: {
         sidebar: {
-          items:[
+          items: [
             {
               component: 'Link',
               properties: {
                 label: 'Addresses',
-                to: 'address',
-              },
-            },
+                to: 'address'
+              }
+            }
           ]
         },
         main: [
@@ -21,13 +21,11 @@
             properties: {
               table: 'person_address',
               conditions: [{ eql: 'person_id={{person_id}}' }],
-              rows: [
-                '{{street}}',
-              ],
-            },
-          },
-        ],
-      },
-    },
-  },
+              rows: ['{{street}}']
+            }
+          }
+        ]
+      }
+    }
+  }
 }

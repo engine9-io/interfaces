@@ -1,11 +1,11 @@
+import schema from './schema.js';
 const metadata = {
   name: '@engine9-io/interfaces/plugin',
-  version: '1.0.0',
+  version: '1.0.0'
 };
-
-const schema = require('./schema');
-
-module.exports = {
+export { metadata };
+export { schema };
+export default {
   metadata,
-  schema,
+  schema
 };

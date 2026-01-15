@@ -1,3 +1,5 @@
+import schema from './schema.js';
+import metrics from './metrics.js';
 const metadata = {
   name: '@engine9-io/interfaces/source_code',
   version: '1.0.0',
@@ -5,11 +7,10 @@ const metadata = {
     '@engine9-io/interfaces/person': '>1.0.0'
   }
 };
-
-const schema = require('./schema');
-const metrics = require('./metrics');
-
-module.exports = {
+export { metadata };
+export { schema };
+export { metrics };
+export default {
   metadata,
   schema,
   metrics

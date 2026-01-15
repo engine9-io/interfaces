@@ -1,26 +1,23 @@
-const handlebars = require('handlebars');
+import handlebars from 'handlebars';
 
-module.exports = {
-  async transform({
-    batch, options,
-  }) {
-    const scope = this;
-    if (!scope.map) {
+const moduleExports = {
+  async transform({ batch, options }) {
+    if (!options._compiledMap) {
       if (!options?.map) {
         throw new Error('Error with transform, no options.map provided');
       }
-      scope.map = {};
+      options._compiledMap = {};
       Object.entries(options.map).forEach(([k, source]) => {
         if (k === '*') {
-          scope.map['*'] = '*';// just applies all the other fields
+          options._compiledMap['*'] = '*'; // just applies all the other fields
         } else {
-          scope.map[k] = handlebars.compile(source);
+          options._compiledMap[k] = handlebars.compile(source);
         }
       });
     }
     const newBatch = batch.map((o) => {
       const out = {};
-      Object.entries(scope.map).forEach(([k, func]) => {
+      Object.entries(options._compiledMap).forEach(([k, func]) => {
         if (k === '*') {
           Object.assign(out, o);
         } else if (out[k] === undefined) {
@@ -30,7 +27,8 @@ module.exports = {
       });
       return out;
     });
-
     return { batch: newBatch };
-  },
+  }
 };
+
+export default moduleExports;

@@ -1,23 +1,21 @@
 {
   menu: {
-    "data-menu":{
-          children: {
-            report:{
-              title: 'Reports',
-              icon:'report',
-              url: '/report',
-            }
-          },
-    },
+    'data-menu': {
+      children: {
+        report: {
+          title: 'Reports',
+          icon: 'report',
+          url: '/report'
+        }
+      }
+    }
   },
   routes: {
-    '/report':{
+    '/report': {
       layout: 'full_width',
       components: {
-        main: [
-          '<h1>Reports</h1>'
-        ],
-      },
-    },
+        main: ['<h1>Reports</h1>']
+      }
+    }
   }
 }

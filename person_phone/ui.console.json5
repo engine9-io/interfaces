@@ -1,17 +1,17 @@
 {
   routes: {
-    'person/:id/*':{
+    'person/:id/*': {
       components: {
         sidebar: {
-          items2:[
-          {
-            component: 'Link',
-            properties: {
-              label: 'Phones',
-              to: 'phones',
-            },
-          },
-        ]
+          items2: [
+            {
+              component: 'Link',
+              properties: {
+                label: 'Phones',
+                to: 'phones'
+              }
+            }
+          ]
         },
         main: [
           {
@@ -21,14 +21,11 @@
             properties: {
               table: 'person_phone',
               conditions: [{ eql: 'person_id={{person_id}}' }],
-              rows: [
-                '{{phone}}',
-                '{{phone_type}}',
-              ],
-            },
-          },
-        ],
-      },
-    },
-  },
+              rows: ['{{phone}}', '{{phone_type}}']
+            }
+          }
+        ]
+      }
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import search from './search.js';
 const metadata = {
   name: '@engine9-io/interfaces/timeline',
   version: '1.0.0',
@@ -5,10 +6,9 @@ const metadata = {
     '@engine9-io/interfaces/person': '>1.0.0'
   }
 };
-
-const search = require('./search');
-
-module.exports = {
+export { metadata };
+export { search };
+export default {
   metadata,
   search
 };

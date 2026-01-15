@@ -1,18 +1,18 @@
+import upsert from './transforms/inbound/upsert_tables.js';
+import appendRemoteId from './transforms/appendRemoteId.js';
 const metadata = {
   name: '@engine9-io/interfaces/person_custom',
   version: '1.0.0',
   dependencies: {
-    '@engine9-io/interfaces/person': '>1.0.0',
-  },
+    '@engine9-io/interfaces/person': '>1.0.0'
+  }
 };
-
-const upsert = require('./transforms/inbound/upsert_tables');
-const appendRemoteId = require('./transforms/appendRemoteId');
-
-module.exports = {
+export const transforms = {
+  upsert,
+  appendRemoteId
+};
+export { metadata };
+export default {
   metadata,
-  transforms: {
-    upsert,
-    appendRemoteId,
-  },
+  transforms
 };

@@ -1,30 +1,30 @@
 {
   menu: {
-    people:{
+    people: {
       children: {
-        segments:{
+        segments: {
           title: 'Segments',
           icon: 'people',
-          url: '/segments',
-        },
-      },
-    },
+          url: '/segments'
+        }
+      }
+    }
   },
   routes: {
-    '/segments':{
+    '/segments': {
       layout: 'full_width',
       components: {
-        header:[
+        header: [
           'Segments',
           {
-            component:'Button',
-            properties:{
-              icon:'plus',
-              content:'Add Segment',
+            component: 'Button',
+            properties: {
+              icon: 'plus',
+              content: 'Add Segment',
               onClick: {
                 action: 'navigate',
-                url: '/segments/create',
-              },
+                url: '/segments/create'
+              }
             }
           }
         ],
@@ -38,92 +38,90 @@
                   title: 'Id',
                   dataIndex: 'id',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Type',
                   dataIndex: 'type',
-                  sorter: true,
+                  sorter: true
                 },
                 {
                   title: 'Name',
                   dataIndex: 'label',
                   sorter: true,
                   template: '{{label}}',
-                  width: '40%',
-                },
+                  width: '40%'
+                }
               ],
               onRecord: {
                 onClick: {
                   action: 'navigate',
-                  url: '/segments/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
+                  url: '/segments/{{record.id}}'
+                }
+              }
+            }
+          }
+        ]
+      }
     },
-    '/segments/:id/*':{
+    '/segments/:id/*': {
       layout: 'full_width',
       components: {
-          main: [
-            {
+        main: [
+          {
             component: 'RecordForm',
             properties: {
               table: 'job',
               title: '{{#if record.id}}Edit Segment{{else}}Create Segment{{/if}}',
-              form:{
+              form: {
                 type: 'object',
                 required: [],
                 properties: {
-                  type: { type: 'string', title: 'Type'},
-                  name: { type: 'string', title: 'Name'},
-                  plugin_id: { type: 'string', title: 'Source Plugin ID'},
-                  remote_segment_id: { type: 'string', title: 'Remote Segment ID'},
-                  build_mechanism: { type: 'string', title: 'Mechanism', default:'static'},
-                  build_schedule: { type: 'string', title: 'Build Schedule'},
-                  build_status: { type: 'string', title: 'Build Status'},
-                  build_status_modified_at: { type: 'modified_at', title: 'Build Status Modified At'}
+                  type: { type: 'string', title: 'Type' },
+                  name: { type: 'string', title: 'Name' },
+                  plugin_id: { type: 'string', title: 'Source Plugin ID' },
+                  remote_segment_id: { type: 'string', title: 'Remote Segment ID' },
+                  build_mechanism: { type: 'string', title: 'Mechanism', default: 'static' },
+                  build_schedule: { type: 'string', title: 'Build Schedule' },
+                  build_status: { type: 'string', title: 'Build Status' },
+                  build_status_modified_at: { type: 'modified_at', title: 'Build Status Modified At' }
                 }
               },
-              uiSchema:{
-              },
+              uiSchema: {},
               onSave: {
                 action: 'navigate',
-                url: '/segments/{{record.id}}',
-              },
-            },
+                url: '/segments/{{record.id}}'
+              }
+            }
           },
           {
             component: 'RecordTable',
             properties: {
               table: 'person_segment',
-                includes: [
-                  { alias: 'people', table: 'person' },
-                ],
+              includes: [{ alias: 'people', table: 'person' }],
               conditions: [{ eql: 'segment_id={{parameters.segment_id}}' }],
               columns: [
                 {
-                  template:'{{person_id}}',
+                  template: '{{person_id}}'
                 }
-              ],
-            },
-          },
-        ],
-      },
-    },
-     '/person/:id/*':{
-      components: {
-        sidebar: {items2:[
-          {
-            component: 'Link',
-            properties: {
-              label: 'Segments',
-              to: 'segments',
-            },
-          },
+              ]
+            }
+          }
         ]
+      }
+    },
+    '/person/:id/*': {
+      components: {
+        sidebar: {
+          items2: [
+            {
+              component: 'Link',
+              properties: {
+                label: 'Segments',
+                to: 'segments'
+              }
+            }
+          ]
         },
         main: [
           {
@@ -132,17 +130,13 @@
             component: 'RecordTable',
             properties: {
               table: 'person_segment',
-                includes: [
-                  { alias: 'segments', table: 'segment' },
-                ],
+              includes: [{ alias: 'segments', table: 'segment' }],
               conditions: [{ eql: 'person_id={{parameters.person_id}}' }],
-              rows: [
-                '{{segment}}',
-              ],
-            },
-          },
-        ],
-      },
-    },
-  },
+              rows: ['{{segment}}']
+            }
+          }
+        ]
+      }
+    }
+  }
 }

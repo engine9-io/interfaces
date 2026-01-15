@@ -1,33 +1,33 @@
 {
   menu: {
-    "data-menu":{
-          title: 'Data',
-          icon:'data',
-          type: 'collapse',
-          children: {
-            job:{
-              title: 'Jobs',
-              icon:'forklift',
-              url: '/job',
-            }
-          },
-    },
+    'data-menu': {
+      title: 'Data',
+      icon: 'data',
+      type: 'collapse',
+      children: {
+        job: {
+          title: 'Jobs',
+          icon: 'forklift',
+          url: '/job'
+        }
+      }
+    }
   },
   routes: {
-    'job':{
+    job: {
       layout: 'full_width',
       components: {
-        header:[
+        header: [
           'Jobs',
           {
-            component:'Button',
-            properties:{
-              icon:'plus',
-              content:'Add Job',
+            component: 'Button',
+            properties: {
+              icon: 'plus',
+              content: 'Add Job',
               onClick: {
                 action: 'navigate',
-                url: '/job/create',
-              },
+                url: '/job/create'
+              }
             }
           }
         ],
@@ -41,45 +41,45 @@
                   title: 'Id',
                   dataIndex: 'id',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Created',
                   dataIndex: 'created_at',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Status',
                   dataIndex: 'status',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Worker',
                   dataIndex: 'worker_path',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 },
                 {
                   title: 'Method',
                   dataIndex: 'worker_method',
                   sorter: true,
-                  width: '20%',
+                  width: '20%'
                 }
               ],
               onRecord: {
                 onClick: {
                   action: 'navigate',
-                  url: '/job/{{record.id}}',
-                },
-              },
-            },
-          },
-        ],
-      },
+                  url: '/job/{{record.id}}'
+                }
+              }
+            }
+          }
+        ]
+      }
     },
-    'job/:id/*':{
+    'job/:id/*': {
       layout: 'full_width',
       components: {
         main: [
@@ -88,28 +88,28 @@
             properties: {
               table: 'job',
               title: '{{#if record.id}}Edit Job{{else}}Create Job{{/if}}',
-              form:{
+              form: {
                 type: 'object',
                 required: [],
                 properties: {
-                    account_id: { type: 'string', title: 'Account ID', default: 'engine9' },
-                    status:{ type: 'string', title: 'Status', default: 'pending' },
-                    worker_path: { type: 'string', title: 'Worker Path', default: 'EchoWorker' },
-                    worker_method: { type: 'string', title: 'Worker Method', default: 'echo' },
-                    options: { type: 'string', title: 'Options', default: '{}' },
+                  account_id: { type: 'string', title: 'Account ID', default: 'engine9' },
+                  status: { type: 'string', title: 'Status', default: 'pending' },
+                  worker_path: { type: 'string', title: 'Worker Path', default: 'EchoWorker' },
+                  worker_method: { type: 'string', title: 'Worker Method', default: 'echo' },
+                  options: { type: 'string', title: 'Options', default: '{}' }
                 }
               },
-              uiSchema:{
-                options:{"ui:widget":"textarea"}
+              uiSchema: {
+                options: { 'ui:widget': 'textarea' }
               },
               onSave: {
                 action: 'navigate',
-                url: '/job/{{record.id}}',
-              },
-            },
-          },
-        ],
-      },
-    },
-  },
+                url: '/job/{{record.id}}'
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
 }

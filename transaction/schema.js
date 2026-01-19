@@ -7,7 +7,6 @@ export const tables = [
       input_id: 'uuid', // keep as uuid because it's required
       entry_type_id: 'int',
       person_id: 'person_id',
-      source_code_id: 'source_code_id',
       amount: 'currency',
       refund_amount: 'currency',
       recurs_id: {
@@ -21,6 +20,12 @@ export const tables = [
       family_name: 'string',
       email: 'string',
       remote_page_name: 'string',
+      source_code_id: 'source_code_id',
+      override_source_code_id: 'source_code_id',
+      final_source_code_id: 'source_code_id',
+      recommended_message_id: 'uuid',
+      override_message_id: 'uuid',
+      final_message_id: 'uuid',
       extra: 'json'
     },
     indexes: [

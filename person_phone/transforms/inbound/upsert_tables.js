@@ -35,8 +35,7 @@ export async function transform({ batch, tablesToUpsert, databasePhones }) {
       tablesToUpsert.person_phone.push({
         ...personPhones[0],
         ...rest,
-        sms_status,
-        call_status
+        sms_status
       });
     } else {
       tablesToUpsert.person_phone.push({
@@ -45,8 +44,7 @@ export async function transform({ batch, tablesToUpsert, databasePhones }) {
         phone: o.phone,
         ...rest,
         source_input_id: o.input_id,
-        sms_status,
-        call_status
+        sms_status
       });
     }
   });

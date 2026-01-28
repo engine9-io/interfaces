@@ -6,7 +6,7 @@ import upsert from './transforms/inbound/upsert_tables.js';
 import appendTransactionSummary from './transforms/appendTransactionSummary.js';
 const metadata = {
   name: '@engine9-io/interfaces/transaction',
-  version: '1.0.0',
+  version: '1.1.0',
   dependencies: {
     '@engine9-io/interfaces/person': '>1.0.0'
   }
